@@ -29,7 +29,7 @@ class UserFixtures extends Fixture
                 'image' => 'admin_image.jpg',
                 'bio' => 'admin_bio',
                 'linkedin' => 'admin_linkedin',
-                'location' => 'admin_location',
+                'location' => 'bordeaux',
                 'role' => 'ROLE_ADMIN',
             ],
         ];
