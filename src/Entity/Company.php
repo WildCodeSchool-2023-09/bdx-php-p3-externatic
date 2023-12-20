@@ -13,8 +13,8 @@ class Company
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $siret = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $siret = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adress = null;
@@ -28,12 +28,12 @@ class Company
         return $this->id;
     }
 
-    public function getSiret(): ?int
+    public function getSiret(): ?string
     {
         return $this->siret;
     }
 
-    public function setSiret(?int $siret): static
+    public function setSiret(?string $siret): static
     {
         $this->siret = $siret;
 
