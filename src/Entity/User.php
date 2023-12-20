@@ -43,6 +43,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $location = null;
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Company $company = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -169,6 +172,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLocation(?string $location): static
     {
         $this->location = $location;
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(Company $company): static
+    {
+        // set the owning side of the relation if necessary
+        if ($company->getUser() !== $this) {
+            $company->setUser($this);
+        }
+
+        $this->company = $company;
 
         return $this;
     }

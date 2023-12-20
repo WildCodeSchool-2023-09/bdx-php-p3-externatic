@@ -78,6 +78,8 @@ class UserFixtures extends Fixture
                 ->setLocation($faker->city)
                 ->setRoles(['ROLE_COMPANY']);
 
+            $this->addReference('company_user_' . $i, $company);
+
             $manager->persist($company);
         }
 
