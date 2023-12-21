@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a, a:visited, a:active {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: #842342;
+    }
+}
+
+main {
+    margin: 20vh auto;
+    text-align: center;
+}
+
+body {
+    font-family: 'Jost Variable', sans-serif;
+}
+
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    .footer-top {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 50px;
+    }
+
+    .footer-col {
+        width: max-content;
+
+        > * {
+            display: block;
+            width: max-content;
+        }
+
+        > h3 {
+            margin-bottom: 20px;
+            font-size: 25px;
+        }
+
+        a {
+            padding: 5px 0;
+        }
+    }
+
+    .footer-middle {
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            overflow-wrap: break-word;
+        }
+    }
+
+    .footer-bottom {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+
+        .social {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: white;
+            color: black;
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: #842342;
+                color: white;
+            }
+
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    @media screen and (min-width: 661px) {
+        flex-direction: row;
+        align-items: center;
+
+        .footer-bottom {
+            flex-direction: row;
+        }
+    }
+
+    @media screen and (max-width: 660px) {
+        padding: 15px;
+
+        .footer-top {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+
+        .footer-col {
+            text-align: center;
+        }
+
+        .footer-bottom {
+            flex-direction: row;
+        }
+    }
+}
