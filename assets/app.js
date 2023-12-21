@@ -12,6 +12,7 @@ import '@fontsource-variable/jost';
 import imagePath from './images/registration.svg';
 
 let html = `<img src="${imagePath}" alt="business meeting">`;
+//import './styles/footer.scss'
 
 // start the Stimulus application
 import './bootstrap';

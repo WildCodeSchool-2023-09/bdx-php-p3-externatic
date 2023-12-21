@@ -62,6 +62,8 @@ class UserFixtures extends Fixture
                 ->setLocation($faker->city)
                 ->setRoles(['ROLE_CANDIDAT']);
 
+            $this->addReference('candidate_user_' . $i, $candidat);
+
             $manager->persist($candidat);
         }
 
@@ -77,6 +79,8 @@ class UserFixtures extends Fixture
                 ->setLinkedin($faker->url)
                 ->setLocation($faker->city)
                 ->setRoles(['ROLE_COMPANY']);
+
+            $this->addReference('company_user_' . $i, $company);
 
             $manager->persist($company);
         }
