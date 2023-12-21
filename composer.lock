@@ -6,6 +6,7 @@
     ],
 
     "content-hash": "ee739bc9da90e63c7e80ff5cab0fc368",
+
     "packages": [
         {
             "name": "doctrine/cache",
@@ -1400,6 +1401,7 @@
         {
             "name": "fakerphp/faker",
             "version": "v1.23.0",
+
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
