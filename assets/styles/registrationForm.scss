@@ -1,0 +1,86 @@
+:root {
+    --primary-color: #CA2061;
+    --secondary-color: #851342;
+    --dominant: #FFFFFF;
+    --contrast: #000000;
+    --brand-font: 'Jost Variable', sans-serif;
+}
+
+
+body {
+    background-color: var(--dominant);
+    font-family:  var(--brand-font);
+}
+
+.label {
+    border: none;
+    color: var(--contrast);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.placeholder {
+
+    color: grey;
+    border: none;
+    height: 2rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+
+}
+
+
+
+.btn {
+    background-color: var(--primary-color);
+    color: var(--dominant);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 2.5rem;
+    margin-left: 11rem;
+    width: 40%;
+    font-size: 1rem;
+
+
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+hr {
+    color: lightgrey;
+    margin-bottom: 1.5rem;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 4rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.grid-child-text {
+    margin-top: 4rem;
+    margin-left: 4rem;
+    margin-bottom: 2rem;
+}
+
+.grid-child-form {
+    margin-top: 7rem;
+}
+
+/* src*=  means "begins with" */
+img[src*="people"] {
+    height: 400px;
+}
+
+
+
+

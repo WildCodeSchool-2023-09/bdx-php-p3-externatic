@@ -23,5 +23,7 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress"
     },
-    "dependencies": {}
+    "dependencies": {
+        "@fontsource-variable/jost": "^5.0.17"
+    }
 }
