@@ -17,7 +17,7 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
         $companies = $manager->getRepository('App\Entity\Company')->findAll();
 
         foreach ($companies as $company) {
-            // Crée 2 emplois par entreprise
+            // Crée 2 emplois pour chaque entreprise
             for ($i = 0; $i < 2; $i++) {
                 $job = new Job();
                 $job
