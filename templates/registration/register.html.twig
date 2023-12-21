@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+<div class="grid-container">
+    <div class="grid-child-image">
+        <h1>Créer un compte</h1>
+        <img src="{{ asset('build/images/people.svg') }}" alt="three business people"/>
+    </div>
+    <div class="grid-child-form">
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+        {{ form_label(registrationForm.username, "Nom d'utilisateur", {
+            label_attr: { class: 'label' }
+        }) }}
+        {{ form_row(registrationForm.username, {
+            attr: { placeholder: "Choisissez votre nom", class: 'placeholder' }
+        }) }}
+        <hr>
+        {{ form_label(registrationForm.email, 'Adresse e-mail', {
+            label_attr: { class: 'label' }
+        }) }}
+        {{ form_row(registrationForm.email, {
+            attr: { placeholder: 'Entrez votre adresse e-mail', class: 'placeholder' }
+        }) }}
+        <hr>
+        {{ form_label(registrationForm.plainPassword, 'Mot de passe', {
+            label_attr: { class: 'label' }
+        }) }}
+        {{ form_row(registrationForm.plainPassword, {
+            attr: { placeholder: 'Choisissez un mot de passe', class: 'placeholder' }
+        }) }}
+        <hr>
+
+        {{ form_label(registrationForm.roles, 'Choisissez votre compte', {
+            label_attr: { class: 'label' }
+        }) }}
+
+        {{ form_row(registrationForm.roles, {
+            attr: { placeholder: '', class: 'placeholder' }
+        }) }}
+
+
+        <button type="submit" class="btn">Créer votre compte</button>
+    {{ form_end(registrationForm) }}
+    </div>
+</div>
+
+{% endblock %}
+
