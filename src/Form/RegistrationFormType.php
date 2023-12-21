@@ -51,9 +51,11 @@ class RegistrationFormType extends AbstractType
 
                 ],
                 'choice_attr' => [
-                    'Candidat',
-                    'Entreprise',
+                    'Candidat' => ['class' => 'candidate-button'],
+                    'Entreprise' => ['class' => 'company-button'],
+
                 ],
+
 
             ])
             ->get('roles')->addModelTransformer(new CallbackTransformer(
