@@ -1,17 +1,3 @@
-:root {
-    --primary-color: #CA2061;
-    --secondary-color: #851342;
-    --dominant: #FFFFFF;
-    --contrast: #000000;
-    --brand-font: 'Jost Variable', sans-serif;
-}
-
-
-body {
-    background-color: var(--dominant);
-    font-family:  var(--brand-font);
-}
-
 .label {
     border: none;
     color: var(--contrast);
@@ -29,8 +15,6 @@ body {
     font-size: 1.2rem;
 
 }
-
-
 
 .btn {
     background-color: var(--primary-color);
@@ -82,13 +66,7 @@ img[src*="people"] {
 }
 
 
-.candidate-button {
-    display: none;
-}
 
-.company-button {
-    display: none;
-}
 
 
 

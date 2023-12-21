@@ -1,3 +1,12 @@
+:root {
+    --primary-color: #CA2061;
+    --secondary-color: #851342;
+    --dominant: #FFFFFF;
+    --contrast: #000000;
+    --brand-font: 'Jost Variable', sans-serif;
+}
+
 body {
-    background-color: lightgray;
+    background-color: var(--dominant);
+    font-family:  var(--brand-font);
 }
