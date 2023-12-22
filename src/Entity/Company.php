@@ -28,13 +28,10 @@ class Company
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Job::class, orphanRemoval: true)]
     private Collection $jobs;
 
-    #[ORM\ManyToMany(targetEntity: FavoriteCandidate::class, mappedBy: 'company')]
-    private Collection $favoriteCandidates;
 
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
-        $this->favoriteCandidates = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -103,33 +100,6 @@ class Company
             if ($job->getCompany() === $this) {
                 $job->setCompany(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, FavoriteCandidate>
-     */
-    public function getFavoriteCandidates(): Collection
-    {
-        return $this->favoriteCandidates;
-    }
-
-    public function addFavoriteCandidate(FavoriteCandidate $favoriteCandidate): static
-    {
-        if (!$this->favoriteCandidates->contains($favoriteCandidate)) {
-            $this->favoriteCandidates->add($favoriteCandidate);
-            $favoriteCandidate->addCompany($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFavoriteCandidate(FavoriteCandidate $favoriteCandidate): static
-    {
-        if ($this->favoriteCandidates->removeElement($favoriteCandidate)) {
-            $favoriteCandidate->removeCompany($this);
         }
 
         return $this;

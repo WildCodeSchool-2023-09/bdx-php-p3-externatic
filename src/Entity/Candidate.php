@@ -22,13 +22,6 @@ class Candidate
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\ManyToMany(targetEntity: FavoriteCandidate::class, mappedBy: 'candidate')]
-    private Collection $favoriteCandidates;
-
-    public function __construct()
-    {
-        $this->favoriteCandidates = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -55,33 +48,6 @@ class Candidate
     public function setUser(User $user): static
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, FavoriteCandidate>
-     */
-    public function getFavoriteCandidates(): Collection
-    {
-        return $this->favoriteCandidates;
-    }
-
-    public function addFavoriteCandidate(FavoriteCandidate $favoriteCandidate): static
-    {
-        if (!$this->favoriteCandidates->contains($favoriteCandidate)) {
-            $this->favoriteCandidates->add($favoriteCandidate);
-            $favoriteCandidate->addCandidate($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFavoriteCandidate(FavoriteCandidate $favoriteCandidate): static
-    {
-        if ($this->favoriteCandidates->removeElement($favoriteCandidate)) {
-            $favoriteCandidate->removeCandidate($this);
-        }
 
         return $this;
     }
