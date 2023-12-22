@@ -20,6 +20,9 @@ class CVs
     #[ORM\JoinColumn(nullable: false)]
     private ?Candidate $candidate = null;
 
+    #[ORM\OneToOne(mappedBy: 'cv', cascade: ['persist', 'remove'])]
+    private ?Application $application = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,23 @@ class CVs
     public function setCandidate(?Candidate $candidate): static
     {
         $this->candidate = $candidate;
+
+        return $this;
+    }
+
+    public function getApplication(): ?Application
+    {
+        return $this->application;
+    }
+
+    public function setApplication(Application $application): static
+    {
+        // set the owning side of the relation if necessary
+        if ($application->getCurriculum() !== $this) {
+            $application->setCurriculum($this);
+        }
+
+        $this->application = $application;
 
         return $this;
     }
