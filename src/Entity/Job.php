@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\JobRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,6 +34,14 @@ class Job
     #[ORM\ManyToOne(inversedBy: 'jobs')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Company $company = null;
+
+    #[ORM\ManyToMany(targetEntity: Candidate::class, inversedBy: 'jobs')]
+    private Collection $favoriteCandidates;
+
+    public function __construct()
+    {
+        $this->favoriteCandidates = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,6 +116,30 @@ class Job
     public function setCompany(?Company $company): static
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Candidate>
+     */
+    public function getFavoriteCandidates(): Collection
+    {
+        return $this->favoriteCandidates;
+    }
+
+    public function addFavoriteCandidate(Candidate $favoriteCandidate): static
+    {
+        if (!$this->favoriteCandidates->contains($favoriteCandidate)) {
+            $this->favoriteCandidates->add($favoriteCandidate);
+        }
+
+        return $this;
+    }
+
+    public function removeFavoriteCandidate(Candidate $favoriteCandidate): static
+    {
+        $this->favoriteCandidates->removeElement($favoriteCandidate);
 
         return $this;
     }
