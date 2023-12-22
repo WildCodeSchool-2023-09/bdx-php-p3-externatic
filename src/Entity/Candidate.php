@@ -22,12 +22,12 @@ class Candidate
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'candidate', targetEntity: CVs::class)]
-    private Collection $cvs;
+    #[ORM\ManyToMany(targetEntity: Company::class, inversedBy: 'favoriteCandidates')]
+    private Collection $favoriteCompanies;
 
     public function __construct()
     {
-        $this->cvs = new ArrayCollection();
+        $this->favoriteCompanies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -60,31 +60,25 @@ class Candidate
     }
 
     /**
-     * @return Collection<int, CVs>
+     * @return Collection<int, Company>
      */
-    public function getCVs(): Collection
+    public function getFavoriteCompanies(): Collection
     {
-        return $this->cvs;
+        return $this->favoriteCompanies;
     }
 
-    public function addCV(CVs $cvs): static
+    public function addFavoriteCompany(Company $favoriteCompany): static
     {
-        if (!$this->cvs->contains($cvs)) {
-            $this->cvs->add($cvs);
-            $cvs->setCandidate($this);
+        if (!$this->favoriteCompanies->contains($favoriteCompany)) {
+            $this->favoriteCompanies->add($favoriteCompany);
         }
 
         return $this;
     }
 
-    public function removeCV(CVs $cvs): static
+    public function removeFavoriteCompany(Company $favoriteCompany): static
     {
-        if ($this->cvs->removeElement($cvs)) {
-            // set the owning side to null (unless already changed)
-            if ($cvs->getCandidate() === $this) {
-                $cvs->setCandidate(null);
-            }
-        }
+        $this->favoriteCompanies->removeElement($favoriteCompany);
 
         return $this;
     }
