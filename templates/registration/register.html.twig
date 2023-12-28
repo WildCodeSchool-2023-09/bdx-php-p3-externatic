@@ -9,6 +9,8 @@
         <h1>Créer un compte</h1>
         <img src="{{ asset('build/images/people.svg') }}" alt="three business people"/>
     </div>
+        <img src="{{ asset('build/images/programmer.svg') }}" alt="woman working on a computer"/>
+
     <div class="grid-child-form">
 
     {{ form_errors(registrationForm) }}
@@ -43,9 +45,6 @@
         {{ form_widget(registrationForm.roles, {
             attr: { placeholder: '', class: 'placeholder' }
         }) }}
-
-
-
         <button type="submit" class="btn">Créer votre compte</button>
     {{ form_end(registrationForm) }}
     </div>
