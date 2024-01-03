@@ -1,0 +1,24 @@
+img[src*="edit_profile"] {
+    height: 400px;
+}
+
+
+img[src*="profile_edit"] {
+    display: none;
+
+}
+
+
+
+@media screen and (max-width: 768px) {
+    img[src*="edit_profile"] {
+        display: none;
+    }
+
+
+    img[src*="profile_edit"] {
+        display: flex;
+        height: 200px;
+
+    }
+}
