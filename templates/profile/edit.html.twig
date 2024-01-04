@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="grid-container">
+            <div class="grid-child-image">
+                <h1>Modifier votre profil</h1>
+                <img src="{{ asset('build/images/edit_profile.svg') }}" alt="man adding content to a website"/>
+            </div>
+            <img src="{{ asset('build/images/profile_edit_mobile.svg') }}" alt="woman editing a site on her phone"/>
+            <div class="grid-child-form">
+                {{ form_start(form) }}
+                {{ form_label(form.username, "Nom d'utilisateur", {
+                    label_attr: { class: 'label' }
+                }) }}
+                {{ form_row(form.username, {
+                    attr: { placeholder: "Modifier votre nom", class: 'placeholder' }
+                }) }}
+                <hr>
+                {{ form_label(form.location, "Localisation", {
+                    label_attr: { class: 'label' }
+                }) }}
+                {{ form_row(form.location, {
+                    attr: { placeholder: "Ajoutez votre lieu de résidence", class: 'placeholder' }
+                }) }}
+                <hr>
+                {{ form_label(form.bio, "Bio", {
+                    label_attr: { class: 'label' }
+                }) }}
+                {{ form_row(form.bio, {
+                    attr: { placeholder: "Parlez-nous de vous", class: 'placeholder' }
+                }) }}
+               <hr>
+                {{ form_label(form.linkedin, "Linkedin", {
+                    label_attr: { class: 'label' }
+                }) }}
+                {{ form_row(form.linkedin, {
+                    attr: { placeholder: "Ajoutez votre profil linkedin", class: 'placeholder' }
+                }) }}
+                <hr>
+                {{ form_label(form.image, "Télécharger une image", {
+                    label_attr: { class: 'label' }
+                }) }}
+                {{ form_widget(form.image) }}
+
+                <button type="submit" class="btn">Envoyer</button>
+                {{ form_end(form) }}
+    </form>
+
+
+    <a href="{{ path('app_profile') }}">
+        voir votre profil
+    </a>
+
+    </div>
+    </div>
+
+
+{% endblock %}
+
