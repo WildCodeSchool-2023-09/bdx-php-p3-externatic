@@ -22,13 +22,13 @@ class ProfileType extends AbstractType
     {
         $builder
             ->add('username', null, ['label' => false,])
-            ->add('image', DropzoneType::class, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Drag and drop a file or click to browse',
-                ],
-            ])
-            ->add('bio', TextareaType::class, ['label' => false,])
+          #  ->add('image', DropzoneType::class, [
+           #     'label' => false,
+            #    'attr' => [
+             #       'placeholder' => 'Drag and drop a file or click to browse',
+              #  ],
+           # ])
+            ->add('bio', null, ['label' => false,])
             ->add('linkedin', UrlType::class, ['label' => false,])
             ->add('location', null, ['label' => false,]);
     }
