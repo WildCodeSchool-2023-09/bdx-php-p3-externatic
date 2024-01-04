@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\ProfileType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,10 +22,30 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/profile/edit', name: 'app_profile_edit')]
-    public function new(Request $request): Response
+    public function edit(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(ProfileType::class);
+        $user = $this->getUser();
+        $form = $this->createForm(ProfileType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_profile', [
+                'id' => $user->getId(),
+            ]);
+        }
         return $this->render('profile/edit.html.twig', [
-            'form' => $form->createView()]);
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    #[Route('/profile/index', name:'app_profile_image')]
+    public function temporaryUploadAction(Request $request): void
+    {
+        /** @var UploadedFile $uploadedFile */
+        $uploadedFile = $request->files->get('image');
+        $destination = $this->getParameter('kernel.project_dir') . '/public/uploads/images';
+        ($uploadedFile->move($destination));
     }
 }

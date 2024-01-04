@@ -22,7 +22,7 @@ class ProfileType extends AbstractType
     {
         $builder
             ->add('username', null, ['label' => false,])
-            ->add('imageFile', DropzoneType::class, [
+            ->add('image', DropzoneType::class, [
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Drag and drop a file or click to browse',
