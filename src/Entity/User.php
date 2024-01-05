@@ -37,10 +37,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
-    #[Vich\UploadableField(mapping: 'image_file', fileNameProperty: 'image')]
 
 
-    private ?File $imageFile = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $bio = null;
@@ -81,7 +79,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -219,20 +217,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->candidate = $candidate;
 
         return $this;
-    }
-
-    public function setImageFile(File $image = null): User
-    {
-
-        $this->imageFile = $image;
-
-        return $this;
-    }
-
-
-    public function getImageFile(): ?File
-    {
-
-        return $this->imageFile;
     }
 }
