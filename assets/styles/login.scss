@@ -12,15 +12,20 @@ img[src*="unlock"] {
     height: 400px;
 }
 
-.connection_link {
+.connection {
 text-decoration: none;
     background-color: var(--contrast);
     color: var(--dominant);
     border: none;
     border-radius: 0.5rem;
     padding: 0.5rem;
-    margin-top: 1.5rem;
     font-size: 1rem;
+    margin-top: 3rem;
+
+}
+
+.connection-div {
+    margin-top: 3rem;
 
 }
 
@@ -36,5 +41,12 @@ text-decoration: none;
         height: 200px;
 
     }
+
+    .connection-div {
+        margin-left: 1.5rem;
+
+    }
+
+
 }
 

@@ -8,14 +8,12 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
+
     <h1>Hello {{ app.user.username }}! ✅</h1>
+    <a class="connection" href="{{ path('app_profile_edit') }}">
+        Edit
+    </a>
 
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/Martha/PhpstormProjects/Project3/bdx-php-p3-externatic/src/Controller/ProfileController.php'|file_link(0) }}">src/Controller/ProfileController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/Martha/PhpstormProjects/Project3/bdx-php-p3-externatic/templates/profile/index.html.twig'|file_link(0) }}">templates/profile/index.html.twig</a></code></li>
-    </ul>
-</div>
+
 {% endblock %}

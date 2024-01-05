@@ -37,14 +37,13 @@
                 <button type="submit" class="btn">Se connecter</button>
     </form>
 
-    <p> Vous n'êtes pas encore inscrit ?</p>
 
-    <a class="connection_link" href="{{ path('app_register') }}">
-        Créez votre compte
+<div class="connection-div">
+    <a class="connection" href="{{ path('app_register') }}">
+        Vous n'êtes pas encore inscrit ?
     </a>
+</div>
 
-    </div>
-    </div>
 
     {% block javascript %}
     <script>
