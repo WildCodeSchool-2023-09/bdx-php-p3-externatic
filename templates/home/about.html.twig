@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    A propos de nous
+{% endblock %}
+
+{% block body %}
+    <div class="about-section">
+        <h1>Page à propos de nous</h1>
+        <p>Une équipe de 3 femmes en reconversion professionnelle pour réaliser votre site Externatic.</p>
+        <p>Les femmes ont leur place !</p>
+    </div>
+
+    <h2 class="aboutUsTeamTitle">L'équipe</h2>
+    <div class="rowAboutUs">
+        <div class="column">
+            <div class="cardAboutUs">
+                <img src="{{ asset('build/images/julie.jpg') }}" alt="Julie Raymond" style="width:100%">
+                <div class="container">
+                    <h2>Julie Raymond</h2>
+                    <p class="title">Développeur junior</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>
+{#                        A faire : Possibilité d'envoyer un email#}
+                        <button class="buttonAboutUs">Contact</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="cardAboutUs">
+                <img src="{{ asset('build/images/martha.jpg') }}" alt="Martha Smith" style="width:100%">
+                <div class="container">
+                    <h2>Martha Smith</h2>
+                    <p class="title">Développeur junior</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>
+{#                        A faire : Possibilité d'envoyer un email#}
+                        <button class="buttonAboutUs">Contact</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="cardAboutUs">
+                <img src="{{ asset('build/images/melissa.jpg') }}" alt="Mélissa Parcelier" style="width:100%">
+                <div class="container">
+                    <h2>Mélissa Parcelier</h2>
+                    <p class="title">Développeur junior</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>
+{#                        A faire : Possibilité d'envoyer un email#}
+                        <button class="buttonAboutUs">Contact</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

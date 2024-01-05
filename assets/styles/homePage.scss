@@ -3,12 +3,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid var(--border-color); /* bordure */
     padding: 1rem 1rem; /*marge à l'intérieur de la bordure */
 }
 
 .containerHomePageTitle {
-    order: 2; /* Changez l'ordre pour afficher le titre après l'image */
+    order: 2; /* ordre pour afficher le titre après l'image */
     text-align: center;
 }
 
@@ -16,28 +15,49 @@
     display: none;
 }
 .containerHomePageImg {
-    order: 1; /* Changez l'ordre pour afficher l'image en premier */
+    order: 1; /* ordre pour afficher l'image en premier */
 }
 
 .homePageImg {
-    width: 100%;
+    width: 90%;
+}
+
+.d-block{
+    margin-bottom: 5rem;
+    width: 50%;
+    height: auto;
+}
+
+.cardAboutUs{
+    align-items:center;
+    margin: 2rem 5rem;
+    --bs-border-width:0;
+}
+
+.cardAboutUs >img{
+    width: 70%;
+}
+
+.btn-primary{
+    --bs-btn-bg: var(--primary-color) !important;
+    --bs-btn-hover-bg : var(--contrast) !important;
+    --bs-btn-border-color: none !important;
 }
 
 /* pour les écrans de 661px et plus */
 @media only screen and (min-width: 661px) {
     .containerHomePage {
-        margin: 2rem 3rem; /* Ajoutez la marge à gauche et à droite */
+        margin: 2rem 1rem;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: flex-end;
         align-items: center;
-        border: 1px solid var(--border-color); /* Ajoutez la bordure */
-        padding: 20px; /* Ajoutez de la marge à l'intérieur de la bordure */
+        padding: 20px; /*marge à l'intérieur de la bordure */
     }
 
     .containerHomePageTitle {
-        margin-right: 20px; /* Ajoutez de la marge à droite du titre */
+        margin-right: 20px;
     }
 
     .homePageTitle {
@@ -46,7 +66,10 @@
     }
 
     .hiddenMobileTitle {
-        display: block; /* Affichez le titre h2 sur les écrans plus larges */
+        display: block; /* Affiche le titre h2 sur les écrans plus larges */
         font-size: var(--h2-font-size);
+    }
+    .d-block {
+        margin-bottom: 8rem;
     }
 }
