@@ -26,12 +26,13 @@ h1 {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+
 }
 
 hr {
     color: lightgrey;
     margin-bottom: 1.5rem;
-    width: 80%;
+    width: 100%;
 }
 
 
@@ -39,6 +40,8 @@ hr {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 4rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 .grid-child-text {
