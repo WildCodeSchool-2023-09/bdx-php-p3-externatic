@@ -1,12 +1,22 @@
-{% extends 'base.html.twig' %}
-{% if app.user %}
+<nav>
+<div class="nav">
+    <img class="logo-nav" src="{{ asset('build/images/logo_white_fond_transparent_horizontal.png') }}">
+    <div class="links">
+        <a>Candidat</a>
+        <a>Entreprise</a>
+    </div>
+</div>
+</nav>
 
-    {{ app.user.email }}
+{#{% extends 'base.html.twig' %}#}
+{#{% if app.user %}#}
 
-    <a href="{{ path('app_logout') }}"> Se déconnecter</a>
+{#    {{ app.user.email }}#}
 
-{% else %}
+{#    <a href="{{ path('app_logout') }}"> Se déconnecter</a>#}
 
-    <a href="{{ path('app_login') }}"> Se connecter</a>
+{#{% else %}#}
 
-{% endif %}
+{#    <a href="{{ path('app_login') }}"> Se connecter</a>#}
+
+{#{% endif %}#}
