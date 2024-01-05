@@ -6,10 +6,13 @@
     --secondary-color: #851342;
     --dominant: #FFFFFF;
     --contrast: #000000;
+    --border-color: darkgrey;
     --brand-font: 'Jost Variable', sans-serif;
-
+    --h1-font-size: 26px;
+    --h2-font-size: 22px;
+    --h3-font-size: 18px;
+    --text-font-size: 16px;
 }
-
 
 body {
     background-color: var(--dominant);
@@ -24,5 +27,4 @@ body {
     padding: 0.5rem;
     margin-top: 1.5rem;
     font-size: 1rem;
-
 }
