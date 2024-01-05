@@ -1,0 +1,27 @@
+img[src*="connection"] {
+    height: 400px;
+}
+
+
+img[src*="business"] {
+    display: none;
+
+}
+
+img[src*="unlock"] {
+    height: 400px;
+}
+
+@media screen and (max-width: 768px) {
+    img[src*="connection"] {
+        display: none;
+    }
+
+
+    img[src*="business"] {
+        display: flex;
+        height: 200px;
+
+    }
+}
+

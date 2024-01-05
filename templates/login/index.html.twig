@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form action="{{ path('app_login') }}" method="post">
+        <div class="grid-container">
+            <div class="grid-child-image">
+                <h1>Se connecter</h1>
+                <img src="{{ asset('build/images/connection.svg') }}" alt="two people connecting online"/>
+            </div>
+            <img src="{{ asset('build/images/businesswoman.svg') }}" alt="business woman"/>
+            <div class="grid-child-form">
+                <div>
+                    <label for="username" class="label">Adresse e-mail </label>
+                </div>
+                <input type="text" placeholder="Entrez votre addresse e-mail" id="username" name="_username" class="placeholder" value="{{ last_username }}">
+
+                <hr>
+
+                <div>
+                    <label for="password" class="label">Mot de passe </label>
+                </div>
+                <input type="password" placeholder="Entrez votre mot de passe" id="password" name="_password" class="placeholder">
+                <i class="bi bi-eye-slash" id="togglePassword"></i>
+                <hr>
+
+                {# If you want to control the URL the user is redirected to on success
+        <input type="hidden" name="_target_path" value="/account"> #}
+
+                <button type="submit" class="btn">Se connecter</button>
+    </form>
+
+    <p> Vous n'êtes pas encore inscrit ?</p>
+
+    <a href="{{ path('app_register') }}">
+        Créez votre compte
+    </a>
+
+    </div>
+    </div>
+
+    {% block javascript %}
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+        togglePassword.addEventListener("click", function () {
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        this.classList.toggle("bi-eye");
+    });
+    </script>
+    {% endblock %}
+{% endblock %}
