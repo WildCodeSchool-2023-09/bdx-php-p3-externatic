@@ -41,6 +41,7 @@
 .btn-primary{
     --bs-btn-bg: var(--primary-color) !important;
     --bs-btn-hover-bg : var(--contrast) !important;
+    --bs-btn-border-color: none !important;
 }
 
 /* pour les écrans de 661px et plus */
