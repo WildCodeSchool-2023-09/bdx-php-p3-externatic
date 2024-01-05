@@ -1,0 +1,52 @@
+.containerHomePage {
+    margin: 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--border-color); /* bordure */
+    padding: 1rem 1rem; /*marge à l'intérieur de la bordure */
+}
+
+.containerHomePageTitle {
+    order: 2; /* Changez l'ordre pour afficher le titre après l'image */
+    text-align: center;
+}
+
+.hiddenMobileTitle {
+    display: none;
+}
+.containerHomePageImg {
+    order: 1; /* Changez l'ordre pour afficher l'image en premier */
+}
+
+.homePageImg {
+    width: 100%;
+}
+
+/* pour les écrans de 661px et plus */
+@media only screen and (min-width: 661px) {
+    .containerHomePage {
+        margin: 2rem 3rem; /* Ajoutez la marge à gauche et à droite */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-items: center;
+        border: 1px solid var(--border-color); /* Ajoutez la bordure */
+        padding: 20px; /* Ajoutez de la marge à l'intérieur de la bordure */
+    }
+
+    .containerHomePageTitle {
+        margin-right: 20px; /* Ajoutez de la marge à droite du titre */
+    }
+
+    .homePageTitle {
+        font-size: var(--h1-font-size);
+        margin: 0;
+    }
+
+    .hiddenMobileTitle {
+        display: block; /* Affichez le titre h2 sur les écrans plus larges */
+        font-size: var(--h2-font-size);
+    }
+}

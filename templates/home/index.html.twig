@@ -1,7 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-
+    <div class="containerHomePage">
+        <div class="containerHomePageTitle">
+            <h1 class="homePageTitle">Externatic</h1>
+            <h2 class="hiddenMobileTitle">Plus qu'un cabinet de recrutement informatique</h2>
+        </div>
+        <div class="containerHomePageImg">
+        <img class="homePageImg" src="{{ asset('build/images/homePage.svg') }}" alt="home page image">
+        </div>
+    </div>
 {% endblock %}
