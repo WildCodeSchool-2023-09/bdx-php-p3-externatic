@@ -47,6 +47,11 @@
         }) }}
         <button type="submit" class="btn">Créer votre compte</button>
     {{ form_end(registrationForm) }}
+
+        <p> Vous avez déjà un compte ?</p>
+        <a href="{{ path('app_login') }}">
+            Login
+        </a>
     </div>
 </div>
 
