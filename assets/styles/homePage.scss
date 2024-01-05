@@ -1,5 +1,5 @@
 .containerHomePage {
-    margin: 3rem 3rem; /* Ajoutez la marge à gauche et à droite */
+    margin: 3rem 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,7 +26,7 @@
 /* pour les écrans de 661px et plus */
 @media only screen and (min-width: 661px) {
     .containerHomePage {
-        margin: 0 20px; /* Ajoutez la marge à gauche et à droite */
+        margin: 2rem 3rem; /* Ajoutez la marge à gauche et à droite */
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;

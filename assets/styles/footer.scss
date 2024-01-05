@@ -4,7 +4,8 @@
 footer {
     text-align: center;
     font-family: 'Jost Variable', sans-serif;
-    position: fixed;
+    //position: fixed;
+    margin-top: auto;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -16,6 +17,7 @@ footer {
     flex-direction: column;
     gap: 10px;
     box-sizing: border-box;
+    align-items: center;
 }
 
 .footer-col a {
