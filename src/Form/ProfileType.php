@@ -22,15 +22,17 @@ class ProfileType extends AbstractType
     {
         $builder
             ->add('username', null, ['label' => false,])
-          #  ->add('image', DropzoneType::class, [
-           #     'label' => false,
-            #    'attr' => [
-             #       'placeholder' => 'Drag and drop a file or click to browse',
-              #  ],
-           # ])
-            ->add('bio', null, ['label' => false,])
-            ->add('linkedin', UrlType::class, ['label' => false,])
-            ->add('location', null, ['label' => false,]);
+        #  ->add('image', DropzoneType::class, [
+         #  'label' => false,
+          #    'mapped' => false,
+           #   'required' => false,
+            # 'attr' => [
+             # 'placeholder' => 'Drag and drop a file or click to browse',
+           #],
+       # ])
+            ->add('bio', null, ['label' => false, 'required' => false,])
+            ->add('linkedin', UrlType::class, ['label' => false, 'required' => false,])
+            ->add('location', null, ['label' => false, 'required' => false,]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

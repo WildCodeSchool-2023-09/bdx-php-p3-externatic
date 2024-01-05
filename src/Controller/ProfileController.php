@@ -38,14 +38,4 @@ class ProfileController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-
-    #[Route('/profile/index', name:'app_profile_image')]
-    public function temporaryUploadAction(Request $request): void
-    {
-        /** @var UploadedFile $uploadedFile */
-        $uploadedFile = $request->files->get('image');
-        $destination = $this->getParameter('kernel.project_dir') . '/public/uploads/images';
-        ($uploadedFile->move($destination));
-    }
 }

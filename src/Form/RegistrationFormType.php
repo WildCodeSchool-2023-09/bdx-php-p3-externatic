@@ -46,8 +46,8 @@ class RegistrationFormType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,
                 'choices'  => [
-                    'Candidat' => 'candidate',
-                    'Entreprise' => 'company',
+                    'Candidat' => 'ROLE_CANDIDAT',
+                    'Entreprise' => 'ROLE_COMPANY',
 
                 ],
                 'choice_attr' => [
