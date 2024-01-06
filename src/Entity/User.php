@@ -46,9 +46,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $bio = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\Url(
-        message: "Veuillez saisir une adresse URL valide",
-    )]
     private ?string $linkedin = null;
 
     #[ORM\Column(length: 255, nullable: true)]
