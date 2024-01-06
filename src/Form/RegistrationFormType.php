@@ -18,15 +18,31 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Validator\Constraints\PasswordStrength;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username', null, ['label' => false])
+            ->add('username', null, ['label' => false, 'constraints' => [
+                  new Length([
+                    'min' => 2,
+                    'max' => 255,
+                      'minMessage' => "Veuillez choisir un nom d'utilisateur entre 2 et 255 caractères",
+                      'maxMessage' => "Veuillez choisir un nom d'utilisateur entre 2 et 255 caractères.",
+                     ]),
+            new Regex([
+                'pattern' => '/^[a-z]+$/i',
+                'message' => "Nom d'utilisateur invalide",
+                'htmlPattern' => '^[a-zA-Z]+$'
+            ])]])
             ->add('email', EmailType::class, ['label' => false,  'constraints' => [
-                    new NotBlank(),
+                    new NotBlank(),  new Length([
+                    'min' => 2,
+                    'max' => 180,
+
+                ]),
                 ]])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -48,7 +64,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Assert\PasswordStrength([ 'minScore' => PasswordStrength::STRENGTH_WEAK,
                         'message' => 'Veuillez choisir un mot de passe plus forte',
-                            ])
+                            ]) // I chose strength weak as the default value of medium was too strong!
                 ],
             ])
             ->add('roles', ChoiceType::class, [
