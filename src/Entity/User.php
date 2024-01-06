@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], message: "L'email existe déjà")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -35,11 +35,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
     #[ORM\Column(length: 255)]
-    #[Assert\Regex(
-        pattern: '/^[a-z]+$/i',
-        message: "Nom d'utilisateur invalide",
-        htmlPattern: '^[a-zA-Z]+$'
-    )]
     private ?string $username = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -51,6 +46,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $bio = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Url(
+        message: "Veuillez saisir une adresse URL valide",
+    )]
     private ?string $linkedin = null;
 
     #[ORM\Column(length: 255, nullable: true)]
