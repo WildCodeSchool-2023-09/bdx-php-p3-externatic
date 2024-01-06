@@ -36,13 +36,13 @@ class RegistrationFormType extends AbstractType
                 'pattern' => '/^[a-z]+$/i',
                 'message' => "Nom d'utilisateur invalide",
                 'htmlPattern' => '^[a-zA-Z]+$'
-            ])]])
+                  ])]])
             ->add('email', EmailType::class, ['label' => false,  'constraints' => [
                     new NotBlank(),  new Length([
                     'min' => 2,
                     'max' => 180,
 
-                ]),
+                    ]),
                 ]])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
