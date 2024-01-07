@@ -72,13 +72,10 @@ class RegistrationFormType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,
                 'choices' => [
-                    'Candidat' => 'ROLE_CANDIDAT',
-                    'Entreprise' => 'ROLE_COMPANY',
+                    'Un candidat' => 'ROLE_CANDIDAT',
+                    'Une entreprise' => 'ROLE_COMPANY',
                 ],
-                'choice_attr' => [
-                    'Candidat' => ['class' => 'candidate-button'],
-                    'Entreprise' => ['class' => 'company-button'],
-                ],
+
             ])
             ->get('roles')->addModelTransformer(new CallbackTransformer(
                 fn($rolesAsArray) => count($rolesAsArray) ? $rolesAsArray[0] : null,
