@@ -18,3 +18,4 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
+    treatPhpDocTypesAsCertain: false

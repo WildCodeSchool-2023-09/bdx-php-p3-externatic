@@ -14,6 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\HtmlSanitizer\Type;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
 use Symfony\UX\Dropzone\Form\DropzoneType;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -25,14 +27,20 @@ class ProfileType extends AbstractType
     {
         $builder
             ->add('username', null, ['label' => false,])
-        #  ->add('image', DropzoneType::class, [
-         #  'label' => false,
-          #    'mapped' => false,
-           #   'required' => false,
-            # 'attr' => [
-             # 'placeholder' => 'Drag and drop a file or click to browse',
-           #],
-       # ])
+        ->add('image', DropzoneType::class, [
+         'label' => false,
+          'mapped' => false,
+           'required' => false,
+            'constraints' => [
+                new File([ 'maxSize' => '1M',
+                    'mimeTypes' => ['image/jpeg', 'image/png', 'image/webp'],
+                    ]),
+            //   new Image(['minWidth' => 200,
+      // 'maxWidth' => 400,
+     //  'minHeight' => 200,
+     // 'maxHeight' => 400,])
+                    ]
+        ])
             ->add('bio', null, ['label' => false, 'required' => false,])
             // try changing this to regex to validate !
             ->add('linkedin', null, ['label' => false, 'required' => false, 'constraints' => [
