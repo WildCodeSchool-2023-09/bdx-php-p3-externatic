@@ -64,6 +64,46 @@ img[src*="programmer"] {
 
 }
 
+.radio-container {
+        border: none;
+        color: var(--contrast);
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+
+    }
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+label[for='registration_form_roles_0'] {
+    background-color: var(--dominant);
+    color: var(--secondary-color);
+    border-color: var(--seconday-color);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+}
+
+label[for='registration_form_roles_1'] {
+    background-color: var(--dominant);
+    color: var(--secondary-color);
+    border-color: var(--seconday-color);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+
+
 @media screen and (max-width: 768px) {
     img[src*="people"] {
         display: none;

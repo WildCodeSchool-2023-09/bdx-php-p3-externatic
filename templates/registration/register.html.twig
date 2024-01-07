@@ -45,13 +45,14 @@
         }) }}
         <hr>
 
-        {{ form_label(registrationForm.roles, 'Choisissez votre compte', {
-            label_attr: { class: 'label' }
+        {{ form_label(registrationForm.roles, 'Vous êtes..', {
+            label_attr: { class: 'radio-container' }
         }) }}
 
         {{ form_widget(registrationForm.roles, {
-            attr: { placeholder: '', class: 'placeholder' }
+            attr: { placeholder: '', class: 'radio-container input' }
         }) }}
+
         <button type="submit" class="btn">Créer votre compte</button>
     {{ form_end(registrationForm) }}
 
