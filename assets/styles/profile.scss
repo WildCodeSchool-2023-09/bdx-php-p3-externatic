@@ -1,3 +1,11 @@
+.grid-container-profile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 4rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
 img[src*="edit_profile"] {
     height: 400px;
 }
@@ -5,6 +13,23 @@ img[src*="edit_profile"] {
 
 img[src*="profile_edit"] {
     display: none;
+
+}
+
+.avatar {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.profile-icon {
+    text-decoration: none;
+    color: var(--contrast);
+    &:hover {
+        color: #842342;
+    }
+    width: 2rem;
+    font-size: 32px;
 
 }
 
@@ -21,4 +46,11 @@ img[src*="profile_edit"] {
         height: 200px;
 
     }
+    .grid-container-profile {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+
+    }
+
 }
