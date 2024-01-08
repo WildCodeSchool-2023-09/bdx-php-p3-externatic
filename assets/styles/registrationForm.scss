@@ -93,7 +93,12 @@ label[for='registration_form_roles_0'] {
         color: var(--dominant);
         background-color: var(--secondary-color);
     }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
 }
+
 
 label[for='registration_form_roles_1'] {
     background-color: var(--dominant);
@@ -108,6 +113,11 @@ label[for='registration_form_roles_1'] {
         color: var(--dominant);
         background-color: var(--secondary-color);
     }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+
 }
 
 
@@ -140,6 +150,16 @@ label[for='registration_form_roles_1'] {
 
     .btn {
         width: 100%;
+    }
+
+    label[for='registration_form_roles_0'] {
+
+        padding: 0.2rem;
+    }
+
+    label[for='registration_form_roles_1'] {
+
+        padding: 0.2rem;
     }
 
 

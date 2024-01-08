@@ -64,5 +64,21 @@
     </div>
 </div>
 
+    {%  block javascript  %}
+    <script>
+
+
+        document.querySelector("label[for='registration_form_roles_0']").addEventListener("click", function(){
+        document.querySelector("label[for='registration_form_roles_0']").innerText = "Vous avez choisi candidat"
+    });
+
+        document.querySelector("label[for='registration_form_roles_1']").addEventListener("click", function(){
+        document.querySelector("label[for='registration_form_roles_1']").innerText = "Vous avez choisi entreprise"
+    });
+
+
+    </script>
+    {% endblock %}
+
 {% endblock %}
 
