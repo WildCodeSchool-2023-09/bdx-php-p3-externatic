@@ -41,6 +41,9 @@ class Job
     #[ORM\OneToMany(mappedBy: 'job', targetEntity: Application::class, orphanRemoval: true)]
     private Collection $applications;
 
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
     public function __construct()
     {
         $this->favoriteCandidates = new ArrayCollection();
@@ -174,6 +177,18 @@ class Job
                 $application->setJob(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): static
+    {
+        $this->city = $city;
 
         return $this;
     }
