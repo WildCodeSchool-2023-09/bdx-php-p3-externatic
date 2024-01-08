@@ -28,13 +28,20 @@
     height: auto;
 }
 
-.cardAboutUs{
+.cardRegister{
+    display:flex;
     align-items:center;
     margin: 2rem 5rem;
     --bs-border-width:0;
+    text-align: center;
 }
 
-.cardAboutUs >img{
+.card-title{
+    font-size: var(--h3-font-size);
+    font-weight: bold;
+}
+
+.cardRegister >img{
     width: 70%;
 }
 
