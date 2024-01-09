@@ -1,3 +1,28 @@
 <div{{ attributes }}>
-    <!-- component html -->
+    <!-- Barre de recherche générale -->
+    <div class="mb-3">
+        {% if is_granted('ROLE_COMPANY') %}
+            {# Utilisateur avec le rôle ROLE_COMPANY #}
+            <label class="form-label" for="queryTitle">Fonction :</label>
+            <input type="text" id="queryTitle" class="form-control" value="{{ queryTitle }}" data-model="queryTitle">
+
+            <label class="form-label" for="queryLocation">Lieu :</label>
+            <input type="text" id="queryLocation" class="form-control" value="{{ queryLocation }}" data-model="queryLocation">
+        {% else %}
+            {# Utilisateur par défaut avec le rôle ROLE_CANDIDAT #}
+            <label class="form-label" for="queryTitle">Titre :</label>
+            <input type="text" id="queryTitle" class="form-control" value="{{ queryTitle }}" data-model="queryTitle">
+
+            <label class="form-label" for="queryLocation">Lieu :</label>
+            <input type="text" id="queryLocation" class="form-control" value="{{ queryLocation }}" data-model="queryLocation">
+        {% endif %}
+    </div>
+
+    <!-- Résultats de la recherche -->
+    {% for result in results|default([]) %}
+        <div>
+            <p>{{ result.title }} - Lieu: {{ result.location }}</p>
+            {# Ajout d'autres détails si nécessaire #}
+        </div>
+    {% endfor %}
 </div>

@@ -20,4 +20,19 @@ class JobRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Job::class);
     }
+
+    /**
+     * @method Job[]    searchByTitleAndLocation(string $title, string $location): array
+     */
+    public function searchByTitleAndLocation(string $title, string $location): array
+    {
+        $query = $this->createQueryBuilder('j')
+            ->andWhere('j.title LIKE :title')
+            ->andWhere('j.city LIKE :location')
+            ->setParameter('title', '%' . $title . '%')
+            ->setParameter('location', '%' . $location . '%')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }
