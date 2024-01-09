@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends  app.user.roles.0 is same as('candidate')  ? "base_candidate.html.twig" : "base_company.html.twig" %}
 
 {% block title %}Profile{% endblock %}
 
@@ -23,6 +23,7 @@
     <a class="connection" href="{{ path('app_profile_edit') }}">
         Edit
     </a>
+    <a href="{{ path('app_logout') }}">Déconnexion</a>
 
 </div>
 
