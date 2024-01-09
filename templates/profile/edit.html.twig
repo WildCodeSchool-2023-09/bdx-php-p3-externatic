@@ -19,28 +19,28 @@
                 {{ form_row(profileForm.username, {
                     attr: { placeholder: "Modifier votre nom", class: 'placeholder' }
                 }) }}
-                <hr>
+                <hr class="input_line">
                 {{ form_label(profileForm.location, "Localisation", {
                     label_attr: { class: 'label' }
                 }) }}
                 {{ form_row(profileForm.location, {
                     attr: { placeholder: "Ajoutez votre lieu de résidence", class: 'placeholder' }
                 }) }}
-                <hr>
+                <hr class="input_line">
                 {{ form_label(profileForm.bio, "Bio", {
                     label_attr: { class: 'label' }
                 }) }}
                 {{ form_row(profileForm.bio, {
                     attr: { placeholder: "Parlez-nous de vous", class: 'placeholder' }
                 }) }}
-               <hr>
+               <hr class="input_line">
                 {{ form_label(profileForm.linkedin, "Linkedin", {
                     label_attr: { class: 'label' }
                 }) }}
                 {{ form_row(profileForm.linkedin, {
                     attr: { placeholder: "Ajoutez votre profil linkedin", class: 'placeholder' }
                 }) }}
-                <hr>
+                <hr class="input_line">
                 {{ form_label(profileForm.image, "Image profil", {
                     label_attr: { class: 'label' }
                 }) }}
@@ -57,14 +57,14 @@
                     {{ form_row(companyForm.siret, {
                         attr: { placeholder: "Ajouter votre siret no.", class: 'placeholder' }
                     }) }}
-                    <hr>
+                    <hr class="input_line">
                     {{ form_label(companyForm.adress, "Adresse", {
                         label_attr: { class: 'label' }
                     }) }}
                     {{ form_row(companyForm.adress, {
                         attr: { placeholder: "Ajouter votre adresse", class: 'placeholder' }
                     }) }}
-                    <hr>
+                    <hr class="input_line">
                     <button type="submit" class="btn">Envoyer</button>
                     {{ form_end(companyForm) }}
                 {% endif %}
@@ -77,7 +77,7 @@
                     {{ form_row(candidateForm.github, {
                         attr: { placeholder: "Ajouter votre Github", class: 'placeholder' }
                     }) }}
-                    <hr>
+                    <hr class="input_line">
 
 
                     {{ form_end(profileForm) }}
