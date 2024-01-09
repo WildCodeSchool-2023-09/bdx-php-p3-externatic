@@ -26,7 +26,8 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
             $candidate = new Candidate();
             $candidate
                 ->setGithub($faker->url)
-                ->setUser($candidateUser);
+                ->setUser($candidateUser)
+                ->setFonction($faker->jobTitle);
 
             $manager->persist($candidate);
         }

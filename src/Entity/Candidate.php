@@ -18,6 +18,9 @@ class Candidate
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $github = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $fonction = null;
+
     #[ORM\OneToOne(inversedBy: 'candidate', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
@@ -110,6 +113,18 @@ class Candidate
         if ($this->jobs->removeElement($job)) {
             $job->removeFavoriteCandidate($this);
         }
+
+        return $this;
+    }
+
+    public function getFonction(): ?string
+    {
+        return $this->fonction;
+    }
+
+    public function setFonction(?string $fonction): static
+    {
+        $this->fonction = $fonction;
 
         return $this;
     }
