@@ -22,28 +22,28 @@
         {{ form_row(registrationForm.username, {
             attr: { placeholder: "Choisissez votre nom", class: 'placeholder' }
         }) }}
-        <hr>
+        <hr class="input_line">
         {{ form_label(registrationForm.email, 'Adresse e-mail', {
             label_attr: { class: 'label' }
         }) }}
         {{ form_row(registrationForm.email, {
             attr: { placeholder: 'Entrez votre adresse e-mail', class: 'placeholder' }
         }) }}
-        <hr>
+        <hr class="input_line">
         {{ form_label(registrationForm.plainPassword.first, 'Mot de passe', {
             label_attr: { class: 'label' }
         }) }}
         {{ form_row(registrationForm.plainPassword.first, {
             attr: { placeholder: 'Choisissez un mot de passe', class: 'placeholder' }
         }) }}
-        <hr>
+        <hr class="input_line">
         {{ form_label(registrationForm.plainPassword.second, 'Mot de passe', {
             label_attr: { class: 'label' }
         }) }}
         {{ form_row(registrationForm.plainPassword.second, {
             attr: { placeholder: 'Confirmez votre mot de passe', class: 'placeholder' }
         }) }}
-        <hr>
+        <hr class="input_line">
 
         {{ form_label(registrationForm.roles, 'Vous êtes..', {
             label_attr: { class: 'radio-container' }
@@ -53,16 +53,23 @@
             attr: { placeholder: '', class: 'radio-container input' }
         }) }}
 
+        <div class="connection_link">
         <button type="submit" class="btn">Créer votre compte</button>
+        </div>
+
     {{ form_end(registrationForm) }}
 
-        <div class="connection-div"></div>
+        <p class="not_registered"> Vous avez déjà un compte ?</p>
+
+        <div class="connection_link">
         <a class="connection" href="{{ path('app_login') }}">
-            Vous avez déjà un compte ?
+             Se connecter
         </a>
-    </div>
-    </div>
+        </div>
 </div>
+
+
+
 
     {%  block javascript  %}
     <script>

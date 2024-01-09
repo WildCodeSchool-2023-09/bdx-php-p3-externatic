@@ -17,15 +17,39 @@ text-decoration: none;
     background-color: var(--contrast);
     color: var(--dominant);
     border: none;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    margin-top: 3rem;
+    border-radius: 25px;
+    padding: 0.7rem;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 65%;
+    &:hover {
+        color: var(--dominant);
+        background-color: var(--primary-color);
+    }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--primary-color);
+    }
 
 }
 
 .connection-div {
-    margin-top: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.not_registered {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.connection_link {
+    margin-top: 2rem;
+    display:flex;
+    justify-content: center;
+
 
 }
 
