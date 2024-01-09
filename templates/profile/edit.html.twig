@@ -12,45 +12,80 @@
             </div>
             <img src="{{ asset('build/images/profile_edit_mobile.svg') }}" alt="woman editing a site on her phone"/>
             <div class="grid-child-form">
-                {{ form_start(form) }}
-                {{ form_label(form.username, "Nom d'utilisateur", {
+                {{ form_start(profileForm) }}
+                {{ form_label(profileForm.username, "Nom d'utilisateur", {
                     label_attr: { class: 'label' }
                 }) }}
-                {{ form_row(form.username, {
+                {{ form_row(profileForm.username, {
                     attr: { placeholder: "Modifier votre nom", class: 'placeholder' }
                 }) }}
                 <hr>
-                {{ form_label(form.location, "Localisation", {
+                {{ form_label(profileForm.location, "Localisation", {
                     label_attr: { class: 'label' }
                 }) }}
-                {{ form_row(form.location, {
+                {{ form_row(profileForm.location, {
                     attr: { placeholder: "Ajoutez votre lieu de résidence", class: 'placeholder' }
                 }) }}
                 <hr>
-                {{ form_label(form.bio, "Bio", {
+                {{ form_label(profileForm.bio, "Bio", {
                     label_attr: { class: 'label' }
                 }) }}
-                {{ form_row(form.bio, {
+                {{ form_row(profileForm.bio, {
                     attr: { placeholder: "Parlez-nous de vous", class: 'placeholder' }
                 }) }}
                <hr>
-                {{ form_label(form.linkedin, "Linkedin", {
+                {{ form_label(profileForm.linkedin, "Linkedin", {
                     label_attr: { class: 'label' }
                 }) }}
-                {{ form_row(form.linkedin, {
+                {{ form_row(profileForm.linkedin, {
                     attr: { placeholder: "Ajoutez votre profil linkedin", class: 'placeholder' }
                 }) }}
                 <hr>
-                {{ form_label(form.image, "Image profil", {
+                {{ form_label(profileForm.image, "Image profil", {
                     label_attr: { class: 'label' }
                 }) }}
-                {{ form_row(form.image, {
+                {{ form_row(profileForm.image, {
                     attr: { placeholder: "Ajoutez votre image", class: 'placeholder' }
                 }) }}
 
+                {{ parent() }}
+                {% if app.user.roles.0 is not same as('candidate') %}
+                    {{ form_start(companyForm) }}
+                    {{ form_label(companyForm.siret, "Siret No.", {
+                        label_attr: { class: 'label' }
+                    }) }}
+                    {{ form_row(companyForm.siret, {
+                        attr: { placeholder: "Ajouter votre siret no.", class: 'placeholder' }
+                    }) }}
+                    <hr>
+                    {{ form_label(companyForm.adress, "Adresse", {
+                        label_attr: { class: 'label' }
+                    }) }}
+                    {{ form_row(companyForm.adress, {
+                        attr: { placeholder: "Ajouter votre adresse", class: 'placeholder' }
+                    }) }}
+                    <hr>
+                    <button type="submit" class="btn">Envoyer</button>
+                    {{ form_end(companyForm) }}
+                {% endif %}
+                {{ parent() }}
+                {% if app.user.roles.0 is same as('candidate') %}
+                    {{ form_start(candidateForm) }}
+                    {{ form_label(candidateForm.github, "Github", {
+                        label_attr: { class: 'label' }
+                    }) }}
+                    {{ form_row(candidateForm.github, {
+                        attr: { placeholder: "Ajouter votre Github", class: 'placeholder' }
+                    }) }}
+                    <hr>
+
+
+                    {{ form_end(profileForm) }}
+                    {{ form_end(candidateForm) }}
 
                 <button type="submit" class="btn">Envoyer</button>
-                {{ form_end(form) }}
+                {{ form_end(profileForm) }}
+                {% endif %}
     </form>
 
 
