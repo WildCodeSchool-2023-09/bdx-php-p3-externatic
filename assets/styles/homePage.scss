@@ -1,3 +1,5 @@
+/* Styles pour la page d'accueil */
+
 a {
     text-decoration: none !important;
 }
@@ -7,11 +9,11 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 1rem; /*marge à l'intérieur de la bordure */
+    padding: 1rem 1rem; /* Marge à l'intérieur de la bordure */
 }
 
 .containerHomePageTitle {
-    order: 2; /* ordre pour afficher le titre après l'image */
+    order: 2; /* Ordre pour afficher le titre après l'image */
     text-align: center;
 }
 
@@ -20,7 +22,7 @@ a {
 }
 
 .containerHomePageImg {
-    order: 1; /* ordre pour afficher l'image en premier */
+    order: 1; /* Ordre pour afficher l'image en premier */
 }
 
 .homePageImg {
@@ -68,7 +70,77 @@ a {
     --bs-btn-border-color: none !important;
 }
 
-/* pour les écrans de 661px et plus */
+/* Styles pour la barre de recherche */
+.searchBar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#job_search_form_title,
+#job_search_form_city {
+    width: 200px;
+    margin: 5px;
+    padding: 8px;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--dominant);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+/* Styles pour les résultats de recherche */
+.searchResults {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.jobCard {
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin: 10px;
+    width: 45%; /* 2 cartes par ligne par défaut, ajusté par les media queries */
+}
+
+.jobCard h2 {
+    font-size: var(--h2-font-size);
+}
+
+.jobCard p {
+    font-size: var(--text-font-size);
+    margin-bottom: 10px;
+}
+
+.jobCard i {
+    font-style: italic;
+}
+
+.jobCard strong {
+    font-weight: bold;
+}
+
+.jobCard a {
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+}
+
+.jobCard {
+    width: 100%; /* 1 carte par ligne */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+/* Pour les écrans de 661px et plus */
 @media only screen and (min-width: 661px) {
     .containerHomePage {
         margin: 2rem 1rem;
@@ -77,7 +149,7 @@ a {
         flex-wrap: nowrap;
         justify-content: flex-end;
         align-items: center;
-        padding: 20px; /*marge à l'intérieur de la bordure */
+        padding: 20px; /* Marge à l'intérieur de la bordure */
     }
 
     .containerHomePageTitle {
@@ -95,5 +167,21 @@ a {
     }
     .d-block {
         margin-bottom: 8rem;
+    }
+    .jobCard {
+        width: calc(50% - 20px); /* 2 cartes par ligne avec espace entre */
+        align-items: baseline;
+    }
+    .searchingForm {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Trois colonnes égales */
+        gap: 10px; /* Espace entre les éléments */
+        align-items: center;
+        justify-items: center;
+    }
+
+    #job_search_form_title,
+    #job_search_form_city {
+        width: auto; /* Retour à la largeur automatique par défaut */
     }
 }
