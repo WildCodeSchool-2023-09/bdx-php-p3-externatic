@@ -1,14 +1,30 @@
 <nav>
 <div class="nav">
-    <img class="logo-nav" src="{{ asset('build/images/logo_white_fond_transparent_horizontal.png') }}">
+{#    <a href="{{ path('app_home') }}">#}
+        <img class="logo-nav" src="{{ asset('build/images/logo_white_fond_transparent_horizontal.png') }}">
+{#    </a>#}
     <div class="links">
-        <a>Candidat</a>
-        <a>Entreprise</a>
+
+        {% if app.user.candidate %}
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ app.user }}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{ path(app_profile) }}">Mon Profil</a>
+                    <a class="dropdown-item" href="#">Mes Favoris</a>
+                    <a class="dropdown-item" href="{{ path(app_logout) }}">Se déconnecter</a>
+                </div>
+            </div>
+
+        {% else %}
+        <a href="{{ path('app_login') }}" style="text-decoration: none; color: #FFFFFF">Candidat</a>
+        <a href="{{ path('app_login') }}" style="text-decoration: none; color: #FFFFFF">Entreprise</a>
+        {%  endif %}
     </div>
 </div>
 </nav>
 
-{#{% extends 'base.html.twig' %}#}
 {#{% if app.user %}#}
 
 {#    {{ app.user.email }}#}
