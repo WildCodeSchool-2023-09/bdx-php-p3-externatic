@@ -4,17 +4,16 @@
 .base_footer {
     text-align: center;
     font-family: 'Jost Variable', sans-serif;
-    //position: fixed;
     margin-top: auto;
     bottom: 0;
     left: 0;
     width: 100%;
+    position: relative;
     background-color: #000000;
     color: #ffffff;
     padding: 15px;
     display: flex;
     justify-content: center;
-    flex-direction: column;
     gap: 10px;
     box-sizing: border-box;
     align-items: center;
@@ -48,13 +47,13 @@
 
 /* Version mobile : largeur d'écran de 660px maximum */
 @media screen and (max-width: 660px) {
-    footer.site-footer .footer-top {
-        align-items: center;
+    .base_footer .footer-top {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
     }
 
-    footer.site-footer .footer-col {
+    .base_footer .footer-col {
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -73,56 +72,61 @@
         }
     }
 
-    footer.site-footer .logo-footer {
+    .base_footer .logo-footer {
         display: none;
     }
 
-    footer.site-footer .footer-bottom {
+    .base_footer .footer-bottom {
+        display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .base_footer .social {
+        text-decoration: none;
     }
 }
 
 /* Ecrans d'une largeur minimale de 661 pixels */
 @media screen and (min-width: 661px) {
-    footer.site-footer .footer-top {
+
+    .base_footer .footer-top {
         display: flex;
-        justify-content: space-between;
-        gap: 10px;
+        gap: 100px;
         align-items: center;
-        flex-wrap: wrap;
+        margin-left: 100px;
     }
 
-    footer.site-footer .logo-footer {
+    .base_footer .logo-footer {
         display: block;
         margin-right: 20px;
     }
 
-    footer.site-footer .footer-col {
+    .base_footer .footer-col {
         width: max-content;
         display: flex;
         flex-direction: column;
     }
 
-    footer.site-footer .footer-col > * {
+    .base_footer .footer-col > * {
         margin-bottom: 10px;
     }
 
-    footer.site-footer a.site-footer {
+    .base_footer a.site-footer {
         padding: 5px 0;
         font-size: 14px;
     }
 
-    footer.site-footer .footer-bottom {
+    .base_footer .footer-bottom {
         display: flex;
         align-items: center;
         gap: 8px;
         margin-left: auto;
     }
 
-    footer.site-footer .social {
+    .base_footer .social {
         display: flex;
-        justify-content: center;
+        align-items: center;
         color: #FFFFFF;
         transition: all 0.2s ease;
         text-decoration: none;
