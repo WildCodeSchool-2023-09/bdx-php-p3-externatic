@@ -128,4 +128,16 @@ class Candidate
 
         return $this;
     }
+
+    public function getLocation(): ?string
+    {
+        return $this->getUser()?->getLocation();
+    }
+
+    public function setLocation(?string $location): static
+    {
+        $this->getUser()?->setLocation($location);
+
+        return $this;
+    }
 }
