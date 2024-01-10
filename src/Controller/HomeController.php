@@ -17,18 +17,20 @@ class HomeController extends AbstractController
         // Formulaire pour trouver un job
         $form = $this->createForm(JobSearchFormType::class);
         $form->handleRequest($request);
-
         $jobs = [];
-
         if ($form->isSubmitted() && $form->isValid()) {
             $title = $form->get('title')->getData();
             $location = $form->get('city')->getData();
-
-            // Effectue ici l'action de recherche en fonction du titre du job
+            // Vérifie si $title et $location sont null et leur donne une valeur par défaut
+            $title = $title ?? '';
+            $location = $location ?? '';
+            // Effectue recherche en fonction du titre du job
             $jobs = $jobRepository->searchByTitleAndLocation($title, $location);
         } else {
-            // Si le formulaire n'est pas soumis, affichez tous les jobs par défaut
-            $jobs = $jobRepository->findAll();
+            /*// Si le formulaire n'est pas soumis, affiche tous les jobs par défaut
+            $jobs = $jobRepository->findAll();*/
+            // Si le formulaire n'est pas soumis, affiche les 8 dernières annonces
+            $jobs = $jobRepository->findBy([], ['id' => 'DESC'], 8);
         }
 
         return $this->render('home/index.html.twig', [

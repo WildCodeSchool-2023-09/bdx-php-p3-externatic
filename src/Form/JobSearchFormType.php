@@ -16,11 +16,14 @@ class JobSearchFormType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre du Job',
                 'attr' => ['placeholder' => 'Entrez le titre du Job'],
+                'required' => false, // Ne pas rendre le champ obligatoire
             ])
             ->add('city', TextType::class, [
-        'label' => 'Lieu',
-        'attr' => ['placeholder' => 'Entrez le titre du Job'],
-        ]);
+                'label' => 'Lieu',
+                'attr' => ['placeholder' => 'Entrez le titre du Job'],
+                'required' => false, // Ne pas rendre le champ obligatoire
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

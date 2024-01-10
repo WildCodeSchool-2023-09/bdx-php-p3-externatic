@@ -26,12 +26,29 @@ class JobRepository extends ServiceEntityRepository
      */
     public function searchByTitleAndLocation(string $title, string $location): array
     {
-        $query = $this->createQueryBuilder('j')
+        /*$query = $this->createQueryBuilder('j')
             ->andWhere('j.title LIKE :title')
             ->andWhere('j.city LIKE :location')
             ->setParameter('title', '%' . $title . '%')
             ->setParameter('location', '%' . $location . '%')
             ->getQuery();
+
+        return $query->getResult();*/
+        $queryBuilder = $this->createQueryBuilder('j');
+
+        if ($title !== null) {
+            $queryBuilder
+                ->andWhere('j.title LIKE :title')
+                ->setParameter('title', '%' . $title . '%');
+        }
+
+        if ($location !== null) {
+            $queryBuilder
+                ->andWhere('j.city LIKE :location')
+                ->setParameter('location', '%' . $location . '%');
+        }
+
+        $query = $queryBuilder->getQuery();
 
         return $query->getResult();
     }
