@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Job{% endblock %}
+
+{% block body %}
+    <h1>Job</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ job.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ job.title }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ job.adress }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ job.description }}</td>
+            </tr>
+            <tr>
+                <th>StartDate</th>
+                <td>{{ job.startDate ? job.startDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td>{{ job.salary }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ job.city }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_job_index') }}">back to list</a>
+
+    <a href="{{ path('app_job_edit', {'id': job.id}) }}">edit</a>
+
+    {{ include('job/_delete_form.html.twig') }}
+{% endblock %}
