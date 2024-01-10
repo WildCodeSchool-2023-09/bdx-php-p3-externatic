@@ -20,4 +20,16 @@ class CandidateRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Candidate::class);
     }
+
+    public function searchByFunctionAndLocation(?string $fonction, ?string $location): array
+    {
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->innerJoin('c.user', 'u')
+            ->where('c.fonction LIKE :fonction')
+            ->andWhere('u.location LIKE :location')
+            ->setParameter('fonction', '%' . $fonction . '%')
+            ->setParameter('location', '%' . $location . '%');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }
