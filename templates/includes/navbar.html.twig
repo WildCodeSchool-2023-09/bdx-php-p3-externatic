@@ -1,14 +1,14 @@
 <nav>
 <div class="nav">
 {#    <a href="{{ path('app_home') }}">#}
-        <img class="logo-nav" src="{{ asset('build/images/logo_white_fond_transparent_horizontal.png') }}">
+        <img class="logo-nav" src="{{ asset('build/images/logo_black_fond_transparent.png') }}">
 {#    </a>#}
     <div class="links">
-
-        {% if app.user is null or is_granted('ROLE_CANDIDAT') %}
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ app.user }}
+                 {% if app.user %}
+                  {{ app.user.username }}
+                    {% endif %}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="{{ path('app_profile') }}">Mon Profil</a>
@@ -16,11 +16,9 @@
                     <a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a>
                 </div>
             </div>
-
-        {% else %}
         <a href="{{ path('app_login') }}" style="text-decoration: none; color: #FFFFFF">Candidat</a>
         <a href="{{ path('app_login') }}" style="text-decoration: none; color: #FFFFFF">Entreprise</a>
-        {%  endif %}
+
     </div>
 </div>
 </nav>

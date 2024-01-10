@@ -1,4 +1,4 @@
-{% extends  app.user.roles.0 is same as('candidate')  ? "base_candidate.html.twig" : "base_company.html.twig" %}
+{% extends  app.user.roles.0 is same as('ROLE_CANDIDAT')  ? "candidate.html.twig" : "company.html.twig" %}
 
 {% block title %}Hello LoginController!{% endblock %}
 
@@ -49,7 +49,7 @@
                 }) }}
 
                 {{ parent() }}
-                {% if app.user.roles.0 is not same as('candidate') %}
+                {% if app.user.roles.0 is not same as('ROLE_CANDIDAT') %}
                     {{ form_start(companyForm) }}
                     {{ form_label(companyForm.siret, "Siret No.", {
                         label_attr: { class: 'label' }
@@ -69,7 +69,7 @@
                     {{ form_end(companyForm) }}
                 {% endif %}
                 {{ parent() }}
-                {% if app.user.roles.0 is same as('candidate') %}
+                {% if app.user.roles.0 is same as('ROLE_CANDIDAT') %}
                     {{ form_start(candidateForm) }}
                     {{ form_label(candidateForm.github, "Github", {
                         label_attr: { class: 'label' }
