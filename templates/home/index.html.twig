@@ -43,16 +43,10 @@
         </div>
     </div>
 
-    {# Inclu la barre de recherche uniquement pour les utilisateurs non connectés ou avec le rôle CANDIDAT #}
+    {# Barre de recherche pour les users non co ou avec rôle CANDIDAT +  8derniers jobs parus sur le site#}
     {% if app.user is null or is_granted('ROLE_CANDIDAT') %}
         {{ include('home/searchBarCandidate.html.twig') }}
     {% endif %}
-
-    {#    Section pour afficher les derniers jobs parus sur le site #}
-    <div>
-        <h1>Section pour les emplois récemment publiés</h1>
-
-    </div>
 
     {# Section pour les outils de préparation à candidature #}
     <div id="carouselExampleCaptions" class="carousel slide">
@@ -69,7 +63,7 @@
                 <img src="{{ asset('build/images/cvHome.svg') }}" class="d-block w-100" alt="CV image">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Prépare-toi avec un bon CV</h5>
-                    <p><a href="https://www.canva.com/fr_fr/creer/cv/">Rends-toi sur le site ici et met toutes les
+                    <p><a class="carouselLinks" href="https://www.canva.com/fr_fr/creer/cv/">Rends-toi sur le site ici et met toutes les
                             chances de ton côté !</a></p>
                 </div>
             </div>
@@ -78,7 +72,7 @@
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Prépare-toi avec une bonne lettre de motivation</h5>
                     <p>
-                        <a href="https://www.pole-emploi.fr/candidat/vos-recherches/preparer-votre-candidature/10-astuces-pour-ecrire-votre-let.html">Tous
+                        <a class="carouselLinks" href="https://www.pole-emploi.fr/candidat/vos-recherches/preparer-votre-candidature/10-astuces-pour-ecrire-votre-let.html">Tous
                             les conseils pour écrire ta plus belle lettre !</a></p>
                 </div>
             </div>
@@ -86,7 +80,7 @@
                 <img src="{{ asset('build/images/interviewHome.svg') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Prépare-toi à l'entretien</h5>
-                    <p><a href="https://www.welcometothejungle.com/fr/articles/entretien-questions-preparer">Rends-toi
+                    <p><a class="carouselLinks" href="https://www.welcometothejungle.com/fr/articles/entretien-questions-preparer">Rends-toi
                             sur le site ici et met toutes les chances de ton côté !</a></p>
                 </div>
             </div>
