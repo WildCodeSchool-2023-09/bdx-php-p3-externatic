@@ -3,12 +3,12 @@
     <div class="searchBar">
         <form class="searchingForm" name="job_search_form" method="post">
             <div class="mb-3">
-                {{ form_label(searchForm.title, 'Titre du Job', {'label_attr': {'class': 'form-label'}}) }}
-                {{ form_widget(searchForm.title, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le titre du Job'}}) }}
+                {{ form_label(searchForm.title, 'Job recherché', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(searchForm.title, {'attr': {'class': 'form-control', 'placeholder': 'Votre Job idéal ici...'}}) }}
             </div>
             <div class="mb-3">
                 {{ form_label(searchForm.city, 'Lieu', {'label_attr': {'class': 'form-label'}}) }}
-                {{ form_widget(searchForm.city, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le lieu du Job'}}) }}
+                {{ form_widget(searchForm.city, {'attr': {'class': 'form-control', 'placeholder': 'Le lieu souhaité ici...'}}) }}
             </div>
             <button type="submit" class="btn btn-primary">Rechercher</button>
             {{ form_widget(searchForm._token) }}
