@@ -47,6 +47,10 @@
     {% if app.user is null or is_granted('ROLE_CANDIDAT') %}
         {{ include('home/searchBarCandidate.html.twig') }}
     {% endif %}
+    {# Barre de recherche pour les users avec rôle COMPANY +  8derniers candidats inscrits sur le site#}
+    {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') %}
+        {{ include('home/searchBarCompany.html.twig') }}
+    {% endif %}
 
     {# Section pour les outils de préparation à candidature #}
     <div id="carouselExampleCaptions" class="carousel slide">
