@@ -27,7 +27,8 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
                     ->setStartDate($faker->dateTimeBetween('-1 month', '+1 month'))
                     ->setSalary($faker->numerify("#####"))
                     ->setCity($faker->city) // Add city here
-                    ->setCompany($company);
+                    ->setCompany($company)
+                    ->addFavoriteCandidate($this->getReference('candidat'));
 
                 $manager->persist($job);
             }
@@ -41,6 +42,7 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
         return [
             UserFixtures::class,
             CompanyFixtures::class,
+            CandidateFixtures::class
         ];
     }
 }
