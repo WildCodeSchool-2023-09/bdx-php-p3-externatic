@@ -20,8 +20,21 @@
                     <p class="title">Développeur junior</p>
                     <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                     <p>
-{#                        A faire : Possibilité d'envoyer un email#}
-                        <button class="buttonAboutUs">Contact</button>
+                        <button class="buttonAboutUs" id="contactButton1">Contact</button>
+
+                        {# Ajoutez un élément pour afficher l'adresse e-mail #}
+                    <div id="emailContainer1" style="display:none; text-align: center">
+                        <p>raymondjulie@proton.me</p>
+                    </div>
+
+                    {# Ajoutez le script JavaScript pour gérer le clic sur le bouton #}
+                    <script>
+                        document.getElementById('contactButton1').addEventListener('click', function() {
+                            // Change la visibilité de l'élément contenant l'adresse e-mail
+                            var emailContainer = document.getElementById('emailContainer1');
+                            emailContainer.style.display = 'block';
+                        });
+                    </script>
                     </p>
                 </div>
             </div>
@@ -35,8 +48,21 @@
                     <p class="title">Développeur junior</p>
                     <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                     <p>
-{#                        A faire : Possibilité d'envoyer un email#}
-                        <button class="buttonAboutUs">Contact</button>
+                        <button class="buttonAboutUs" id="contactButton2">Contact</button>
+
+                        {# Ajoutez un élément pour afficher l'adresse e-mail #}
+                    <div id="emailContainer2" style="display:none; text-align:center">
+                        <p>m.e.smith@live.co.uk</p>
+                    </div>
+
+                    {# Ajoutez le script JavaScript pour gérer le clic sur le bouton #}
+                    <script>
+                        document.getElementById('contactButton2').addEventListener('click', function() {
+                            // Change la visibilité de l'élément contenant l'adresse e-mail
+                            var emailContainer = document.getElementById('emailContainer2');
+                            emailContainer.style.display = 'block';
+                        });
+                    </script>
                     </p>
                 </div>
             </div>
@@ -44,14 +70,27 @@
 
         <div class="column">
             <div class="cardAboutUs">
-                <img src="{{ asset('build/images/melissa.jpg') }}" alt="Mélissa Parcelier" style="width:100%">
+                <img src="{{ asset('build/images/melissa.jpg') }}" alt="Mélissa Parceiller" style="width:100%">
                 <div class="container">
-                    <h2>Mélissa Parcelier</h2>
+                    <h2>Mélissa Parceiller</h2>
                     <p class="title">Développeur junior</p>
                     <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                     <p>
-{#                        A faire : Possibilité d'envoyer un email#}
-                        <button class="buttonAboutUs">Contact</button>
+                        <button class="buttonAboutUs" id="contactButton3">Contact</button>
+
+                        {# Ajoutez un élément pour afficher l'adresse e-mail #}
+                    <div id="emailContainer3" style="display:none; text-align:center">
+                        <p>m.parceiller@free.fr</p>
+                    </div>
+
+                    {# Ajoutez le script JavaScript pour gérer le clic sur le bouton #}
+                    <script>
+                        document.getElementById('contactButton3').addEventListener('click', function() {
+                            // Change la visibilité de l'élément contenant l'adresse e-mail
+                            var emailContainer = document.getElementById('emailContainer3');
+                            emailContainer.style.display = 'block';
+                        });
+                    </script>
                     </p>
                 </div>
             </div>
