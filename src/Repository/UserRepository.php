@@ -40,28 +40,18 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
-//    /**
-//     * @return User[] Returns an array of User objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('u.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @method User[]    searchByFunctionAndLocation(string $function, string $location): array
+     */
+    public function searchByFunctionAndLocation(string $function, string $location): array
+    {
+        $query = $this->createQueryBuilder('u')
+            ->andWhere('u.function LIKE :function')
+            ->andWhere('u.location LIKE :location')
+            ->setParameter('function', '%' . $function . '%')
+            ->setParameter('location', '%' . $location . '%')
+            ->getQuery();
 
-//    public function findOneBySomeField($value): ?User
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        return $query->getResult();
+    }
 }

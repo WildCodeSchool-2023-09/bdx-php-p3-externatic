@@ -21,28 +21,35 @@ class JobRepository extends ServiceEntityRepository
         parent::__construct($registry, Job::class);
     }
 
-//    /**
-//     * @return Job[] Returns an array of Job objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('j')
-//            ->andWhere('j.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('j.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @method Job[]    searchByTitleAndLocation(string $title, string $location): array
+     */
+    public function searchByTitleAndLocation(string $title, string $location): array
+    {
+        /*$query = $this->createQueryBuilder('j')
+            ->andWhere('j.title LIKE :title')
+            ->andWhere('j.city LIKE :location')
+            ->setParameter('title', '%' . $title . '%')
+            ->setParameter('location', '%' . $location . '%')
+            ->getQuery();
 
-//    public function findOneBySomeField($value): ?Job
-//    {
-//        return $this->createQueryBuilder('j')
-//            ->andWhere('j.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        return $query->getResult();*/
+        $queryBuilder = $this->createQueryBuilder('j');
+
+        if ($title !== null) {
+            $queryBuilder
+                ->andWhere('j.title LIKE :title')
+                ->setParameter('title', '%' . $title . '%');
+        }
+
+        if ($location !== null) {
+            $queryBuilder
+                ->andWhere('j.city LIKE :location')
+                ->setParameter('location', '%' . $location . '%');
+        }
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
 }

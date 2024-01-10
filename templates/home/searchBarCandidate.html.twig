@@ -1,0 +1,21 @@
+{# Section pour afficher : barre de recherche #}
+<div class="searchBar">
+    {# Formulaire de recherche #}
+    {{ form_start(searchForm) }}
+    {{ form_row(searchForm.title) }}
+    {{ form_row(searchForm.city) }}
+    <button type="submit">Rechercher</button>
+    {{ form_end(searchForm) }}
+</div>
+
+{# Section pour afficher les résultats de la recherche des jobs #}
+<div class="searchResults">
+    {% if jobs is not empty %}
+        <h2>Résultats de la recherche :</h2>
+        <ul>
+            {% for job in jobs %}
+                <li>{{ job.title }} - {{ job.city }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
