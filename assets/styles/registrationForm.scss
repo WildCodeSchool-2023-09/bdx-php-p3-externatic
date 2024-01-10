@@ -29,10 +29,16 @@ h1 {
 
 }
 
-hr {
+.input_line {
     color: lightgrey;
     margin-bottom: 1.5rem;
     width: 100%;
+}
+
+.last_line {
+
+    width: 100%;
+    color: lightgrey;
 }
 
 
@@ -81,35 +87,44 @@ img[src*="programmer"] {
 
 label[for='registration_form_roles_0'] {
     background-color: var(--dominant);
-    color: var(--secondary-color);
-    border-color: var(--seconday-color);
+    color: grey;
+    border-color: var(--contrast);
     border-style: solid;
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.6rem;
     margin-top: 1.5rem;
     margin-right: 1rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     &:hover {
         color: var(--dominant);
         background-color: var(--secondary-color);
     }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
 }
+
 
 label[for='registration_form_roles_1'] {
     background-color: var(--dominant);
-    color: var(--secondary-color);
-    border-color: var(--seconday-color);
+    color: grey;
+    border-color: var(--contrast);
     border-style: solid;
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.6rem;
     margin-top: 1.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     &:hover {
         color: var(--dominant);
         background-color: var(--secondary-color);
     }
-}
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
 
+}
 
 
 @media screen and (max-width: 768px) {
@@ -134,12 +149,28 @@ label[for='registration_form_roles_1'] {
         margin-top: 2rem;
     }
 
-    hr {
+    .input_line {
         width: 100%;
     }
 
     .btn {
         width: 100%;
+    }
+
+    .connection {
+        width: 100%;
+    }
+
+    label[for='registration_form_roles_0'] {
+
+        padding: 0.2rem;
+        font-size: 1rem;
+    }
+
+    label[for='registration_form_roles_1'] {
+
+        padding: 0.2rem;
+        font-size: 1rem;
     }
 
 

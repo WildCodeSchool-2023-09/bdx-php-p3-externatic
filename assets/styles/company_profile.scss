@@ -1,0 +1,23 @@
+img[src*="choices"] {
+    height: 400px;
+}
+
+
+img[src*="post_online"] {
+    display: none;
+
+}
+
+
+@media screen and (max-width: 768px) {
+    img[src*="choices"] {
+        display: none;
+    }
+
+
+    img[src*="post_online"] {
+        display: flex;
+        height: 200px;
+
+    }
+}

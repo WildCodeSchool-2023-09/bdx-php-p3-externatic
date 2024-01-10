@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends  app.user.roles.0 is same as('candidate')  ? "base_candidate.html.twig" : "base_company.html.twig" %}
 
 {% block title %}Profile{% endblock %}
 
@@ -9,13 +9,20 @@
     </div>
         <div class="child-bio">
         <h1> {{ app.user.username }}</h1>
+            {{ parent() }}
+
+            {% if app.user.roles.0 is  not same as('candidate') %}
+             <h2>siret: {{ app.user.company.siret }}</h2>
+            {% endif %}
             <ion-icon name="mail" class="profile-icon"></ion-icon>
             <a href="{{ app.user.linkedin }}" class="profile-icon">
                 <ion-icon name="logo-linkedin" class="profile-icon"></ion-icon>
             </a>
-            <a href="#" class="social">
+            {% if app.user.roles.0 is same as('candidate') %}
+            <a href="{{ app.user.candidate.github }}" class="social">
                 <ion-icon name="logo-github" class="profile-icon"></ion-icon>
             </a>
+            {% endif %}
         <h2> Bio </h2>
         <p> {{ app.user.bio }}</p>
     </div>
@@ -23,6 +30,7 @@
     <a class="connection" href="{{ path('app_profile_edit') }}">
         Edit
     </a>
+    <a href="{{ path('app_logout') }}">Déconnexion</a>
 
 </div>
 
