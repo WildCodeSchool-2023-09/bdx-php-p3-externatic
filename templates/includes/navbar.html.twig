@@ -6,8 +6,10 @@
     <div class="links">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 {% if app.user %}
+                    {% if app.user %}
+                    {% if app.user.username is defined and app.user.username is not null %}
                   {{ app.user.username }}
+                    {% endif %}
                     {% endif %}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

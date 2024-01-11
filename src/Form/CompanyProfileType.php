@@ -18,14 +18,14 @@ class CompanyProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('siret', NumberType::class, ['label' => false,  'constraints' => [
+            ->add('siret', NumberType::class, ['label' => false, 'required' => false,  'constraints' => [
         new NotBlank(),  new Length([
             'min' => 14,
             'max' => 14,
                     'minMessage' => 'veuillez saisir un numéro de siret valide',
                     'maxMessage' => 'veuillez saisir un numéro de siret valide'
             ])]])
-            ->add('adress', null, ['label' => false]);
+            ->add('adress', null, ['label' => false, 'required' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

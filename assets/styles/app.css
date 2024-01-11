@@ -24,7 +24,16 @@ body {
     flex-direction: column;
 }
 
-.btn {
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--dominant);
+    border: none;
+    border-radius: 25px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.profile_buttons {
     background-color: var(--primary-color);
     color: var(--dominant);
     border: none;

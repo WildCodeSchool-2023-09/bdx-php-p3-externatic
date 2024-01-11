@@ -22,6 +22,14 @@ img[src*="profile_edit"] {
     border-radius: 50%;
 }
 
+img[src*="female_avatar"] {
+    height: 200px;
+}
+
+img[src*="male_avatar"] {
+    height: 200px;
+}
+
 .profile-icon {
     text-decoration: none;
     color: var(--contrast);
@@ -34,6 +42,11 @@ img[src*="profile_edit"] {
 }
 
 
+.user_email {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+}
 
 @media screen and (max-width: 768px) {
     img[src*="edit_profile"] {

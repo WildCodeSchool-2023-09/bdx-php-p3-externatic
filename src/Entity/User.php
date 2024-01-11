@@ -96,7 +96,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): self // tested changing from :static to :self??
+    public function setRoles(array $roles): static // tested changing from :static to :self??
     {
         $this->roles = $roles;
 

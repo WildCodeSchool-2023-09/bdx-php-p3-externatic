@@ -56,15 +56,15 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Veuillez entrer un mot de passe',
                     ]),
                     new Length([
-                        'min' => 6,
+                        'min' => 1,
                         'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
 
                     ]),
-                    new Assert\PasswordStrength([ 'minScore' => PasswordStrength::STRENGTH_WEAK,
+                   new Assert\PasswordStrength([ 'minScore' => PasswordStrength::STRENGTH_WEAK,
                         'message' => 'Veuillez choisir un mot de passe plus forte',
-                            ]) // I chose strength weak as the default value of medium was too strong!
+                            ])  //I chose strength weak as the default value of medium was too strong! //
                 ],
             ])
             ->add('roles', ChoiceType::class, [
