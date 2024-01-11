@@ -31,17 +31,10 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-            $roles = $form->get('roles')->getData();
-            if (in_array('ROLE_CANDIDAT', $roles)) {
                 return $this->redirectToRoute('app_login');
-            } else {
-                return $this->redirectToRoute('app_home');
-            }
-// change this to a redirect to candidate login page once rendered, just added home route to check this works!
         }
 
         return $this->render('registration/register.html.twig', [
