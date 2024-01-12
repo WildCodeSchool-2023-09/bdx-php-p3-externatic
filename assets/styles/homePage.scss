@@ -141,6 +141,45 @@ a {
     flex-wrap: nowrap;
 }
 
+/* Styles pour la recherche de candidats */
+.candidateCard {
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin: 10px;
+    width: 45%;
+}
+
+.candidateCard h2 {
+    font-size: var(--h2-font-size);
+}
+
+.candidateCard p {
+    font-size: var(--text-font-size);
+    margin-bottom: 10px;
+}
+
+.candidateCard i {
+    font-style: italic;
+}
+
+.candidateCard strong {
+    font-weight: bold;
+}
+
+.candidateCard a {
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+}
+
+.candidateCard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
 /* Pour les écrans de 661px et plus */
 @media only screen and (min-width: 661px) {
     .containerHomePage {
@@ -184,5 +223,15 @@ a {
     #job_search_form_title,
     #job_search_form_city {
         width: auto; /* Retour à la largeur automatique par défaut */
+    }
+
+    #job_search_form_title,
+    #job_search_form_city {
+        width: auto;
+    }
+
+    .candidateCard {
+        width: calc(50% - 20px);
+        align-items: baseline;
     }
 }
