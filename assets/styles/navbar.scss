@@ -1,8 +1,8 @@
-.nav {
+.nav-links {
     margin-left: 0;
     margin-bottom: 2rem;
     width: 100%;
-    height: 80px;
+    height: 100px;
     background-color: black;
     //position: fixed;
     top: 0;
@@ -10,27 +10,43 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
-.nav > .logo-nav {
+.nav-links > .logo-nav {
     width: 30%;
     padding-left: 20px;
 }
 
-.nav > .links {
+li > a {
+    display: block;
+    padding: 20px;
+    line-height: 22px;
+    text-decoration: none;
     color: #FFFFFF;
+    font-family: 'Jost Variable', sans-serif;
+    font-size:16px;
+}
+
+.Menu-deroulant {
     display: flex;
-    justify-content: flex-end;
-    align-items: center; /* Pour centrer verticalement les liens */
+    margin: 0 auto;
+    width: 30vh;
+    margin-right: 10rem;
+}
+
+.Menu-deroulant  > a {
+    display: flex;
+    //justify-content: flex-end;
+    //align-items: center;
+    align-items: flex-end;
     text-align: center;
+    color: #FFFFFF;
     font-family: 'Jost Variable', sans-serif;
     gap: 40px;
     margin-left: 40px;
     margin-right: 40px;
     font-size: 20px;
-}
-
-.nav > .links a {
     --b: 0.2em;
     --c: #842342;
 
@@ -43,10 +59,31 @@
     transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
 }
 
-.nav > .links a:hover {
+.Menu-deroulant  > a:hover {
     --_p: 100%;
     --_s: .3s;
     color : #851342;
+}
+
+li {
+    list-style-type : none;
+    display: inline-block;
+    vertical-align: center;
+    position : relative;
+}
+
+li > a {
+    display: none;
+    position: absolute;
+}
+
+ul {
+    width: 100%;
+    height: 40px;
+    color: #FFFFFF;
+    background-color : #851342;
+    border-radius : 3px;
+
 }
 
 @media screen and (min-width: 660px) {

@@ -1,38 +1,31 @@
-<nav>
-<div class="nav">
-{#    <a href="{{ path('app_home') }}">#}
-        <img class="logo-nav" src="{{ asset('build/images/logo_black_fond_transparent.png') }}">
-{#    </a>#}
-    <div class="links">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% if app.user %}
-                    {% if app.user.username is defined and app.user.username is not null %}
-                  {{ app.user.username }}
-                    {% endif %}
-                    {% endif %}
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{ path('app_profile') }}">Mon Profil</a>
-                    <a class="dropdown-item" href="#">Mes Favoris</a>
-                    <a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a>
-                </div>
-            </div>
-        <a href="{{ path('app_login') }}" style="text-decoration: none; color: #FFFFFF">Candidat</a>
-        <a href="{{ path('app_login') }}" style="text-decoration: none; color: #FFFFFF">Entreprise</a>
-
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barre de navigation</title>
+</head>
+<body>
+<nav class="nav-links">
+        <img class="logo-nav" src="{{ asset('build/images/logo_white_fond_transparent_horizontal.png') }}">
+        <div class="Menu-deroulant">
+            {% if is_granted('ROLE_CANDIDAT') %}
+                    <ul class="links-menu-deroulant">{{ app.user.username }}
+                        <li class="sub-menu">
+                            <a href="{{ path('app_profile') }}" title="Mon profil">Mon Profil</a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="#" title="Mes favoris">Mes Favoris</a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="{{ path('app_logout') }}" title="se déconnecter">Se déconnecter</a>
+                        </li>
+                    </ul>
+                </label>
+            {% else %}
+                <a href="{{ path('app_login') }}">Candidat</a>
+                <a href="{{ path('app_login') }}" >Entreprise</a>
+            {% endif %}
+        </div>
 </nav>
 
-{#{% if app.user %}#}
-
-{#    {{ app.user.email }}#}
-
-{#    <a href="{{ path('app_logout') }}"> Se déconnecter</a>#}
-
-{#{% else %}#}
-
-{#    <a href="{{ path('app_login') }}"> Se connecter</a>#}
-
-{#{% endif %}#}
