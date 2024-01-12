@@ -78,6 +78,13 @@
                             attr: { placeholder: "Ajouter votre Github", class: 'placeholder' }
                         }) }}
                         <hr class="input_line">
+                        {{ form_label(candidateForm.fonction, "En recherche de..", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                        {{ form_row(candidateForm.fonction, {
+                            attr: { placeholder: "Ajouter le nom du metier recherché", class: 'placeholder' }
+                        }) }}
+                        <hr class="input_line">
                         <button type="submit" class="connection">Envoyer</button>
 
                         {{ form_end(candidateForm) }}

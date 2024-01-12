@@ -1,4 +1,4 @@
-{% if app.user %}
+{% if app.user is defined and app.user is not null %}
 {% extends  app.user.roles.0 is same as('ROLE_CANDIDAT')  ? "candidate.html.twig" : "company.html.twig" %}
 {%  endif %}
 {% block title %}Profile{% endblock %}
@@ -48,6 +48,9 @@
                 {% if app.user.location is defined and app.user.location is not null %}
                     <h3> ville : {{ app.user.location }}</h3>
                 {%  endif %}
+            {% if app.user.candidate.fonction is defined and app.user.candidate.fonction is not null %}
+                <h3> En recherche de : {{ app.user.candidate.fonction }}</h3>
+            {%  endif %}
             {%  endif %}
             {% if app.user.bio is defined and app.user.bio is not null %}
         <h2> Bio </h2>
