@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class CompanyProfileType extends AbstractType
 {
@@ -25,7 +26,13 @@ class CompanyProfileType extends AbstractType
                     'minMessage' => 'veuillez saisir un numéro de siret valide',
                     'maxMessage' => 'veuillez saisir un numéro de siret valide'
             ])]])
-            ->add('adress', null, ['label' => false, 'required' => false]);
+            ->add('adress', null, ['label' => false, 'required' => false])
+            ->add('website', null, ['label' => false, 'required' => false, 'constraints' => [
+        new Regex([
+            'pattern' =>
+                "^((http|https)://)[-a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._
+                        \\+~#?&//=]*)$^",
+            'message' => "Veuillez saisir une adresse URL valide"])]]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
