@@ -28,13 +28,9 @@ class Candidate
     #[ORM\ManyToMany(targetEntity: Company::class, inversedBy: 'favoriteCandidates')]
     private Collection $favoriteCompanies;
 
-    #[ORM\ManyToMany(targetEntity: Job::class, mappedBy: 'favoriteCandidates')]
-    private Collection $jobs;
-
     public function __construct()
     {
         $this->favoriteCompanies = new ArrayCollection();
-        $this->jobs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,33 +86,6 @@ class Candidate
         return $this;
     }
 
-    /**
-     * @return Collection<int, Job>
-     */
-    public function getJobs(): Collection
-    {
-        return $this->jobs;
-    }
-
-    public function addJob(Job $job): static
-    {
-        if (!$this->jobs->contains($job)) {
-            $this->jobs->add($job);
-            $job->addFavoriteCandidate($this);
-        }
-
-        return $this;
-    }
-
-    public function removeJob(Job $job): static
-    {
-        if ($this->jobs->removeElement($job)) {
-            $job->removeFavoriteCandidate($this);
-        }
-
-        return $this;
-    }
-
     public function getFonction(): ?string
     {
         return $this->fonction;
@@ -125,6 +94,18 @@ class Candidate
     public function setFonction(?string $fonction): static
     {
         $this->fonction = $fonction;
+
+        return $this;
+    }
+
+    public function getLocation(): ?string
+    {
+        return $this->getUser()?->getLocation();
+    }
+
+    public function setLocation(?string $location): static
+    {
+        $this->getUser()?->setLocation($location);
 
         return $this;
     }

@@ -7,6 +7,7 @@ use App\Form\JobType;
 use App\Repository\JobRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -77,5 +78,27 @@ class JobController extends AbstractController
         }
 
         return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/job/{id}/like', name: 'job_like')]
+    public function likeJob(Job $job, EntityManagerInterface $entityManager, Security $security): Response
+    {
+        $user = $security->getUser();
+
+        if ($user instanceof \App\Entity\User && in_array('ROLE_CANDIDAT', $user->getRoles(), true)) {
+            if ($job->isLikedByUser($user)) {
+                $job->removeLikingUser($user);
+            } else {
+                $job->addLikingUser($user);
+            }
+
+            // Indique à Doctrine de gérer l'entité modifiée
+            $entityManager->persist($job);
+
+            // Enregistre les modifications
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('job_show', ['id' => $job->getId()]);
     }
 }
