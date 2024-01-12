@@ -10,6 +10,7 @@ import './bootstrap.js';
 import './styles/app.scss';
 import '@fontsource-variable/jost';
 import imagePath from './images/registration.svg';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 let html = `<img src="${imagePath}" alt="business meeting">`;
 //import './styles/footer.scss'

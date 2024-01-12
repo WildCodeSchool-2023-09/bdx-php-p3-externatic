@@ -9,9 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: "L'email existe déjà")]
@@ -56,6 +55,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Candidate $candidate = null;
+
+    #[ORM\ManyToMany(targetEntity: Job::class, mappedBy: 'likingUsers')]
+    private Collection $likelist;
+
+    public function __construct()
+    {
+        $this->likelist = new ArrayCollection();
+    }
+
+    public function getLikelist(): Collection
+    {
+        return $this->likelist;
+    }
+
+    public function addToLikelist(Job $job): self
+    {
+        if (!$this->likelist->contains($job)) {
+            $this->likelist->add($job);
+        }
+
+        return $this;
+    }
+
+    public function removeFromLikelist(Job $job): self
+    {
+        $this->likelist->removeElement($job);
+
+        return $this;
+    }
 
     public function getId(): ?int
     {

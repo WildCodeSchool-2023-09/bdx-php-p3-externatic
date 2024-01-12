@@ -35,8 +35,8 @@ class Job
     #[ORM\JoinColumn(nullable: false)]
     private ?Company $company = null;
 
-    #[ORM\ManyToMany(targetEntity: Candidate::class, inversedBy: 'jobs')]
-    private Collection $favoriteCandidates;
+    /*#[ORM\ManyToMany(targetEntity: Candidate::class, inversedBy: 'jobs')]
+    private Collection $favoriteCandidates;*/
 
     #[ORM\OneToMany(mappedBy: 'job', targetEntity: Application::class, orphanRemoval: true)]
     private Collection $applications;
@@ -44,10 +44,41 @@ class Job
     #[ORM\Column(length: 255)]
     private ?string $city = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'likelist')]
+    #[ORM\JoinTable(name: 'likelist')]
+    private Collection $likingUsers;
+
     public function __construct()
     {
-        $this->favoriteCandidates = new ArrayCollection();
+        //$this->favoriteCandidates = new ArrayCollection();
+        $this->likingUsers = new ArrayCollection();
         $this->applications = new ArrayCollection();
+    }
+
+    public function isLikedByUser(User $user): bool
+    {
+        return $this->likingUsers->contains($user);
+    }
+
+    public function getLikingUsers(): Collection
+    {
+        return $this->likingUsers;
+    }
+
+    public function addLikingUser(User $user): self
+    {
+        if (!$this->likingUsers->contains($user)) {
+            $this->likingUsers[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeLikingUser(User $user): self
+    {
+        $this->likingUsers->removeElement($user);
+
+        return $this;
     }
 
     public function getId(): ?int
@@ -126,10 +157,11 @@ class Job
 
         return $this;
     }
-
+    /*
     /**
      * @return Collection<int, Candidate>
      */
+    /*
     public function getFavoriteCandidates(): Collection
     {
         return $this->favoriteCandidates;
@@ -150,6 +182,7 @@ class Job
 
         return $this;
     }
+    */
 
     /**
      * @return Collection<int, Application>
