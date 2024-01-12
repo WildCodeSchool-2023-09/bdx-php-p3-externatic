@@ -5,13 +5,12 @@
 
 {% block body %}
 
-    <div {# method="post" enctype="multipart/form-data" #}>
         <div class="grid-container">
             <div class="grid-child-image">
                 <h1>Modifier votre profil</h1>
-                <img src="{{ asset('build/images/edit_profile.svg') }}" alt="man adding content to a website"/>
+                <img src="{{ asset('build/images/coffee_with_friends.svg') }}" alt="friends hanging out with coffee"/>
             </div>
-            <img src="{{ asset('build/images/profile_edit_mobile.svg') }}" alt="woman editing a site on her phone"/>
+            <img src="{{ asset('build/images/designer.svg') }}" alt="designer behind a computer"/>
             <div class="grid-child-form">
                 {{ form_start(profileForm) }}
                     {{ form_label(profileForm.username, "Nom d'utilisateur", {
@@ -87,7 +86,7 @@
                 {{ form_end(profileForm) }}
             </div>
         </div>
-    </div>
+
 
 
 
