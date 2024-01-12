@@ -1,17 +1,17 @@
 .grid-container-profile {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr;
     margin-bottom: 4rem;
     margin-left: 4rem;
     margin-right: 4rem;
 }
 
-img[src*="edit_profile"] {
+img[src*="coffee"] {
     height: 400px;
 }
 
 
-img[src*="profile_edit"] {
+img[src*="designer"] {
     display: none;
 
 }
@@ -48,13 +48,20 @@ img[src*="male_avatar"] {
 
 }
 
+/*.edit_btns  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px; */
+
+
+
 @media screen and (max-width: 768px) {
-    img[src*="edit_profile"] {
+    img[src*="coffee_with_friends"] {
         display: none;
     }
 
 
-    img[src*="profile_edit"] {
+    img[src*="designer"] {
         display: flex;
         height: 200px;
 
@@ -63,6 +70,13 @@ img[src*="male_avatar"] {
         display: grid;
         grid-template-columns: 1fr;
         justify-items: center;
+
+    }
+
+    .edit_btns {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
 
     }
 

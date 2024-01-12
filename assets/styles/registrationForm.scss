@@ -32,11 +32,13 @@ h1 {
 .input_line {
     color: lightgrey;
     margin-bottom: 1.5rem;
-    width: 100%;
+    width: 80%;
+    text-align: left;
+    margin-left: 0;
 }
 
 .last_line {
-
+    margin-bottom: 1rem;
     width: 100%;
     color: lightgrey;
 }
