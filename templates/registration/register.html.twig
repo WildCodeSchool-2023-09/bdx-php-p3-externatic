@@ -53,19 +53,17 @@
             attr: { placeholder: '', class: 'radio-container input' }
         }) }}
 
-        <div class="connection_link">
-        <button type="submit" class="btn">Créer votre compte</button>
-        </div>
+<div class="connection_link">
+        <button type="submit">Créer votre compte</button>
+</div>
 
     {{ form_end(registrationForm) }}
 
-        <p class="not_registered"> Vous avez déjà un compte ?</p>
-
-        <div class="connection_link">
+<div class="connection_link">
         <a class="connection" href="{{ path('app_login') }}">
-             Se connecter
+             Vous avez déjà un compte ?
         </a>
-        </div>
+</div>
 </div>
 
 

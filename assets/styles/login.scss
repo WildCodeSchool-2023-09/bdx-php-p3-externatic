@@ -17,11 +17,11 @@ text-decoration: none;
     background-color: var(--contrast);
     color: var(--dominant);
     border: none;
+    margin-top: 2rem;
     border-radius: 25px;
-    padding: 0.7rem;
-    font-size: 1.5rem;
+    padding: 8px 15px;
+    font-size: 1rem;
     text-align: center;
-    width: 65%;
     &:hover {
         color: var(--dominant);
         background-color: var(--primary-color);
@@ -46,10 +46,7 @@ text-decoration: none;
 }
 
 .connection_link {
-    margin-top: 2rem;
-    display:flex;
-    justify-content: center;
-
+    margin-top: 1.5rem;
 
 }
 

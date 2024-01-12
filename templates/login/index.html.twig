@@ -35,14 +35,13 @@
         <input type="hidden" name="_target_path" value="/account"> #}
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 <div class="connection_link">
-                <button type="submit" class="btn">Se connecter</button>
+                <button type="submit">Se connecter</button>
                 </div>
     </form>
 
-   <p class="not_registered"> Vous n'êtes pas encore inscrit ?</p>
     <div class="connection_link">
     <a class="connection" href="{{ path('app_register') }}">
-        Créez votre compte
+        Vous n'êtes pas encore inscrit ?
     </a>
     </div>
     </div>
