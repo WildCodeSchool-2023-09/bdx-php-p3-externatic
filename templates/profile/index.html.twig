@@ -6,10 +6,7 @@
     {% if app.user.image is defined and app.user.image is not null %}
     <div class="grid-child-image">
     <img class="avatar" src="{{ asset('uploads/images/' ~ app.user.image) }}" alt="user profile image">
-</div>
-    {%  endif %}
-    {% if  app.user.image is null %}
-    <div class="profile-container">
+    {% else %}
         <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
         </a>
     </div>
@@ -17,9 +14,7 @@
         <div class="child-bio">
         <h1> {{ app.user.username }}</h1>
             <ion-icon name="mail" class="profile-icon" onclick="revealEmail()"></ion-icon>
-            <div id="reveal_email">
-            <h3>email : {{ app.user.email }}</h3>
-            </div>
+            <h3 id="reveal_email">email : {{ app.user.email }}</h3>
             {% if app.user.linkedin is defined and app.user.linkedin is not null %}
             <a href="{{ app.user.linkedin }}" class="profile-icon" onclick="return confirm('Cliquez sur OK pour être redirigé vers Linkedin');">
                 <ion-icon name="logo-linkedin" class="profile-icon"></ion-icon>
@@ -40,9 +35,7 @@
                 {%  endif %}
             {% if app.user.company.adress is defined and app.user.company.adress is not null %}
                 <ion-icon name="location-outline" class="profile-icon" onclick="revealAddress()"></ion-icon>
-                <div id="reveal">
-            <h3> Adresse : {{ app.user.company.adress }}</h3>
-        </div>
+            <h3 id="reveal"> Adresse : {{ app.user.company.adress }}</h3>
             {%  endif %}
             {%  endif %}
             {% if app.user.roles.0 is same as('ROLE_CANDIDAT') %}
@@ -67,7 +60,7 @@
         <button class="connection">Supprimer</button>
     </form>
             </div>
-        </div>
+
 
 
 

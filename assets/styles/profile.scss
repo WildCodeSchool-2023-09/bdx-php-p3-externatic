@@ -1,9 +1,10 @@
 .grid-container-profile {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     margin-bottom: 4rem;
     margin-left: 4rem;
     margin-right: 4rem;
+    justify-items: center;
 }
 
 img[src*="coffee"] {
