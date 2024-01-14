@@ -79,8 +79,8 @@ class JobController extends AbstractController
 
         return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
     }
-
-    #[Route('/job/{id}/like', name: 'job_like')]
+}
+    /*#[Route('/job/{id}/like', name: 'job_like')]
     public function likeJob(Job $job, EntityManagerInterface $entityManager, Security $security): Response
     {
         $user = $security->getUser();
@@ -100,5 +100,4 @@ class JobController extends AbstractController
         }
 
         return $this->redirectToRoute('job_show', ['id' => $job->getId()]);
-    }
-}
+    }*/

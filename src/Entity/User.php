@@ -59,11 +59,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Job::class, mappedBy: 'likingUsers')]
     private Collection $likelist;
 
+    #[ORM\ManyToMany(targetEntity: Candidate::class, mappedBy: 'likingCompanies')]
+    private Collection $companyLikelist;
+
     public function __construct()
     {
         $this->likelist = new ArrayCollection();
+        $this->companyLikelist = new ArrayCollection();
     }
 
+    public function getCompanyLikelist(): Collection
+    {
+        return $this->companyLikelist;
+    }
+
+    public function addToCompanyLikelist(Candidate $candidate): self
+    {
+        if (!$this->companyLikelist->contains($candidate)) {
+            $this->companyLikelist->add($candidate);
+        }
+
+        return $this;
+    }
+
+    public function removeFromCompanyLikelist(Candidate $candidate): self
+    {
+        $this->companyLikelist->removeElement($candidate);
+
+        return $this;
+    }
     public function getLikelist(): Collection
     {
         return $this->likelist;

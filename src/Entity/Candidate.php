@@ -25,12 +25,39 @@ class Candidate
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\ManyToMany(targetEntity: Company::class, inversedBy: 'favoriteCandidates')]
-    private Collection $favoriteCompanies;
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'CompanyLikelist')]
+    #[ORM\JoinTable(name: 'CompanyLikeList')]
+    private Collection $likingCompanies;
 
     public function __construct()
     {
-        $this->favoriteCompanies = new ArrayCollection();
+        $this->likingCompanies = new ArrayCollection();
+    }
+
+    public function isLikedByCompany(User $user): bool
+    {
+        return $this->likingCompanies->contains($user);
+    }
+
+    public function getLikingCompanies(): Collection
+    {
+        return $this->likingCompanies;
+    }
+
+    public function addLikingCompanies(User $user): self
+    {
+        if (!$this->likingCompanies->contains($user)) {
+            $this->likingCompanies[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeLikingCompanies(User $user): self
+    {
+        $this->likingCompanies->removeElement($user);
+
+        return $this;
     }
 
     public function getId(): ?int
@@ -62,9 +89,9 @@ class Candidate
         return $this;
     }
 
-    /**
+    /*/**
      * @return Collection<int, Company>
-     */
+     *//*
     public function getFavoriteCompanies(): Collection
     {
         return $this->favoriteCompanies;
@@ -84,7 +111,7 @@ class Candidate
         $this->favoriteCompanies->removeElement($favoriteCompany);
 
         return $this;
-    }
+    }*/
 
     public function getFonction(): ?string
     {

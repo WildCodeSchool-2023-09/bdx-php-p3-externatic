@@ -26,7 +26,7 @@
                 <p>{{ job.description }}</p>
                 <i>{{ job.salary }}€</i>
                 <div class="jobSeeMore">
-                    <a class="btn btn-primary" href="#">Voir détails de l'offre</a>
+                    <a class="btn btn-primary" href="{{ path('app_job_show', {'id': job.id}) }}">Voir détails de l'offre</a>
                 </div>
             </div>
         {% endfor %}
