@@ -101,4 +101,3 @@ class JobController extends AbstractController
 
         return $this->redirectToRoute('job_show', ['id' => $job->getId()]);
     }*/
-

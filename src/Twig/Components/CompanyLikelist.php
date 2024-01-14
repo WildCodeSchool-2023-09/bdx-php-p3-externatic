@@ -3,7 +3,7 @@
 namespace App\Twig\Components;
 
 use App\Entity\Candidate;
-use App\Entity\Company;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
@@ -30,24 +30,24 @@ final class CompanyLikelist
     #[LiveAction]
     public function toggle(): void
     {
-        /** @var Company $company */
-        $company = $this->security->getUser();
+        /** @var User $user */
+        $user = $this->security->getUser();
 
-        // Check if the company has already added this candidate to their likelist
-        if ($company->getFavoriteCandidates()->contains($this->candidate)) {
-            // If yes, remove the candidate from the company's likelist
-            // and remove the company from the candidate's list of favorite companies
-            $company->removeFavoriteCandidate($this->candidate);
-            $this->candidate->removeFavoriteCompany($company);
+        // Vérifier si l'utilisateur a déjà ajouté ce candidat à sa liste de favoris
+        if ($user->getCompanyLikelist()->contains($this->candidate)) {
+            // Si oui, le retirer de la liste de favoris de l'utilisateur
+            // et de la liste des entreprises aimant ce candidat
+            $user->removeFromCompanyLikelist($this->candidate);
+            $this->candidate->removeLikingCompanies($user);
         } else {
-            // If no, add the candidate to the company's likelist
-            // and add the company to the candidate's list of favorite companies
-            $company->addFavoriteCandidate($this->candidate);
-            $this->candidate->addFavoriteCompany($company);
+            // Si non, ajouter ce candidat à la liste de favoris de l'utilisateur
+            // et à la liste des entreprises aimant ce candidat
+            $user->addToCompanyLikelist($this->candidate);
+            $this->candidate->addLikingCompanies($user);
         }
 
-        // Save the changes to the database
-        $this->entityManager->persist($company);
+        // Enregistrer les modifications dans la base de données
+        $this->entityManager->persist($user);
         $this->entityManager->persist($this->candidate);
         $this->entityManager->flush();
     }

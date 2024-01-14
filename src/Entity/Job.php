@@ -35,9 +35,6 @@ class Job
     #[ORM\JoinColumn(nullable: false)]
     private ?Company $company = null;
 
-    /*#[ORM\ManyToMany(targetEntity: Candidate::class, inversedBy: 'jobs')]
-    private Collection $favoriteCandidates;*/
-
     #[ORM\OneToMany(mappedBy: 'job', targetEntity: Application::class, orphanRemoval: true)]
     private Collection $applications;
 
@@ -50,7 +47,6 @@ class Job
 
     public function __construct()
     {
-        //$this->favoriteCandidates = new ArrayCollection();
         $this->likingUsers = new ArrayCollection();
         $this->applications = new ArrayCollection();
     }
@@ -157,32 +153,6 @@ class Job
 
         return $this;
     }
-    /*
-    /**
-     * @return Collection<int, Candidate>
-     */
-    /*
-    public function getFavoriteCandidates(): Collection
-    {
-        return $this->favoriteCandidates;
-    }
-
-    public function addFavoriteCandidate(Candidate $favoriteCandidate): static
-    {
-        if (!$this->favoriteCandidates->contains($favoriteCandidate)) {
-            $this->favoriteCandidates->add($favoriteCandidate);
-        }
-
-        return $this;
-    }
-
-    public function removeFavoriteCandidate(Candidate $favoriteCandidate): static
-    {
-        $this->favoriteCandidates->removeElement($favoriteCandidate);
-
-        return $this;
-    }
-    */
 
     /**
      * @return Collection<int, Application>

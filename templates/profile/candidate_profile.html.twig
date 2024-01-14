@@ -11,4 +11,7 @@
     <p>Lieu: {{ candidate.user.location }}</p>
     <p>LinkedIn: {{ candidate.user.linkedin }}</p>
     <p>Github: {{ candidate.github }}</p>
+
+    <!-- Intégration du composant CompanyLikelistLiveComponent avec le bouton -->
+    {{ component('CompanyLikelist',  {'candidate': candidate}) }}
 {% endblock %}
