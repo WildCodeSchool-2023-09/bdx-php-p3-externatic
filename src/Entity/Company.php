@@ -31,6 +31,9 @@ class Company
     /*#[ORM\ManyToMany(targetEntity: Candidate::class, mappedBy: 'favoriteCompanies')]
     private Collection $favoriteCandidates;*/
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $website = null;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
@@ -134,4 +137,16 @@ class Company
 
         return $this;
     }*/
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(?string $website): static
+    {
+        $this->website = $website;
+
+        return $this;
+    }
 }

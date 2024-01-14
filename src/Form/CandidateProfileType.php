@@ -22,7 +22,8 @@ class CandidateProfileType extends AbstractType
                     'pattern' =>
                         "^((http|https)://)[-a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._
                         \\+~#?&//=]*)$^",
-                    'message' => "Veuillez saisir une adresse URL valide"])]]);
+                    'message' => "Veuillez saisir une adresse URL valide"])]])
+        ->add('fonction', null, ['label' => false, 'required' => false,]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

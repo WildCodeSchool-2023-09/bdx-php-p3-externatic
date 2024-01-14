@@ -1,7 +1,5 @@
-{% if app.user %}
-{% extends  app.user.roles.0 is same as('ROLE_CANDIDAT')  ? "candidate.html.twig" : "company.html.twig" %}
-{%  endif %}
-{% block title %}Hello LoginController!{% endblock %}
+{% extends 'base.html.twig' %}
+{% block title %}Edit profile{% endblock %}
 
 {% block body %}
 
@@ -64,6 +62,13 @@
                             attr: { placeholder: "Ajouter votre adresse", class: 'placeholder' }
                         }) }}
                         <hr class="input_line">
+                        {{ form_label(companyForm.website, "Site web", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                        {{ form_row(companyForm.website, {
+                            attr: { placeholder: "Ajouter votre site web", class: 'placeholder' }
+                        }) }}
+                        <hr class="input_line">
                         <button type="submit" class="connection">Envoyer</button>
 
                         {{ form_end(companyForm) }}
@@ -76,6 +81,13 @@
                         }) }}
                         {{ form_row(candidateForm.github, {
                             attr: { placeholder: "Ajouter votre Github", class: 'placeholder' }
+                        }) }}
+                        <hr class="input_line">
+                        {{ form_label(candidateForm.fonction, "En recherche de..", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                        {{ form_row(candidateForm.fonction, {
+                            attr: { placeholder: "Ajouter le nom du metier recherché", class: 'placeholder' }
                         }) }}
                         <hr class="input_line">
                         <button type="submit" class="connection">Envoyer</button>
