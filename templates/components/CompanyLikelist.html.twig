@@ -1,0 +1,17 @@
+{# templates/components/Likelist.html.twig #}
+
+{% if app.user and 'ROLE_COMPANY' in app.user.roles %}
+    <div{{ attributes }}>
+        <button
+            data-controller="Likelist"
+            data-action="live#action"
+            data-action-name="prevent|toggle"
+        >
+            {% if app.user.company.favoriteCandidates.contains(candidate) %}
+                <i class="bi bi-star-fill"></i> Remove from favorites
+            {% else %}
+                <i class="bi bi-star"></i> Add to favorites
+            {% endif %}
+        </button>
+    </div>
+{% endif %}

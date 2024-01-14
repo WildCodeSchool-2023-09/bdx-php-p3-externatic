@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ candidate.user.username }}{% endblock %}
+
+{% block body %}
+    <h1>Profil du candidat : {{ candidate.user.username }}</h1>
+    <p>Fonction: {{ candidate.fonction }}</p>
+    <p>Biographie: {{ candidate.user.bio }}</p>
+    <p>Email: {{ candidate.user.email }}</p>
+    <p>Image: {{ candidate.user.image }}</p>
+    <p>Lieu: {{ candidate.user.location }}</p>
+    <p>LinkedIn: {{ candidate.user.linkedin }}</p>
+    <p>Github: {{ candidate.github }}</p>
+{% endblock %}

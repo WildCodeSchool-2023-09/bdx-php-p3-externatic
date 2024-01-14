@@ -89,7 +89,6 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/profile/delete', name: 'app_profile_delete', methods: ['POST'])]
-
     public function delete(Request $request, UserRepository $userRepository): Response
     {
         $user = $this->getUser();
@@ -100,5 +99,13 @@ class ProfileController extends AbstractController
         $this->container->get('security.token_storage')->setToken(null);
 
         return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/profile/candidate/{id}', name: 'app_profile_candidate')]
+    public function viewCandidateProfile(Candidate $candidate): Response
+    {
+        return $this->render('profile/candidate_profile.html.twig', [
+            'candidate' => $candidate,
+        ]);
     }
 }
