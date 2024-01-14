@@ -28,13 +28,13 @@ class Company
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Job::class, orphanRemoval: true)]
     private Collection $jobs;
 
-    #[ORM\ManyToMany(targetEntity: Candidate::class, mappedBy: 'favoriteCompanies')]
-    private Collection $favoriteCandidates;
+    /*#[ORM\ManyToMany(targetEntity: Candidate::class, mappedBy: 'favoriteCompanies')]
+    private Collection $favoriteCandidates;*/
 
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
-        $this->favoriteCandidates = new ArrayCollection();
+//        $this->favoriteCandidates = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -108,9 +108,9 @@ class Company
         return $this;
     }
 
-    /**
+    /*/**
      * @return Collection<int, Candidate>
-     */
+     *//*
     public function getFavoriteCandidates(): Collection
     {
         return $this->favoriteCandidates;
@@ -133,5 +133,5 @@ class Company
         }
 
         return $this;
-    }
+    }*/
 }
