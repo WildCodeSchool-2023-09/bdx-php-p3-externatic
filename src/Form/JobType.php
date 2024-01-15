@@ -25,11 +25,11 @@ class JobType extends AbstractType
                 'class' => Company::class,
         'choice_label' => 'id',
             ])
-            ->add('favoriteCandidates', EntityType::class, [
-                'class' => Candidate::class,
-        'choice_label' => 'id',
-        'multiple' => true,
-            ])
+       //     ->add('favoriteCandidates', EntityType::class, [
+      //          'class' => Candidate::class,
+      //  'choice_label' => 'id',
+     //   'multiple' => true,
+     //       ])
         ;
     }
 

@@ -66,25 +66,22 @@
         <button class="connection">Supprimer</button>
     </form>
             </div>
-    <div class="searchResults">
-        {% if app.user.roles.0 is not same as('ROLE_CANDIDAT') %}
-        {% if app.user.company.jobs is defined and app.user.company.jobs is not null %}
-            {% for job in jobs %}
+    <div>
+        {% if app.user.company.jobs is defined and app.user.company.jobs is  not null %}
+        <h2>Nos offres</h2>
+            {% for job in app.user.company.jobs %}
                 <div class="jobCard">
                     <h2>{{ job.title }}</h2>
                     <strong>{{ job.city }}</strong>
                     <p>{{ job.description }}</p>
                     <i>{{ job.salary }}€</i>
                     <div class="jobSeeMore">
-                        <a class="btn btn-primary" href="#">Voir détails de l'offre</a>
+                        <a class="btn btn-primary" href="{{ path('app_job_show', {'id': job.id}) }}">Voir détails de l'offre</a>
                     </div>
-                </div>
             {% endfor %}
         {% endif %}
-        {%  endif %}
     </div>
-
-
+</div>
 
 
     <script
