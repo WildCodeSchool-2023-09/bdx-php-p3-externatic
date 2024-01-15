@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidats Favoris{% endblock %}
+
+{% block body %}
+    <h1>Candidats Favoris</h1>
+
+    {% if favoriteCandidates is empty %}
+        <p>Aucun candidat en favori.</p>
+    {% else %}
+        <ul>
+            {% for candidate in favoriteCandidates %}
+                <li>Nom du candidat: {{ candidate.user.username }}</li>
+                <li>Fonction: {{ candidate.fonction }}</li>
+                <img class="avatar" src="{{ asset('uploads/images/' ~ candidate.user.image ) }}" alt="user profile image">
+                <li>Photo: {{ candidate.user.image }}</li>
+                <li>Biographie: {{ candidate.user.bio }}</li>
+                <li>LinkedIn: {{ candidate.user.linkedin }}</li>
+                <li>Github: {{ candidate.github }}</li>
+                <li>Email: {{ candidate.user.email }}</li>
+                <a class="btn btn-primary" href="{{ path('app_profile_candidate', {'id': candidate.id}) }}">Voir le profil</a>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
