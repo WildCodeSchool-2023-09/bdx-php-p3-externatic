@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Candidate;
 use App\Entity\Company;
+use App\Entity\CVs;
 use App\Entity\User;
+use App\Form\CandidateCVType;
 use App\Form\CandidateProfileType;
 use App\Form\CompanyProfileType;
 use App\Form\ProfileType;
@@ -28,6 +30,7 @@ class ProfileController extends AbstractController
             'controller_name' => 'ProfileController',
         ]);
     }
+
 
     #[Route('/profile/edit', name: 'app_profile_edit')]
     public function edit(
@@ -62,11 +65,13 @@ class ProfileController extends AbstractController
                 $entityManager->persist($company);
             }
 
-
-          //  $entityManager->flush();
-
-
             if ($candidateForm->isSubmitted() && $candidateForm->isValid()) {
+                /** @var UploadedFile $cvFile */
+                $cvFile = $candidateForm->get('profileCV')->getData();
+                if ($cvFile) {
+                    $cvFile = $fileUploader->upload($cvFile);
+                    $candidate->setProfileCV($cvFile);
+                }
                 $candidate->setUser($user);
                 $entityManager->persist($candidate);
             }

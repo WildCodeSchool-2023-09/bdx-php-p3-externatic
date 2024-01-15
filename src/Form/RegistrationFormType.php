@@ -33,9 +33,9 @@ class RegistrationFormType extends AbstractType
                       'maxMessage' => "Veuillez choisir un nom d'utilisateur entre 2 et 255 caractères.",
                      ]),
             new Regex([
-                'pattern' => '/^[a-z]+$/i',
+                'pattern' => '/^[a-zA-Z\s]+$/',
                 'message' => "Nom d'utilisateur invalide",
-                'htmlPattern' => '^[a-zA-Z]+$'
+                'htmlPattern' => '^[a-zA-Z\s]+$'
                   ])]])
             ->add('email', EmailType::class, ['label' => false,  'constraints' => [
                     new NotBlank(),  new Length([
