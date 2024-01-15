@@ -29,6 +29,9 @@ class Candidate
     #[ORM\JoinTable(name: 'CompanyLikeList')]
     private Collection $likingCompanies;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $profileCV = null;
+
     public function __construct()
     {
         $this->likingCompanies = new ArrayCollection();
@@ -109,6 +112,18 @@ class Candidate
     public function setLocation(?string $location): static
     {
         $this->getUser()?->setLocation($location);
+
+        return $this;
+    }
+
+    public function getProfileCV(): ?string
+    {
+        return $this->profileCV;
+    }
+
+    public function setProfileCV(?string $profileCV): static
+    {
+        $this->profileCV = $profileCV;
 
         return $this;
     }
