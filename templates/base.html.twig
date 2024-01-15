@@ -18,11 +18,14 @@
 </head>
 <body>
 <header>
-    {% if app.user is defined and app.user is not null %}
-        {% include  app.user.roles.0 is same as('ROLE_CANDIDAT')  ? "includes/navbar.html.twig" : "includes/company_nav.html.twig" %}
-    {% else %}
-        {% include 'includes/navbar.html.twig' %}
-    {%  endif %}
+    {# Navbar pour les users non co ou avec rôle CANDIDAT#}
+    {% if app.user is null or is_granted('ROLE_CANDIDAT') %}
+        {{ include('includes/navbar.html.twig') }}
+    {% endif %}
+    {# Navbar pour les users avec rôle COMPANY#}
+    {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') %}
+        {{ include('includes/company_nav.html.twig') }}
+    {% endif %}
 </header>
 <main>
     {% block body %}
@@ -30,11 +33,14 @@
     {% endblock %}
 </main>
 <footer>
-    {% if app.user is defined and app.user is not null %}
-        {% include  app.user.roles.0 is same as('ROLE_CANDIDAT')  ? "includes/footer.html.twig" : "includes/company_footer.html.twig" %}
-        {% else %}
-        {% include 'includes/footer.html.twig' %}
-    {%  endif %}
+    {# Footer pour les users non co ou avec rôle CANDIDAT#}
+    {% if app.user is null or is_granted('ROLE_CANDIDAT') %}
+        {{ include('includes/footer.html.twig') }}
+    {% endif %}
+    {# Footer pour les users avec rôle COMPANY#}
+    {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') %}
+        {{ include('includes/company_footer.html.twig') }}
+    {% endif %}
 </footer>
 </body>
 </html>

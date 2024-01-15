@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Job;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @extends ServiceEntityRepository<Job>
@@ -26,14 +28,6 @@ class JobRepository extends ServiceEntityRepository
      */
     public function searchByTitleAndLocation(string $title, string $location): array
     {
-        /*$query = $this->createQueryBuilder('j')
-            ->andWhere('j.title LIKE :title')
-            ->andWhere('j.city LIKE :location')
-            ->setParameter('title', '%' . $title . '%')
-            ->setParameter('location', '%' . $location . '%')
-            ->getQuery();
-
-        return $query->getResult();*/
         $queryBuilder = $this->createQueryBuilder('j');
 
         if ($title !== null) {
@@ -51,5 +45,15 @@ class JobRepository extends ServiceEntityRepository
         $query = $queryBuilder->getQuery();
 
         return $query->getResult();
+    }
+
+    public function findByLikedUser(UserInterface $user): array
+    {
+        return $this->createQueryBuilder('j')
+            ->innerJoin('j.likingUsers', 'u')
+            ->where('u = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
     }
 }

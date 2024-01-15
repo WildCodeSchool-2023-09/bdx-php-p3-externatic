@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes jobs favoris{% endblock %}
+
+{% block body %}
+    <h1>Emplois Favoris</h1>
+
+    {% if favoriteJobs is empty %}
+        <p>Aucun emploi en favori.</p>
+    {% else %}
+        <ul>
+            {% for job in favoriteJobs %}
+                <li>Titre de l'emploi: {{ job.title}}</li>
+                <li>Adresse de l'emploi: {{ job.adress}}</li>
+                <li>Ville: {{ job.city}}</li>
+                <li>Description de l'emploi: {{ job.description}}</li>
+                <li>Salaire: {{ job.salary}}</li>
+                <li>Date de début du contrat: {{ job.startDate|date('Y-m-d') }}</li>
+                <a class="btn btn-primary" href="{{ path('app_job_show', {'id': job.id}) }}">Accéder à l'offre</a>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
