@@ -68,7 +68,7 @@
             </div>
     <div class="searchResults">
         {% if app.user.roles.0 is not same as('ROLE_CANDIDAT') %}
-        {% if app.user.company.jobs is not empty %}
+        {% if app.user.company.jobs is defined and app.user.company.jobs is not null %}
             {% for job in jobs %}
                 <div class="jobCard">
                     <h2>{{ job.title }}</h2>
