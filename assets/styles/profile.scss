@@ -7,6 +7,11 @@
     justify-items: center;
 }
 
+.child-bio {
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+}
+
 img[src*="coffee"] {
     height: 400px;
 }
@@ -18,15 +23,12 @@ img[src*="designer"] {
 }
 
 .avatar {
-    height: 200px;
+    height: auto;
     width: 200px;
-    border-radius: 50%;
+     border-radius: 50%;
+
 }
 
-.company_avatar {
-    height: 100%;
-    width: 100%;
-}
 
 img[src*="female_avatar"] {
     height: 200px;
@@ -40,7 +42,7 @@ img[src*="male_avatar"] {
     text-decoration: none;
     color: var(--contrast);
     &:hover {
-        color: #842342;
+        color: var(--secondary-color);
     }
     width: 2rem;
     font-size: 32px;
@@ -53,11 +55,6 @@ img[src*="male_avatar"] {
     grid-template-columns: 1fr 2fr;
 
 }
-
-/*.edit_btns  {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 5px; */
 
 
 
@@ -83,6 +80,11 @@ img[src*="male_avatar"] {
         grid-template-columns: 1fr;
         grid-gap: 5px;
 
+    }
+
+    .company_avatar {
+        height: auto;
+        width: 100%;
     }
 
 }

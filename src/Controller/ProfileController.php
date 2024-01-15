@@ -58,7 +58,7 @@ class ProfileController extends AbstractController
                 $user->setImage($imageFile);
             }
             $entityManager->persist($user);
-           // $entityManager->flush();
+            // $entityManager->flush();
 
             if ($companyForm->isSubmitted() && $companyForm->isValid()) {
                 $company->setUser($user);
