@@ -89,30 +89,6 @@ class Candidate
         return $this;
     }
 
-    /*/**
-     * @return Collection<int, Company>
-     *//*
-    public function getFavoriteCompanies(): Collection
-    {
-        return $this->favoriteCompanies;
-    }
-
-    public function addFavoriteCompany(Company $favoriteCompany): static
-    {
-        if (!$this->favoriteCompanies->contains($favoriteCompany)) {
-            $this->favoriteCompanies->add($favoriteCompany);
-        }
-
-        return $this;
-    }
-
-    public function removeFavoriteCompany(Company $favoriteCompany): static
-    {
-        $this->favoriteCompanies->removeElement($favoriteCompany);
-
-        return $this;
-    }*/
-
     public function getFonction(): ?string
     {
         return $this->fonction;

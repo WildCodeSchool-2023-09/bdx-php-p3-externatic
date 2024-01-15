@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Candidate;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @extends ServiceEntityRepository<Candidate>
@@ -31,5 +32,14 @@ class CandidateRepository extends ServiceEntityRepository
             ->setParameter('location', '%' . $location . '%');
 
         return $queryBuilder->getQuery()->getResult();
+    }
+    public function findByLikedCompany(UserInterface $company): array
+    {
+        return $this->createQueryBuilder('c')
+            ->innerJoin('c.likingCompanies', 'company')
+            ->where('company = :company')
+            ->setParameter('company', $company)
+            ->getQuery()
+            ->getResult();
     }
 }
