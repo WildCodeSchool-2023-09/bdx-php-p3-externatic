@@ -60,12 +60,7 @@ class ProfileController extends AbstractController
             $entityManager->persist($user);
             // $entityManager->flush();
 
-            /*if ($companyForm->isSubmitted() && $companyForm->isValid()) {
-                $company->setUser($user);
-                $entityManager->persist($company);
-            }*/
-
-            if ($companyForm->isSubmitted()) {
+            if ($companyForm->isSubmitted() /* && $companyForm->isValid()*/) {
                 $company->setUser($user);
                 $entityManager->persist($company);
             }

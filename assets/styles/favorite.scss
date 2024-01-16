@@ -1,0 +1,39 @@
+img[src*="favorite"] {
+    height: 400px;
+}
+
+.favoriteJobs {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.favoriteTitle {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.seeOffer {
+    margin-top: 1rem;
+}
+
+.jobAddress {
+    font-weight: bold;
+}
+
+.favoriteAvatar {
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+
+
+
+    img[src*="favorite"] {
+        display: flex;
+        height: 200px;
+
+    }
+}
