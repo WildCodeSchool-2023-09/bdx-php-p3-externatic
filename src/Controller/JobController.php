@@ -55,6 +55,9 @@ class JobController extends AbstractController
     public function edit(Request $request, Job $job, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(JobType::class, $job);
+
+        $form->get('company')->createView()->vars['disabled'] = true;
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
