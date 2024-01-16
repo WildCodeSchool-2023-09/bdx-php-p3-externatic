@@ -65,11 +65,6 @@ class ProfileController extends AbstractController
                 $entityManager->persist($company);
             }
 
-            if ($companyForm->isSubmitted()) {
-                $company->setUser($user);
-                $entityManager->persist($company);
-            }
-
             if ($candidateForm->isSubmitted() && $candidateForm->isValid()) {
                 /** @var UploadedFile $cvFile */
                 $cvFile = $candidateForm->get('profileCV')->getData();
