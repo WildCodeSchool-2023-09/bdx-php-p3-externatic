@@ -15,12 +15,37 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/job')]
 class JobController extends AbstractController
 {
-    #[Route('/', name: 'app_job_index', methods: ['GET'])]
+    /*#[Route('/', name: 'app_job_index', methods: ['GET'])]
     public function index(JobRepository $jobRepository): Response
     {
         return $this->render('job/index.html.twig', [
             'jobs' => $jobRepository->findAll(),
         ]);
+    }*/
+
+    #[Route('/', name: 'app_job_index', methods: ['GET'])]
+    public function index(JobRepository $jobRepository): Response
+    {
+        $user = $this->getUser();
+
+        if ($this->isGranted('ROLE_COMPANY') && $user->getCompany() !== null) {
+            // Si user a rôle ROLE_COMPANY affiche les jobs de cette entreprise
+            $jobs = $jobRepository->findBy(['company' => $user->getCompany()]);
+
+            return $this->render('job/index.html.twig', [
+                'jobs' => $jobs,
+            ]);
+        } elseif ($this->isGranted('ROLE_ADMIN')) {
+            // Si l'utilisateur a le rôle ROLE_ADMIN, afficher tous les jobs
+            $jobs = $jobRepository->findAll();
+
+            return $this->render('job/index.html.twig', [
+                'jobs' => $jobs,
+            ]);
+        } else {
+            // Si l'utilisateur n'a ni le rôle ROLE_COMPANY ni le rôle ROLE_ADMIN
+            return $this->redirectToRoute('app_home');
+        }
     }
 
     #[Route('/new', name: 'app_job_new', methods: ['GET', 'POST'])]
