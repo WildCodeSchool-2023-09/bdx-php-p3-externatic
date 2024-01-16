@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Application;
+use App\Entity\Candidate;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,5 +20,19 @@ class ApplicationRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Application::class);
+    }
+
+    /**
+     * @param Candidate $candidate
+     * @return Application[]
+     */
+    public function findByCandidate(Candidate $candidate): array
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.curriculum', 'cvs')
+            ->andWhere('cvs.candidate = :candidate')
+            ->setParameter('candidate', $candidate)
+            ->getQuery()
+            ->getResult();
     }
 }

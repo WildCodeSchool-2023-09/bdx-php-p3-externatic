@@ -7,6 +7,7 @@ use App\Entity\Candidate;
 use App\Entity\CVs;
 use App\Entity\Job;
 use App\Form\ApplyFormType;
+use App\Repository\ApplicationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,15 +37,15 @@ class ApplyController extends AbstractController
             throw $this->createNotFoundException('Vous devez être un candidat pour postuler à un emploi.');
         }
 
-        // Créez une nouvelle instance d'Application
+        // Crée une nouvelle instance d'Application
         $application = new Application();
         $application->setJob($job);
         $application->setStatus('Pending');
 
-        // Créez le formulaire
+        // Crée le formulaire
         $form = $this->createForm(ApplyFormType::class, $application);
 
-        // Gérez la soumission du formulaire
+        // Gére la soumission du formulaire
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,10 +83,38 @@ class ApplyController extends AbstractController
             return $this->redirectToRoute('app_job_show', ['id' => $job->getId()]);
         }
 
-        // Rendez la vue avec le formulaire
+        // Rend la vue avec le formulaire
         return $this->render('apply/apply_job.html.twig', [
             'form' => $form->createView(),
             'job' => $job,
+        ]);
+    }
+
+    #[Route('/appliedJobs', name: 'app_appliedJobs')]
+    public function appliedJobs(ApplicationRepository $applicationRepo): Response
+    {
+        // Récupère l'utilisateur connecté (candidat)
+        $user = $this->getUser();
+
+        // Vérifie si l'utilisateur est connecté
+        if (!$user) {
+            throw $this->createNotFoundException('Utilisateur non connecté.');
+        }
+
+        // Récupère le candidat associé à l'utilisateur
+        $candidate = $user->getCandidate();
+
+        // Vérifie si le candidat existe
+        if ($candidate === null) {
+            throw $this->createNotFoundException('Candidat non trouvé.');
+        }
+
+        // Récupère les applications liées au candidat
+        $applications = $applicationRepo->findByCandidate($candidate);
+
+        // Passer $applications à la vue
+        return $this->render('apply/appliedJobs.html.twig', [
+            'applications' => $applications,
         ]);
     }
 }
