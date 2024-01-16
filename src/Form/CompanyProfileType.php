@@ -20,7 +20,7 @@ class CompanyProfileType extends AbstractType
     {
         $builder
             ->add('siret', NumberType::class, ['label' => false, 'required' => false,  'constraints' => [
-        new NotBlank(),  new Length([
+         new Length([
             'min' => 14,
             'max' => 14,
                     'minMessage' => 'veuillez saisir un numéro de siret valide',

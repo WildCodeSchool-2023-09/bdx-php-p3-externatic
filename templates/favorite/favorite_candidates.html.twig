@@ -3,23 +3,77 @@
 {% block title %}Candidats Favoris{% endblock %}
 
 {% block body %}
-    <h1>Candidats Favoris</h1>
-
+<div class="grid-container">
+    <div class="grid-child-image">
+        <h1>Candidats Favoris</h1>
+        <img src="{{ asset('build/images/favoriteCandidates.svg') }}" alt="man and woman high-five"/>
+    </div>
+    <div class="grid-child-form">
     {% if favoriteCandidates is empty %}
-        <p>Aucun candidat en favori.</p>
+        <h2>Aucun candidat en favori </h2>
     {% else %}
         <ul>
             {% for candidate in favoriteCandidates %}
-                <li>Nom du candidat: {{ candidate.user.username }}</li>
-                <li>Fonction: {{ candidate.fonction }}</li>
+            <div class="favoriteJobs">
+                <div class="favoriteAvatar">
+                {% if candidate.user.image is defined and candidate.user.image is not null %}
                 <img class="avatar" src="{{ asset('uploads/images/' ~ candidate.user.image ) }}" alt="user profile image">
-                <li>Photo: {{ candidate.user.image }}</li>
-                <li>Biographie: {{ candidate.user.bio }}</li>
-                <li>LinkedIn: {{ candidate.user.linkedin }}</li>
-                <li>Github: {{ candidate.github }}</li>
-                <li>Email: {{ candidate.user.email }}</li>
+            </div>
+                {% else %}
+                    <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
+                    </div>
+                    {% endif %}
+            <div>
+                <li class="favoriteTitle"> {{ candidate.user.username }}</li>
+            </div>
+            <div>
+                <li class="jobAddress">En recherche de {{ candidate.fonction }} à {{ candidate.location }}</li>
+                <li>{{ candidate.user.bio }}</li>
+            </div>
+            <div>
+                <a href="{{ candidate.user.linkedin }}" target="_blank" class="profile-icon" onclick="return confirm('Cliquez sur OK pour être redirigé vers Linkedin');">
+                    <ion-icon name="logo-linkedin" class="profile-icon"></ion-icon>
+                </a>
+                <a href="{{ candidate.github }}" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers GitHub');" target="_blank">
+                    <ion-icon name="logo-github" class="profile-icon"></ion-icon>
+                </a>
+                <ion-icon name="mail" class="profile-icon" onclick="revealEmail()"></ion-icon>
+                <h3 id="reveal_email">{{ candidate.user.email }}</h3>
+            </div>
+                <div class="seeOffer">
                 <a class="btn btn-primary" href="{{ path('app_profile_candidate', {'id': candidate.id}) }}">Voir le profil</a>
+            </div>
+    </div>
             {% endfor %}
         </ul>
     {% endif %}
+    </div>
+</div>
+
+
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+
+    </script>
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
+
+        </script>
+<script>
+
+
+            function revealEmail() {
+            var x = document.getElementById("reveal_email");
+            if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        }
+
+    </script>
+
 {% endblock %}
+

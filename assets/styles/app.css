@@ -33,15 +33,14 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-.profile_buttons {
+.btn {
     background-color: var(--primary-color);
     color: var(--dominant);
     border: none;
     width: 65%;
     border-radius: 25px;
-    margin-top: 1rem;
-    padding: 0.7rem;
-    font-size: 1.5rem;
+    margin-top: 1.2rem;
+    padding: 0.2rem;
     text-align: center;
     &:hover {
         color: var(--dominant);

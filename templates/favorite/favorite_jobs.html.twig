@@ -3,21 +3,32 @@
 {% block title %}Mes jobs favoris{% endblock %}
 
 {% block body %}
-    <h1>Emplois Favoris</h1>
-
+<div class="grid-container">
+    <div class="grid-child-image">
+        <h1>Emplois Favoris</h1>
+        <img src="{{ asset('build/images/favoritejob.svg') }}" alt="woman holding a heart"/>
+    </div>
+    <div class="grid-child-form">
     {% if favoriteJobs is empty %}
-        <p>Aucun emploi en favori.</p>
+        <h2>Aucun emploi en favori</h2>
     {% else %}
         <ul>
             {% for job in favoriteJobs %}
-                <li>Titre de l'emploi: {{ job.title}}</li>
-                <li>Adresse de l'emploi: {{ job.adress}}</li>
-                <li>Ville: {{ job.city}}</li>
-                <li>Description de l'emploi: {{ job.description}}</li>
+                <div class="favoriteJobs">
+                <li class="favoriteTitle">{{ job.title}}</li>
+                <li class="jobAddress">{{ job.adress}}</li>
+                <li class="jobAddress">{{ job.city}}</li>
+                <li>{{ job.description}}</li>
                 <li>Salaire: {{ job.salary}}</li>
                 <li>Date de début du contrat: {{ job.startDate|date('Y-m-d') }}</li>
-                <a class="btn btn-primary" href="{{ path('app_job_show', {'id': job.id}) }}">Accéder à l'offre</a>
+                    <div class="seeOffer">
+                <a class="btn" href="{{ path('app_job_show', {'id': job.id}) }}">Accéder à l'offre</a>
+                </div>
+    </div>
             {% endfor %}
         </ul>
     {% endif %}
+    </div>
+</div>
 {% endblock %}
+
