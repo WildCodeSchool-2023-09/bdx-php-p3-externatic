@@ -1,0 +1,28 @@
+{# templates/apply/apply_job.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Postuler à l'offre{{ job.title }}{% endblock %}
+
+{% block body %}
+    <h1>Postuler à l'offre {{ job.title }}</h1>
+
+    {% if app.user %}
+        {% if not job.isAppliedByCandidate(app.user.candidate) %}
+            {{ form_start(form) }}
+            {{ form_row(form.message) }}
+            {{ form_row(form.curriculum) }}
+{#
+            {{ form_row(form.status) }}
+#}
+
+            <button type="submit">Postuler</button>
+
+            {{ form_end(form) }}
+        {% else %}
+            <p>Vous avez déjà postulé à cette offre.</p>
+        {% endif %}
+    {% else %}
+        <p>Vous devez être connecté pour postuler à une offre.</p>
+    {% endif %}
+{% endblock %}
