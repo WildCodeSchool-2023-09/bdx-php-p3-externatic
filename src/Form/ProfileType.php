@@ -8,6 +8,7 @@ use App\Entity\User;
 use http\Url;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -16,6 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\HtmlSanitizer\Type;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\UX\Dropzone\Form\DropzoneType;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -27,7 +29,7 @@ class ProfileType extends AbstractType
     {
         $builder
             ->add('username', null, ['label' => false,])
-        ->add('image', DropzoneType::class, [
+            ->add('image', DropzoneType::class, [
          'label' => false,
           'mapped' => false,
            'required' => false,
@@ -42,7 +44,6 @@ class ProfileType extends AbstractType
                     ]
         ])
             ->add('bio', null, ['label' => false, 'required' => false,])
-            // try changing this to regex to validate !
             ->add('linkedin', null, ['label' => false, 'required' => false, 'constraints' => [
                 new Regex([
                     'pattern' =>
