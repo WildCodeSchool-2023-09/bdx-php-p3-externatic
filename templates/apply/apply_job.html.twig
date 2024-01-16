@@ -11,11 +11,7 @@
         {% if not job.isAppliedByCandidate(app.user.candidate) %}
             {{ form_start(form) }}
             {{ form_row(form.message) }}
-            {{ form_row(form.curriculum) }}
-{#
-            {{ form_row(form.status) }}
-#}
-
+            {{ form_row(form.cvChoice) }}
             <button type="submit">Postuler</button>
 
             {{ form_end(form) }}
