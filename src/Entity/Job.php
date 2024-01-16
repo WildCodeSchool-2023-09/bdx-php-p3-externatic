@@ -184,6 +184,17 @@ class Job
         return $this;
     }
 
+    public function isAppliedByCandidate(Candidate $candidate): bool
+    {
+        foreach ($this->applications as $application) {
+            if ($application->getCandidate() === $candidate) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function getCity(): ?string
     {
         return $this->city;
