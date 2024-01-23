@@ -30,7 +30,8 @@
 <main>
 
     {% block body %}
-
+        {% for message in app.flashes('success') %}
+        {% endfor %}
     {% endblock %}
 </main>
 <footer>

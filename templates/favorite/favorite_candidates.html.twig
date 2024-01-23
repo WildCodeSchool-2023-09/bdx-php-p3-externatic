@@ -12,7 +12,7 @@
     {% if favoriteCandidates is empty %}
         <h2>Aucun candidat en favori </h2>
     {% else %}
-        <ul>
+
             {% for candidate in favoriteCandidates %}
             <div class="favoriteJobs">
                 <div class="favoriteAvatar">
@@ -23,13 +23,11 @@
                     <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
                     </div>
                     {% endif %}
-            <div>
-                <li class="favoriteTitle"> {{ candidate.user.username }}</li>
-            </div>
-            <div>
+            <p class="favoriteTitle"> {{ candidate.user.username }}
+
+            </p>
                 <li class="jobAddress">En recherche de {{ candidate.fonction }} à {{ candidate.location }}</li>
                 <li>{{ candidate.user.bio }}</li>
-            </div>
             <div>
                 <a href="{{ candidate.user.linkedin }}" target="_blank" class="profile-icon" onclick="return confirm('Cliquez sur OK pour être redirigé vers Linkedin');">
                     <ion-icon name="logo-linkedin" class="profile-icon"></ion-icon>
@@ -45,10 +43,9 @@
             </div>
     </div>
             {% endfor %}
-        </ul>
     {% endif %}
     </div>
-</div>
+
 
 
     <script

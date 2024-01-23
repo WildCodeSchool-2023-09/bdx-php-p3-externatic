@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Job;
 use App\Form\JobType;
+use App\Repository\ApplicationRepository;
 use App\Repository\JobRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -106,5 +107,12 @@ class JobController extends AbstractController
         }
 
         return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/applicants', name: 'app_job_applicants')]
+    public function applicants(): Response
+    {
+
+        return $this->render('job/applicants.html.twig');
     }
 }
