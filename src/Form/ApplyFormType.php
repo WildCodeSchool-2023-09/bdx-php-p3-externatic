@@ -8,6 +8,7 @@ use App\Entity\Job;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\Dropzone\Form\DropzoneType;
@@ -18,7 +19,7 @@ class ApplyFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('message')
+            ->add('message', null, ['label' => false ])
             ->add('cvChoice', ChoiceType::class, [
                 'choices' => [
                     'CV par défaut' => 'default',

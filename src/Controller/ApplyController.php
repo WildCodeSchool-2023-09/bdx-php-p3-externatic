@@ -43,19 +43,19 @@ class ApplyController extends AbstractController
         $application->setStatus('Pending');
 
         // Crée le formulaire
-        $form = $this->createForm(ApplyFormType::class, $application);
+        $applyForm = $this->createForm(ApplyFormType::class, $application);
 
         // Gére la soumission du formulaire
-        $form->handleRequest($request);
+        $applyForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $application = $form->getData();
+        if ($applyForm->isSubmitted() && $applyForm->isValid()) {
+            $application = $applyForm->getData();
             $application->setJob($job);
 
-            $cvChoice = $form->get('cvChoice')->getData();
+            $cvChoice = $applyForm->get('cvChoice')->getData();
 
             if ($cvChoice === 'new') {
-                $newCVFile = $form->get('newCV')->getData();
+                $newCVFile = $applyForm->get('newCV')->getData();
                 $newCVFileName = $fileUploader->upload($newCVFile);
 
                 // Enregistre le nouveau CV dans la base de données
@@ -85,7 +85,7 @@ class ApplyController extends AbstractController
 
         // Rend la vue avec le formulaire
         return $this->render('apply/apply_job.html.twig', [
-            'form' => $form->createView(),
+            'applyForm' => $applyForm->createView(),
             'job' => $job,
         ]);
     }

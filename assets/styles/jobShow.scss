@@ -21,3 +21,51 @@
     align-items: stretch;
     margin: 2rem 8rem;
 }
+
+.apply_label {
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+label[for='apply_form_cvChoice_0'] {
+    background-color: var(--dominant);
+    color: grey;
+    border-color: var(--contrast);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    &:hover {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+}
+
+
+label[for='apply_form_cvChoice_1'] {
+    background-color: var(--dominant);
+    color: grey;
+    border-color: var(--contrast);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+
+    &:hover {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+}
+

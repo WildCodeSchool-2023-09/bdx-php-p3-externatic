@@ -63,10 +63,9 @@
             <div class="edit_btns">
                 {% if app.user.company.jobs is defined and app.user.company.jobs is  not null %}
                     <h2>Nos offres</h2>
-                    <div class="searchResults">
                         {% for job in app.user.company.jobs %}
-                        <div class="jobCard">
-                            <h2>{{ job.title }}</h2>
+                            <div class="ourJobs">
+                            <h2  class="favoriteTitle">{{ job.title }}</h2>
                             <strong>{{ job.city }}</strong>
                             <p>{{ job.description }}</p>
                             <i>{{ job.salary }}€</i>
@@ -75,7 +74,7 @@
                             </div>
                         </div>
                 {% endfor %}
-            </div>
+
                 {% endif %}
 
 

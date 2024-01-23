@@ -16,6 +16,13 @@ img[src*="coffee"] {
     height: 400px;
 }
 
+img[src*="moving"] {
+    height: 300px;
+}
+
+img[src*="messaging"] {
+    display: none;
+}
 
 img[src*="designer"] {
     display: none;
@@ -56,6 +63,17 @@ img[src*="male_avatar"] {
 
 }
 
+.ourJobs {
+
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+.jobSeeMore {
+    margin: 1rem;
+}
 
 
 @media screen and (max-width: 768px) {
@@ -85,6 +103,15 @@ img[src*="male_avatar"] {
     .company_avatar {
         height: auto;
         width: 100%;
+    }
+
+    img[src*="moving"] {
+        display: none;
+    }
+
+    img[src*="messaging"] {
+        display: flex;
+        height: 200px;
     }
 
 }
