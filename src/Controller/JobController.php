@@ -126,17 +126,12 @@ class JobController extends AbstractController
     } */
 
     #[Route('/{id}/applications')]
-    public function applications(Job $job, ApplicationRepository $applicationRepo,
-                                 CandidateRepository $candidateRepo,
-                                 Candidate $candidate): Response
+    public function applications(Job $job, ApplicationRepository $applicationRepo): Response
     {
         $applications = $applicationRepo->findBy(['job' => $job]);
-        $candidate = $candidateRepo->findAll();
-
         return $this->render('job/applications.html.twig', [
             'applications' => $applications,
             'job' => $job,
-            'candidate' => $candidate
         ]);
     }
 }
