@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Application;
+use App\Entity\Candidate;
 use App\Entity\Job;
 use App\Form\JobType;
+use App\Form\StatusFormType;
 use App\Repository\ApplicationRepository;
+use App\Repository\CandidateRepository;
 use App\Repository\JobRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,6 +16,7 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 
 #[Route('/job')]
 class JobController extends AbstractController
@@ -109,10 +114,33 @@ class JobController extends AbstractController
         return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/applicants', name: 'app_job_applicants')]
-    public function applicants(): Response
-    {
+    /*#[Route('/{id}/application/{application_id}')]
+    public function applications(
+        Job $job,
+        #[MapEntity(expr: 'repository.find(application_id)')]
+        Application $applications
+    ): Response {
+        return $this->render('job/applications.html.twig', [
+            'applications' => $applications, 'job' => $job
+        ]);
+    } */
 
-        return $this->render('job/applicants.html.twig');
+    #[Route('/{id}/applications')]
+    public function applications(Job $job, ApplicationRepository $applicationRepo): Response
+    {
+        $applications = $applicationRepo->findBy(['job' => $job]);
+        return $this->render('job/applications.html.twig', [
+            'applications' => $applications,
+            'job' => $job,
+        ]);
     }
 }
+
+/*
+$statusForm = $this->createForm(StatusFormType::class, $application);
+$statusForm->handleRequest($request)
+if ($statusForm->isSubmitted()  && $statusForm->isValid()) {
+    $application->setStatus($);
+    $entityManager->persist($application);
+}
+*/

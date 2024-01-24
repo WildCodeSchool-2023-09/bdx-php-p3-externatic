@@ -20,6 +20,10 @@ img[src*="moving"] {
     height: 300px;
 }
 
+img[src*="partying"] {
+    height: 400px;
+}
+
 img[src*="messaging"] {
     display: none;
 }
@@ -111,6 +115,10 @@ img[src*="male_avatar"] {
 
     img[src*="messaging"] {
         display: flex;
+        height: 200px;
+    }
+
+    img[src*="partying"] {
         height: 200px;
     }
 
