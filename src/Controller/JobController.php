@@ -6,17 +6,17 @@ use App\Entity\Application;
 use App\Entity\Candidate;
 use App\Entity\Job;
 use App\Form\JobType;
-use App\Form\StatusFormType;
 use App\Repository\ApplicationRepository;
 use App\Repository\CandidateRepository;
 use App\Repository\JobRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
+use App\Form\StatusFormType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 #[Route('/job')]
 class JobController extends AbstractController
@@ -114,33 +114,45 @@ class JobController extends AbstractController
         return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    /*#[Route('/{id}/application/{application_id}')]
+
+    #[Route('/{id}/applications', name: 'app_job_applications')]
     public function applications(
         Job $job,
-        #[MapEntity(expr: 'repository.find(application_id)')]
-        Application $applications
+        ApplicationRepository $applicationRepo,
     ): Response {
-        return $this->render('job/applications.html.twig', [
-            'applications' => $applications, 'job' => $job
-        ]);
-    } */
-
-    #[Route('/{id}/applications')]
-    public function applications(Job $job, ApplicationRepository $applicationRepo): Response
-    {
         $applications = $applicationRepo->findBy(['job' => $job]);
+
         return $this->render('job/applications.html.twig', [
             'applications' => $applications,
+            'job' => $job,
+
+        ]);
+    }
+
+    #[Route('/job/{id}/applications/{application_id}', name: 'app_job_decision')]
+    public function editStatus(
+        Job $job,
+        #[MapEntity(expr: 'repository.find(application_id)')]
+        Application $application,
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
+
+        $statusForm = $this->createForm(StatusFormType::class, $application);
+        $statusForm->handleRequest($request);
+
+        if ($statusForm->isSubmitted()) {
+            $entityManager->persist($application);
+            $entityManager->flush();
+
+            $this->addFlash('decision', 'le statut a été mis à jour ');
+            return $this->redirectToRoute('app_job_applications', ['id' => $job->getId()]);
+        }
+
+        return $this->render('job/application_decision.html.twig', [
+            'statusForm' => $statusForm->createView(),
+            'application' => $application,
             'job' => $job,
         ]);
     }
 }
-
-/*
-$statusForm = $this->createForm(StatusFormType::class, $application);
-$statusForm->handleRequest($request)
-if ($statusForm->isSubmitted()  && $statusForm->isValid()) {
-    $application->setStatus($);
-    $entityManager->persist($application);
-}
-*/

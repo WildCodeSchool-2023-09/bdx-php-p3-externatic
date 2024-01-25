@@ -14,7 +14,7 @@ class Application
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: false)]
     private ?string $message = null;
 
     #[ORM\Column(length: 255)]

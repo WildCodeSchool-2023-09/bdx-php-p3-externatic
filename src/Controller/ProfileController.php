@@ -6,7 +6,6 @@ use App\Entity\Candidate;
 use App\Entity\Company;
 use App\Entity\CVs;
 use App\Entity\User;
-use App\Form\CandidateCVType;
 use App\Form\CandidateProfileType;
 use App\Form\CompanyProfileType;
 use App\Form\ProfileType;
