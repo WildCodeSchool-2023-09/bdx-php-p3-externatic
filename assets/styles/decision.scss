@@ -61,7 +61,34 @@ label[for='status_form_status_2'] {
 
 .submit_decision {
 
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.applicantName {
+    color: var(--primary-color);
+}
+
+.statusForm {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 2rem;
     margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    label[for='status_form_status_0'] {
+        padding: 0.3rem;
+    }
+
+    label[for='status_form_status_1'] {
+        padding: 0.3rem;
+    }
+
+    label[for='status_form_status_2'] {
+        padding: 0.3rem;
+    }
 }
 
 
