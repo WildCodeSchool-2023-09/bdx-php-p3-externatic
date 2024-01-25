@@ -1,0 +1,67 @@
+
+label[for='status_form_status_0'] {
+    background-color: var(--dominant);
+    color: grey;
+    border-color: var(--contrast);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    &:hover {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+}
+
+label[for='status_form_status_1'] {
+    background-color: var(--dominant);
+    color: grey;
+    border-color: var(--contrast);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    &:hover {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+}
+
+label[for='status_form_status_2'] {
+    background-color: var(--dominant);
+    color: grey;
+    border-color: var(--contrast);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    &:hover {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+}
+
+.submit_decision {
+
+    margin-top: 2rem;
+}
+
+

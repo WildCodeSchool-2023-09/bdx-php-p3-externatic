@@ -64,6 +64,11 @@
 {% endblock %}
 
 {% block body %}
+    {% for message in app.flashes('application') %}
+    <div class="registered">
+        {{ message }}
+    </div>
+    {%  endfor %}
     <div class="card job-card">
         <div class="card-header job-card-header">
             <h5 class="card-title">{{ job.title }}</h5>

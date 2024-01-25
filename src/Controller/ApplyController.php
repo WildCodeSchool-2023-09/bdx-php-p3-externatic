@@ -28,14 +28,18 @@ class ApplyController extends AbstractController
         $user = $this->getUser();
 
         if (!$user) {
-            throw $this->createNotFoundException('Vous devez être connecté pour postuler à un emploi.');
+            $this->addFlash('connect', 'Vous devez être connecté pour postuler à un emploi');
+            return $this->redirectToRoute('app_login');
         }
 
         /** @var Candidate|null $candidate */
         $candidate = $user->getCandidate();
 
         if (!$candidate) {
-            throw $this->createNotFoundException('Vous devez être un candidat pour postuler à un emploi.');
+            $this->addFlash('profile', "modifiez d'abord votre profil pour améliorer votre candidature !");
+            return $this->redirectToRoute('app_profile_edit');
+
+           // throw $this->createNotFoundException('Vous devez être un candidat pour postuler à un emploi.');//
         }
 
         // Crée une nouvelle instance d'Application
@@ -79,7 +83,7 @@ class ApplyController extends AbstractController
             $entityManager->persist($application);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Votre candidature a été soumise avec succès.');
+            $this->addFlash('application', 'votre candidature a été soumise avec succès');
 
             return $this->redirectToRoute('app_job_show', ['id' => $job->getId()]);
         }
@@ -107,7 +111,7 @@ class ApplyController extends AbstractController
 
         // Vérifie si le candidat existe
         if ($candidate === null) {
-            throw $this->createNotFoundException('Candidat non trouvé.');
+            throw $this->createNotFoundException('Candidat non trouvé');
         }
 
         // Récupère les applications liées au candidat
