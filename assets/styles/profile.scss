@@ -21,7 +21,7 @@ img[src*="moving"] {
 }
 
 img[src*="exciting"] {
-    height: 400px;
+    display:none;
 }
 
 img[src*="partying"] {
@@ -83,6 +83,10 @@ img[src*="male_avatar"] {
     margin: 1rem;
 }
 
+img[src*="happy"] {
+    height: 400px;
+}
+
 
 @media screen and (max-width: 768px) {
     img[src*="coffee_with_friends"] {
@@ -127,7 +131,13 @@ img[src*="male_avatar"] {
     }
 
     img[src*="exciting"] {
+        display: flex;
         height: 200px;
+    }
+
+    img[src*="happy"] {
+        height: 200px;
+
     }
 
 }
