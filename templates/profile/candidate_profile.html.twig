@@ -5,7 +5,7 @@
 <div class="grid-container-profile">
     {% if candidate.user.image is defined and candidate.user.image is not null %}
     <div class="grid-child-image">
-        <img class="avatar" src="{{ asset('uploads/images/' ~ app.user.image) }}" alt="user profile image">
+        <img class="avatar" src="{{ asset('uploads/images/' ~ candidate.user.image) }}" alt="user profile image">
 
         {% else %}
         <div class="grid-child-image">
@@ -26,7 +26,7 @@
                         </a>
                     {%  endif %}
                     {% if candidate.profileCV is defined and candidate.profileCV is not null %}
-                        <a href="{{ asset('uploads/images/' ~ app.user.candidate.profileCV) }}" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers le CV de {{ app.user.username }}');" target="_blank">
+                        <a href="{{ asset('uploads/images/' ~ candidate.profileCV) }}" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers le CV de {{ app.user.username }}');" target="_blank">
                             <ion-icon class="profile-icon" name="document-text-outline" alt="Voir mon CV"></ion-icon>
                         </a>
                     {% endif %}

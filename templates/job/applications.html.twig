@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Applicants{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('decision') %}
+        <div class="registered">
+            {{ message }}
+        </div>
+    {%  endfor %}
+<div class="grid-container">
+    <div class="grid-child-image">
+        <h1> {{ job.title }} : Candidatures</h1>
+        <img src="{{ asset('build/images/partying.svg') }}" alt="people with balloons"/>
+    </div>
+    <div class="grid-child-form">
+        {% if applications is not empty %}
+            {% for application in applications %}
+                <div class="favoriteJobs">
+                    <div class="favoriteAvatar">
+                    {% if application.curriculum.candidate.user.image is defined and application.curriculum.candidate.user.image is not null %}
+                        <img class="avatar" src="{{ asset('uploads/images/' ~ application.curriculum.candidate.user.image) }}" alt="user profile image">
+                        </div>
+                        {% else %}
+                            <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
+                            </div>
+                            {%  endif %}
+                    <p class="favoriteTitle"> {{ application.curriculum.candidate.user.username }}</p>
+                    <p class="jobAddress">Message : {{ application.message }}</p>
+                    <a href="{{ asset('uploads/images/' ~ application.curriculum.name) }}" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers le CV de {{ app.user.username }}');" target="_blank">
+                        <ion-icon class="profile-icon" name="document-text-outline" alt="Voir mon CV"></ion-icon>
+                    </a>
+                <p class="jobAddress">Status : {{ application.status }}</p>
+
+
+                <a class="connection" href="{{ path('app_job_decision', {'id': job.id, 'application_id': application.id}) }}">decision</a>
+                    <div class="seeOffer">
+                        <a class="btn btn-primary" href="{{ path('app_profile_candidate', {'id': application.curriculum.candidate.id}) }}">Voir le profil</a>
+                    </div>
+                </div>
+
+            {% endfor %}
+            </div>
+        {% else %}
+            <p>Aucune candidat trouvée</p>
+        {% endif %}
+        {% endblock %}
+
+
+

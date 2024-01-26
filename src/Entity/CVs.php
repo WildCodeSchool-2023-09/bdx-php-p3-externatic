@@ -16,11 +16,11 @@ class CVs
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'CVs')]
+    #[ORM\ManyToOne(inversedBy: 'profileCV')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Candidate $candidate = null;
 
-    #[ORM\OneToOne(mappedBy: 'cv', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'curriculum', cascade: ['persist', 'remove'])]
     private ?Application $application = null;
 
     public function getId(): ?int

@@ -20,6 +20,14 @@ img[src*="moving"] {
     height: 300px;
 }
 
+img[src*="exciting"] {
+    display:none;
+}
+
+img[src*="partying"] {
+    height: 400px;
+}
+
 img[src*="messaging"] {
     display: none;
 }
@@ -75,6 +83,10 @@ img[src*="male_avatar"] {
     margin: 1rem;
 }
 
+img[src*="happy"] {
+    height: 400px;
+}
+
 
 @media screen and (max-width: 768px) {
     img[src*="coffee_with_friends"] {
@@ -112,6 +124,20 @@ img[src*="male_avatar"] {
     img[src*="messaging"] {
         display: flex;
         height: 200px;
+    }
+
+    img[src*="partying"] {
+        height: 200px;
+    }
+
+    img[src*="exciting"] {
+        display: flex;
+        height: 200px;
+    }
+
+    img[src*="happy"] {
+        height: 200px;
+
     }
 
 }

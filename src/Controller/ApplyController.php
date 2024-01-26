@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 
 class ApplyController extends AbstractController
 {
@@ -29,7 +30,8 @@ class ApplyController extends AbstractController
 
         // Vérifie si l'utilisateur est connecté
         if (!$user) {
-            throw $this->createNotFoundException('Vous devez être connecté pour postuler à un emploi.');
+            $this->addFlash('connect', 'Vous devez être connecté pour postuler à un emploi');
+            return $this->redirectToRoute('app_login');
         }
 
         // Récupère le candidat associé à l'utilisateur
@@ -38,7 +40,10 @@ class ApplyController extends AbstractController
 
         // Vérifie si l'utilisateur est un candidat
         if (!$candidate) {
-            throw $this->createNotFoundException('Vous devez être un candidat pour postuler à un emploi.');
+            $this->addFlash('profile', "modifiez d'abord votre profil pour améliorer votre candidature !");
+            return $this->redirectToRoute('app_profile_edit');
+
+           // throw $this->createNotFoundException('Vous devez être un candidat pour postuler à un emploi.');//
         }
 
         // Crée une nouvelle instance d'Application
@@ -90,6 +95,7 @@ class ApplyController extends AbstractController
             // Ajoute un message flash pour indiquer le succès de la soumission de la candidature
             $this->addFlash('success', 'Votre candidature a été soumise avec succès.');
 
+
             // Redirige vers la page de détails de l'offre d'emploi
             return $this->redirectToRoute('app_job_show', ['id' => $job->getId()]);
         }
@@ -117,7 +123,7 @@ class ApplyController extends AbstractController
 
         // Vérifie si le candidat existe
         if ($candidate === null) {
-            throw $this->createNotFoundException('Candidat non trouvé.');
+            throw $this->createNotFoundException('Candidat non trouvé');
         }
 
         // Récupère les applications liées au candidat

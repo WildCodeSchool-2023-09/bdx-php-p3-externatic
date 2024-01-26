@@ -2,7 +2,11 @@
 {% block title %}Edit profile{% endblock %}
 
 {% block body %}
-
+    {% for message in app.flashes('profile') %}
+        <div class="registered">
+            {{ message }}
+        </div>
+    {% endfor %}
         <div class="grid-container">
             <div class="grid-child-image">
                 <h1>Modifier votre profil</h1>
