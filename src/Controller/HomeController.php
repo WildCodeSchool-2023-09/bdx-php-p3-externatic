@@ -20,16 +20,26 @@ class HomeController extends AbstractController
         CandidateRepository $candidateRepository
     ): Response {
         // Formulaire pour trouver un job
+        // Crée un formulaire de recherche d'emploi en utilisant JobSearchFormType
         $form = $this->createForm(JobSearchFormType::class);
+
+        // Gère la soumission et la validation du formulaire
         $form->handleRequest($request);
+
+        // Initialise un tableau vide pour stocker les résultats des offres d'emploi
         $jobs = [];
+
+        // Vérifie si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
+            // Récupère le titre et l'emplacement du formulaire
             $title = $form->get('title')->getData();
             $location = $form->get('city')->getData();
-            // Vérifie si $title et $location sont null et leur donne une valeur par défaut
+
+            // Assure que $title et $location ont des valeurs par défaut s'ils sont nuls
             $title = $title ?? '';
             $location = $location ?? '';
-            // Effectue recherche en fonction du titre du job
+
+            // Effectue une recherche en fonction du titre et de l'emplacement de l'emploi
             $jobs = $jobRepository->searchByTitleAndLocation($title, $location);
         } else {
             // Si le formulaire n'est pas soumis, affiche les 8 dernières annonces
@@ -38,19 +48,27 @@ class HomeController extends AbstractController
 
         // Formulaire pour trouver un candidat
         $candidateSearchForm = $this->createForm(CandidateSearchFormType::class);
+
+        // Gère la soumission et la validation du formulaire de recherche de candidat
         $candidateSearchForm->handleRequest($request);
+
+        // Initialise un tableau vide pour stocker les résultats des candidats
         $candidates = [];
 
+        // Vérifie si le formulaire de recherche de candidat est soumis et valide
         if ($candidateSearchForm->isSubmitted() && $candidateSearchForm->isValid()) {
+            // Récupère la fonction et l'emplacement du formulaire
             $fonction = $candidateSearchForm->get('fonction')->getData();
             $location = $candidateSearchForm->get('location')->getData();
-            // Effectue la recherche en fonction de la fonction et de la location
+
+            // Effectue une recherche en fonction de la fonction et de l'emplacement du candidat
             $candidates = $candidateRepository->searchByFunctionAndLocation($fonction, $location);
         } else {
             // Si le formulaire n'est pas soumis, affiche les 8 derniers candidats inscrits
             $candidates = $candidateRepository->findBy([], ['id' => 'DESC'], 8);
         }
 
+        // Passe au template les forms et résultats
         return $this->render('home/index.html.twig', [
             'searchForm' => $form->createView(),
             'candidateSearchForm' => $candidateSearchForm->createView(),

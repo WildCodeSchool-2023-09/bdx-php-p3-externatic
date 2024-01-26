@@ -16,14 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/job')]
 class JobController extends AbstractController
 {
-    /*#[Route('/', name: 'app_job_index', methods: ['GET'])]
-    public function index(JobRepository $jobRepository): Response
-    {
-        return $this->render('job/index.html.twig', [
-            'jobs' => $jobRepository->findAll(),
-        ]);
-    }*/
-
     #[Route('/', name: 'app_job_index', methods: ['GET'])]
     public function index(JobRepository $jobRepository): Response
     {
