@@ -24,15 +24,19 @@ class ApplyController extends AbstractController
         EntityManagerInterface $entityManager,
         FileUploader $fileUploader
     ): Response {
+        // Récupère l'utilisateur connecté
         $user = $this->getUser();
 
+        // Vérifie si l'utilisateur est connecté
         if (!$user) {
             throw $this->createNotFoundException('Vous devez être connecté pour postuler à un emploi.');
         }
 
+        // Récupère le candidat associé à l'utilisateur
         /** @var Candidate|null $candidate */
         $candidate = $user->getCandidate();
 
+        // Vérifie si l'utilisateur est un candidat
         if (!$candidate) {
             throw $this->createNotFoundException('Vous devez être un candidat pour postuler à un emploi.');
         }
@@ -42,23 +46,26 @@ class ApplyController extends AbstractController
         $application->setJob($job);
         $application->setStatus('Pending');
 
-        // Crée le formulaire
+        // Crée le formulaire d'application
         $applyForm = $this->createForm(ApplyFormType::class, $application);
 
         // Gére la soumission du formulaire
         $applyForm->handleRequest($request);
 
+        // Traite le formulaire s'il a été soumis et est valide
         if ($applyForm->isSubmitted() && $applyForm->isValid()) {
             $application = $applyForm->getData();
             $application->setJob($job);
 
+            // Récupère le choix de CV du formulaire
             $cvChoice = $applyForm->get('cvChoice')->getData();
 
             if ($cvChoice === 'new') {
+                // Si un nouveau CV est choisi, traite le fichier et l'ajoute à la base de données
                 $newCVFile = $applyForm->get('newCV')->getData();
                 $newCVFileName = $fileUploader->upload($newCVFile);
 
-                // Enregistre le nouveau CV dans la base de données
+                // Crée une nouvelle instance de CV
                 $newCV = new CVs();
                 $newCV->setName($newCVFileName);
                 $newCV->setCandidate($candidate);
@@ -66,6 +73,7 @@ class ApplyController extends AbstractController
 
                 $entityManager->persist($newCV);
             } elseif ($cvChoice === 'default') {
+                // Si le CV par défaut est choisi, ajoute le chemin du CV du candidat à la base de données
                 $defaultCVPath = $candidate->getProfileCV();
                 $defaultCV = new CVs();
                 $defaultCV->setName($defaultCVPath);
@@ -75,15 +83,18 @@ class ApplyController extends AbstractController
                 $entityManager->persist($defaultCV);
             }
 
+            // Enregistre l'application dans la base de données
             $entityManager->persist($application);
             $entityManager->flush();
 
+            // Ajoute un message flash pour indiquer le succès de la soumission de la candidature
             $this->addFlash('success', 'Votre candidature a été soumise avec succès.');
 
+            // Redirige vers la page de détails de l'offre d'emploi
             return $this->redirectToRoute('app_job_show', ['id' => $job->getId()]);
         }
 
-        // Rend la vue avec le formulaire
+        // Rend la vue avec le formulaire d'application et les détails de l'offre d'emploi
         return $this->render('apply/apply_job.html.twig', [
             'applyForm' => $applyForm->createView(),
             'job' => $job,
