@@ -16,6 +16,13 @@
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
+        {{ form_label(registrationForm.roles, 'Vous êtes..', {
+            label_attr: { class: 'radio-container' }
+        }) }}
+
+        {{ form_widget(registrationForm.roles, {
+            attr: { placeholder: '', class: 'radio-container input' }
+        }) }}
         {{ form_label(registrationForm.username, "Nom d'utilisateur", {
             label_attr: { class: 'label' }
         }) }}
@@ -45,13 +52,6 @@
         }) }}
         <hr class="input_line">
 
-        {{ form_label(registrationForm.roles, 'Vous êtes..', {
-            label_attr: { class: 'radio-container' }
-        }) }}
-
-        {{ form_widget(registrationForm.roles, {
-            attr: { placeholder: '', class: 'radio-container input' }
-        }) }}
 
 <div class="connection_link">
         <button type="submit">Créer votre compte</button>
