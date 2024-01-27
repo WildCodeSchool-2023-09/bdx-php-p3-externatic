@@ -36,7 +36,11 @@
         <div class="containerHomePageTitle">
             <h1 class="homePageTitle">Externatic</h1>
             <h2 class="hiddenMobileTitle">Plus qu'un cabinet de recrutement informatique</h2>
-            <a href="{{ path('app_about') }}" class="btn btn-primary">A Propos de nous</a>
+            {% if app.user is defined and is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('admin') }}" class="btn btn-primary">Dashboard</a>
+                {%  else %}
+                    <a href="{{ path('app_about') }}" class="btn btn-primary">A Propos de nous</a>
+            {% endif %}
         </div>
         <div class="containerHomePageImg">
             <img class="homePageImg" src="{{ asset('build/images/homePage.svg') }}" alt="home page image">

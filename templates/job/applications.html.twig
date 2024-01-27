@@ -16,7 +16,7 @@
     <div class="grid-child-form">
         {% if applications is not empty %}
             {% for application in applications %}
-                <div class="favoriteJobs">
+
                     <div class="favoriteAvatar">
                     {% if application.curriculum.candidate.user.image is defined and application.curriculum.candidate.user.image is not null %}
                         <img class="avatar" src="{{ asset('uploads/images/' ~ application.curriculum.candidate.user.image) }}" alt="user profile image">
@@ -37,7 +37,8 @@
                     <div class="seeOffer">
                         <a class="btn btn-primary" href="{{ path('app_profile_candidate', {'id': application.curriculum.candidate.id}) }}">Voir le profil</a>
                     </div>
-                </div>
+
+
 
             {% endfor %}
             </div>
