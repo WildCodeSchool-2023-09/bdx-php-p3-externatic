@@ -30,23 +30,18 @@
             {{ form_widget(applyForm.cvChoice, {
                 attr: { placeholder: '', class: 'radio-container input' }
             }) }}
-        <div class="apply_label">
-            {{ form_label(applyForm.newCV, "Télécharger un nouveau cv", {
-                label_attr: { class: 'label' }
-            }) }}
-        </div>
 
-            {{ form_row(applyForm.newCV) }}
+            {{ form_row(applyForm.newCV, { attr: { id: "reveal_upload" } }) }}
 
         <div class="connection_link">
             <button type="submit">Postuler</button>
         </div>
             {{ form_end(applyForm) }}
         {% else %}
-            <p>Vous avez déjà postulé à cette offre.</p>
+            <p>Vous avez déjà postulé à cette offre</p>
         {% endif %}
     {% else %}
-        <p>Vous devez être connecté pour postuler à une offre.</p>
+        <p>Vous devez être connecté pour postuler à une offre</p>
     {% endif %}
     </div>
 </div>
@@ -60,11 +55,18 @@
     });
 
         document.querySelector("label[for='apply_form_cvChoice_1']").addEventListener("click", function(){
-        document.querySelector("label[for='apply_form_cvChoice_1']").innerText = "télécharger un nouveau CV";
+        document.querySelector("label[for='apply_form_cvChoice_1']").innerText = "télécharger un nouveau CV"
         document.querySelector("label[for='apply_form_cvChoice_0']").classList.add("roleButton")
     });
 
-
+        function revealUpload() {
+        var x = document.getElementById("reveal_upload");
+        if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    }
 
     </script>
     {% endblock %}
