@@ -20,9 +20,9 @@ class StatusFormType extends AbstractType
         $builder
             ->add('status', ChoiceType::class, [
                 'choices' => [
-                    'en attente' => 'pending',
-                    'acceptée' => 'accepted',
-                    'refusé' => 'refused',
+                    'en attente' => 'en attente',
+                    'acceptée' => 'acceptée',
+                    'refusé' => 'refusé',
                 ],
                 'expanded' => true,
                 'multiple' => false,
