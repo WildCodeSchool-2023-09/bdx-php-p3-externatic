@@ -99,6 +99,9 @@
             <!-- Bouton postuler-->
             <a href="{{ path('app_apply_job', {'id': job.id}) }}" class="btn btn-primary">Postuler</a>
         </div>
+        <div>
+            <a class="connection" href="{{ path('app_profile_company', {'id': job.company.id}) }}" >Voir l'entreprise</a>
+        </div>
     </div>
     <div class="card manage-job-card">
         <a href="{{ path('app_job_index') }}" class="btn btn-secondary mt-3">Retour</a>

@@ -11,12 +11,15 @@ use App\Repository\CandidateRepository;
 use App\Repository\JobRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use App\Form\StatusFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Role\Role;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/job')]
 class JobController extends AbstractController
@@ -103,6 +106,7 @@ class JobController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_COMPANY')]
     #[Route('/{id}', name: 'app_job_delete', methods: ['POST'])]
     public function delete(Request $request, Job $job, EntityManagerInterface $entityManager): Response
     {
