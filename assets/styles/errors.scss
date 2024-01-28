@@ -1,0 +1,26 @@
+
+img[src*="404"] {
+    height: 400px;
+}
+
+img[src*="warning"] {
+    height: 400px;
+}
+
+img[src*="bugs"] {
+    height: 400px;
+}
+
+@media screen and (max-width: 768px) {
+    img[src*="404"] {
+        height: 200px;
+    }
+
+    img[src*="warning"] {
+        height: 200px;
+    }
+
+    img[src*="bugs"] {
+        height: 200px;
+    }
+}

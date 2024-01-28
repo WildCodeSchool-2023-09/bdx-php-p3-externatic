@@ -112,4 +112,12 @@ class ProfileController extends AbstractController
             'candidate' => $candidate,
         ]);
     }
+
+    #[Route('/profile/company/{id}', name: 'app_profile_company')]
+    public function viewCompanyProfile(Company $company): Response
+    {
+        return $this->render('profile/company_profile.html.twig', [
+            'company' => $company,
+        ]);
+    }
 }

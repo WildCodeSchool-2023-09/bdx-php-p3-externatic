@@ -1,6 +1,6 @@
 .grid-container-profile {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr;
     margin-bottom: 4rem;
     margin-left: 4rem;
     margin-right: 4rem;
@@ -71,12 +71,29 @@ img[src*="male_avatar"] {
 
 }
 
+.ourJobsTitle {
+    margin-left: 4rem;
+    margin-right: 4rem;
+
+}
+
+.allJobs {
+    display: flex;
+
+
+
+
+}
+
 .ourJobs {
 
     border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     padding: 0.5rem;
     margin: 1rem;
+    width: 100%;
+
+
 }
 
 .jobSeeMore {
