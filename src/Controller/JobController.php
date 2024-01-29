@@ -111,8 +111,6 @@ class JobController extends AbstractController
         }
     }
 
-
-
     #[IsGranted('ROLE_COMPANY')]
     #[Route('/{id}', name: 'app_job_delete', methods: ['POST'])]
     public function delete(
@@ -136,7 +134,6 @@ class JobController extends AbstractController
             throw new AccessDeniedException("vous n'êtes pas autorisé à modifier cet emploi");
         }
     }
-
 
     #[Route('/{id}/applications', name: 'app_job_applications')]
     public function applications(
