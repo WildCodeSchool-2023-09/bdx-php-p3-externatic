@@ -191,7 +191,6 @@ class Job
                 return true;
             }
         }
-
         return false;
     }
 
