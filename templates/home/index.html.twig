@@ -1,4 +1,4 @@
-{%  extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
 
@@ -38,8 +38,8 @@
             <h2 class="hiddenMobileTitle">Plus qu'un cabinet de recrutement informatique</h2>
             {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('admin') }}" class="btn btn-primary">Dashboard</a>
-                {%  else %}
-                    <a href="{{ path('app_about') }}" class="btn btn-primary">A Propos de nous</a>
+            {% else %}
+                <a href="{{ path('app_about') }}" class="btn btn-primary">A Propos de nous</a>
             {% endif %}
         </div>
         <div class="containerHomePageImg">
@@ -47,11 +47,11 @@
         </div>
     </div>
 
-    {# Barre de recherche pour les users non co ou avec rôle CANDIDAT +  8derniers jobs parus sur le site#}
+    {# Barre de recherche pour les users non co ou avec rôle CANDIDAT +  8derniers jobs parus sur le site #}
     {% if app.user is null or is_granted('ROLE_CANDIDAT') %}
         {{ include('home/searchBarCandidate.html.twig') }}
     {% endif %}
-    {# Barre de recherche pour les users avec rôle COMPANY +  8derniers candidats inscrits sur le site#}
+    {# Barre de recherche pour les users avec rôle COMPANY +  8derniers candidats inscrits sur le site #}
     {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') %}
         {{ include('home/searchBarCompany.html.twig') }}
     {% endif %}
@@ -69,27 +69,38 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('build/images/cvHome.svg') }}" class="d-block w-100" alt="CV image">
+                <a class="carouselLinks" href="https://www.canva.com/fr_fr/creer/cv/">
+                    <img src="{{ asset('build/images/cvHome.svg') }}" class="d-block w-100" alt="CV image">
+                </a>
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Prépare-toi avec un bon CV</h5>
-                    <p><a class="carouselLinks" href="https://www.canva.com/fr_fr/creer/cv/">Rends-toi sur le site ici et met toutes les
+                    <p><a class="carouselLinks" href="https://www.canva.com/fr_fr/creer/cv/">Rends-toi sur le site ici
+                            et met toutes les
                             chances de ton côté !</a></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('build/images/letterHome.svg') }}" class="d-block w-100" alt="...">
+                <a class="carouselLinks"
+                   href="https://www.pole-emploi.fr/candidat/vos-recherches/preparer-votre-candidature/10-astuces-pour-ecrire-votre-let.html">
+                    <img src="{{ asset('build/images/letterHome.svg') }}" class="d-block w-100" alt="...">
+                </a>
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Prépare-toi avec une bonne lettre de motivation</h5>
                     <p>
-                        <a class="carouselLinks" href="https://www.pole-emploi.fr/candidat/vos-recherches/preparer-votre-candidature/10-astuces-pour-ecrire-votre-let.html">Tous
+                        <a class="carouselLinks"
+                           href="https://www.pole-emploi.fr/candidat/vos-recherches/preparer-votre-candidature/10-astuces-pour-ecrire-votre-let.html">Tous
                             les conseils pour écrire ta plus belle lettre !</a></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('build/images/interviewHome.svg') }}" class="d-block w-100" alt="...">
+                <a class="carouselLinks"
+                   href="https://www.welcometothejungle.com/fr/articles/entretien-questions-preparer">
+                    <img src="{{ asset('build/images/interviewHome.svg') }}" class="d-block w-100" alt="...">
+                </a>
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Prépare-toi à l'entretien</h5>
-                    <p><a class="carouselLinks" href="https://www.welcometothejungle.com/fr/articles/entretien-questions-preparer">Rends-toi
+                    <p><a class="carouselLinks"
+                          href="https://www.welcometothejungle.com/fr/articles/entretien-questions-preparer">Rends-toi
                             sur le site ici et met toutes les chances de ton côté !</a></p>
                 </div>
             </div>
