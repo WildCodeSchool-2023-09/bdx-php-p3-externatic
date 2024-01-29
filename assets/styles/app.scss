@@ -1,4 +1,4 @@
-
+@import '~bootstrap/scss/bootstrap';
 @import '@fontsource-variable/jost';
 @import 'registrationForm';
 @import "app.css";
@@ -9,9 +9,9 @@
 @import "homePage";
 @import "aboutUs";
 @import "company_profile";
-@import "aboutCompagny";
-@import "footerCompagny";
-@import "navbarCompagny";
+@import "aboutCompany";
+@import "footerCompany";
+@import "navbarCompany";
 @import "favorite";
 @import "jobShow";
 @import "decision";

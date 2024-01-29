@@ -21,11 +21,12 @@ class JobType extends AbstractType
             ->add('startDate')
             ->add('salary')
             ->add('city')
-           ->add('company', EntityType::class, [
-                'class' => Company::class,
-                'choice_label' => 'id',
+//           ->add('company', EntityType::class, [
+//                'class' => Company::class,
+//                'choice_label' => 'id',
               /*  'disabled' => true, // Make the field disabled so it cannot be edited*/
-            ]);
+//            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

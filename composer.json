@@ -52,6 +52,7 @@
         "symfony/webpack-encore-bundle": "^2.1",
         "symfony/yaml": "6.4.*",
         "symfonycasts/reset-password-bundle": "^1.20",
+        "twbs/bootstrap": "^5.3",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/string-extra": "^3.8",
         "twig/twig": "^2.12|^3.0",

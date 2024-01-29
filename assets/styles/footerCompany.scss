@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
 
 /* Styles communs pour mobile et desktop */
-.company_footer {
+.company-footer {
     text-align: center;
     font-family: 'Jost Variable', sans-serif;
     //position: fixed;
@@ -18,14 +18,16 @@
     gap: 10px;
     box-sizing: border-box;
     align-items: center;
+    border-top: 1px solid #cccccc;
 }
 
-.footer-col a {
-    color: rgba(9, 9, 9, 0.94);
+.company-footer-col a {
+    color: #FFFFFF;
     text-decoration: none;
 }
 
-.footer-col {
+
+.company-footer-col {
     a, a:visited, a:active {
         text-decoration: none;
         color: inherit;
@@ -36,8 +38,8 @@
         }
     }
 
-    .footer-bottom .social {
-        color: rgba(9, 9, 9, 0.94);
+    .company-footer-bottom .company-social {
+        color: #FFFFFF;
         transition: all 0.2s ease;
 
         &:hover {
@@ -48,82 +50,87 @@
 
 /* Version mobile : largeur d'écran de 660px maximum */
 @media screen and (max-width: 660px) {
-    footer.site-footer .footer-top {
-        align-items: center;
+    .company-footer .company-footer-top {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
     }
 
-    footer.site-footer .footer-col {
+    .company-footer .company-footer-col {
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        > .title-footer {
+        > .company-title-footer {
             font-size: 15px;
             text-align: center;
             margin-bottom: 5px;
         }
 
-        a.site-footer {
+        a {
             font-size: 12px;
             text-align: center;
             margin-bottom: 5px;
         }
     }
 
-    footer.site-footer .logo-footer {
+    .company-footer .company-logo-footer {
         display: none;
     }
 
-    footer.site-footer .footer-bottom {
+    .company-footer .company-footer-bottom {
+        display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .company-footer .company-social {
+        text-decoration: none;
     }
 }
 
 /* Ecrans d'une largeur minimale de 661 pixels */
 @media screen and (min-width: 661px) {
-    footer.site-footer .footer-top {
+    .company-footer .company-footer-top {
         display: flex;
-        justify-content: space-between;
-        gap: 10px;
+        gap: 100px;
         align-items: center;
-        flex-wrap: wrap;
+        margin-left: 100px;
     }
 
-    footer.site-footer .logo-footer {
+    .company-logo-footer  {
         display: block;
         margin-right: 20px;
+        width: 20vh;
     }
 
-    footer.site-footer .footer-col {
+    .company-footer .company-footer-col {
         width: max-content;
         display: flex;
         flex-direction: column;
     }
 
-    footer.site-footer .footer-col > * {
+    .company-footer .company-footer-col > * {
         margin-bottom: 10px;
     }
 
-    footer.site-footer a.site-footer {
+    .company-footer a {
         padding: 5px 0;
         font-size: 14px;
     }
 
-    footer.site-footer .footer-bottom {
+    .company-footer .company-footer-bottom {
         display: flex;
         align-items: center;
         gap: 8px;
         margin-left: auto;
     }
 
-    footer.site-footer .social {
+    .company-footer .company-social {
         display: flex;
         justify-content: center;
-        color: rgba(9, 9, 9, 0.94);
+        color:  #FFFFFF;
         transition: all 0.2s ease;
         text-decoration: none;
         width: 2rem;

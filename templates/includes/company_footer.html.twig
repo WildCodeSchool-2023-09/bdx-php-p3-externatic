@@ -1,35 +1,36 @@
-
-<footer class="company_footer">
-    <div class="footer-top">
-        <img class="logo-footer" src="{{ asset('build/images/logo_black_fond_transparent.png') }}">
-        <div class="footer-col">
-            <h3 class="title-footer">Notre Entreprise</h3>
+<company-footer class="company-footer">
+    <div class="company-footer-top">
+        <img class="company-logo-footer" src="{{ asset('build/images/logo_black_fond_transparent.png') }}">
+        <div class="company-footer-col">
+            <h3 class="company-title-footer">Notre Entreprise</h3>
             <a href="{{ path('app_about') }}">A propos</a>
             <a href="{{ path('app_aboutCompany') }}">Histoire de l'entreprise</a>
         </div>
-        <div class="footer-col">
-            <h3 class="title-footer">Nos partenaires</h3>
+        <div class="company-footer-col">
+            <h3 class="company-title-footer">Nos partenaires</h3>
             <a href="https://www.canva.com/" target="_blank">Canva</a>
             <a href="https://www.pole-emploi.fr/accueil/" target="_blank">Pole Emploi | France Travail</a>
         </div>
-        <div class="footer-col">
-            <h3 class="title-footer">Les emplois</h3>
+        <div class="company-footer-col">
+            <h3 class="company-title-footer">Les emplois</h3>
             <a href="#">Récents</a>
             <a href="#">Favoris</a>
         </div>
     </div>
-    <div class="footer-bottom">
-        <a href="#" class="social">
-            <ion-icon name="logo-facebook"></ion-icon>
+
+    <div class="company-footer-bottom">
+        <a href="https://www.facebook.com/externatic" class="company-social">
+            <ion-icon name="logo-facebook" style="color: black"></ion-icon>
         </a>
-        <a href="#" class="social">
-            <ion-icon name="logo-instagram"></ion-icon>
+        <a href="https://www.instagram.com/externatic" class="company-social">
+            <ion-icon name="logo-instagram" style="color: black"></ion-icon>
         </a>
-        <a href="#" class="social">
-            <ion-icon name="logo-twitter"></ion-icon>
+        <a href="https://twitter.com/Externatic" class="company-social">
+            <ion-icon name="logo-twitter" style="color: black"></ion-icon>
         </a>
+
     </div>
-</footer>
+</company-footer>
 
 <script
     type="module"
