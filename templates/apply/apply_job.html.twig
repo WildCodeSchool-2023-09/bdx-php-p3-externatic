@@ -2,12 +2,12 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Postuler à l'offre{{ job.title }}{% endblock %}
+{% block title %}Postuler à l'offre {{ job.title }}{% endblock %}
 
 {% block body %}
     <div class="grid-container">
         <div class="grid-child-image">
-            <h1>Postuler à l'offre {{ job.title }}</h1>
+            <h1>Postuler à l'offre:  {{ job.title }}</h1>
             <img src="{{ asset('build/images/moving.svg') }}" alt="woman moving"/>
         </div>
         <img src="{{ asset('build/images/messaging.svg') }}" alt="woman sending a message"/>
