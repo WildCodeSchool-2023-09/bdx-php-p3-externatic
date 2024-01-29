@@ -33,20 +33,20 @@ final class Likelist
         /** @var User $user */
         $user = $this->security->getUser();
 
-        // Vérifier si l'utilisateur a déjà ajouté cet emploi à sa liste de favoris
+        // Vérifie si l'utilisateur a déjà ajouté cet emploi à sa liste de favoris
         if ($user->getLikelist()->contains($this->job)) {
-            // Si oui, le retirer de la liste de favoris de l'utilisateur
+            // Si oui, le retire de la liste de favoris de l'utilisateur
             // et de la liste des utilisateurs aimant cet emploi
             $user->removeFromLikelist($this->job);
             $this->job->removeLikingUser($user);
         } else {
-            // Si non, ajouter cet emploi à la liste de favoris de l'utilisateur
+            // Si non, ajoute cet emploi à la liste de favoris de l'utilisateur
             // et à la liste des utilisateurs aimant cet emploi
             $user->addToLikelist($this->job);
             $this->job->addLikingUser($user);
         }
 
-        // Enregistrer les modifications dans la base de données
+        // Enregistre les modifications dans la base de données
         $this->entityManager->persist($user);
         $this->entityManager->persist($this->job);
         $this->entityManager->flush();
