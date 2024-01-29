@@ -22,6 +22,7 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
             $userRefs[] = $this->getReference($userRef);
         }
 
+        // Créer des candidats en utilisant les références des utilisateurs
         foreach ($userRefs as $candidateUser) {
             $candidate = new Candidate();
             $candidate
@@ -35,6 +36,7 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
+    // Indiquer les dépendances par rapport à d'autres fixtures
     public function getDependencies(): array
     {
         return [

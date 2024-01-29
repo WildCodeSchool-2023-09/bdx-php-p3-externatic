@@ -30,12 +30,14 @@ class JobRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('j');
 
+        // Ajoute la condition de recherche par titre si un titre est fourni.
         if ($title !== null) {
             $queryBuilder
                 ->andWhere('j.title LIKE :title')
                 ->setParameter('title', '%' . $title . '%');
         }
 
+        // Ajoute la condition de recherche par emplacement si un emplacement est fourni.
         if ($location !== null) {
             $queryBuilder
                 ->andWhere('j.city LIKE :location')
@@ -50,9 +52,9 @@ class JobRepository extends ServiceEntityRepository
     public function findByLikedUser(UserInterface $user): array
     {
         return $this->createQueryBuilder('j')
-            ->innerJoin('j.likingUsers', 'u')
-            ->where('u = :user')
-            ->setParameter('user', $user)
+            ->innerJoin('j.likingUsers', 'u')// Jointure avec la table des utilisateurs aimés
+            ->where('u = :user')// Condition : l'utilisateur de la jointure est égal à l'utilisateur fourni en paramètre
+            ->setParameter('user', $user)// Attribution de la valeur de l'utilisateur fourni en paramètre
             ->getQuery()
             ->getResult();
     }
