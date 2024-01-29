@@ -118,14 +118,15 @@
     </div>
 
     {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CANDIDATE') %}
-    <div class="cardRegister">
-        <img src="{{ asset('build/images/registration.svg') }}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Pas encore inscrit ?</h5>
-            <p class="card-text">Rejoignez Externatic en quelques secondes !</p>
-            <a href="{{ path('app_register') }}" class="btn btn-primary">Inscription</a>
+    {% else %}
+        <div class="cardRegister">
+            <img src="{{ asset('build/images/registration.svg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Pas encore inscrit ?</h5>
+                <p class="card-text">Rejoignez Externatic en quelques secondes !</p>
+                <a href="{{ path('app_register') }}" class="btn btn-primary">Inscription</a>
+            </div>
         </div>
-    </div>
     {% endif %}
 
 {% endblock %}
