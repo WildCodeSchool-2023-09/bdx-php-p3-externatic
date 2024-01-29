@@ -25,7 +25,7 @@ class ApplyController extends AbstractController
         Request $request,
         Job $job,
         EntityManagerInterface $entityManager,
-        FileUploader $fileUploader
+        FileUploader $fileUploader,
     ): Response {
         // Récupère l'utilisateur connecté
         $user = $this->getUser();
@@ -102,10 +102,14 @@ class ApplyController extends AbstractController
             return $this->redirectToRoute('app_job_show', ['id' => $job->getId()]);
         }
 
+        // Vérifie si le candidat a déjà postulé à cette offre
+        $hasApplied = $job->isAppliedByCandidate($candidate);
+
         // Rend la vue avec le formulaire d'application et les détails de l'offre d'emploi
         return $this->render('apply/apply_job.html.twig', [
             'applyForm' => $applyForm->createView(),
             'job' => $job,
+            'hasApplied' => $hasApplied, // Passer cette information au template
         ]);
     }
 
