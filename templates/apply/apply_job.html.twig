@@ -5,34 +5,36 @@
 {% block title %}Postuler à l'offre{{ job.title }}{% endblock %}
 
 {% block body %}
-
-<div class="grid-container">
-    <div class="grid-child-image">
-        <h1>Postuler à l'offre {{ job.title }}</h1>
-        <img src="{{ asset('build/images/moving.svg') }}" alt="woman moving"/>
-    </div>
-    <img src="{{ asset('build/images/messaging.svg') }}" alt="woman sending a message"/>
-    <div class="grid-child-form">
-
-    {% if app.user %}
-        {% if not job.isAppliedByCandidate(app.user.candidate) %}
-            {{ form_start(applyForm) }}
-            <div class="apply_label">
-            {{ form_label(applyForm.message, "Personnaliser mon message au recruteur", {
-                label_attr: { class: 'label' }
-            }) }}
-    </div>
-            {{ form_row(applyForm.message) }}
-        <div class="apply_label">
-            {{ form_label(applyForm.cvChoice, "Choisir un CV", {
-                label_attr: { class: 'label' }
-            }) }}
+    <div class="grid-container">
+        <div class="grid-child-image">
+            <h1>Postuler à l'offre {{ job.title }}</h1>
+            <img src="{{ asset('build/images/moving.svg') }}" alt="woman moving"/>
         </div>
-            {{ form_widget(applyForm.cvChoice, {
-                attr: { placeholder: '', class: 'radio-container input' }
-            }) }}
+        <img src="{{ asset('build/images/messaging.svg') }}" alt="woman sending a message"/>
+        <div class="grid-child-form">
 
-            {{ form_row(applyForm.newCV, { attr: { id: "reveal_upload" } }) }}
+            {% if app.user %}
+                {% if not job.isAppliedByCandidate(app.user.candidate) %}
+                    {{ form_start(applyForm) }}
+                    <div class="apply_label">
+                        {{ form_label(applyForm.message, "Personnaliser mon message au recruteur", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                    </div>
+                    {{ form_row(applyForm.message) }}
+                    <div class="apply_label">
+                        {{ form_label(applyForm.cvChoice, "Choisir un CV", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                    </div>
+                    {{ form_widget(applyForm.cvChoice, {
+                        attr: { placeholder: '', class: 'radio-container input' }
+                    }) }}
+                    <div class="apply_label">
+                        {{ form_label(applyForm.newCV, "Télécharger un nouveau cv", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                    </div>
 
                     {{ form_row(applyForm.newCV) }}
 
@@ -47,13 +49,6 @@
                 <p>Vous devez être connecté pour postuler à une offre.</p>
             {% endif %}
         </div>
-            {{ form_end(applyForm) }}
-        {% else %}
-            <p>Vous avez déjà postulé à cette offre</p>
-        {% endif %}
-    {% else %}
-        <p>Vous devez être connecté pour postuler à une offre</p>
-    {% endif %}
     </div>
     {%  block javascript  %}
     <script>
@@ -65,18 +60,12 @@
     });
 
         document.querySelector("label[for='apply_form_cvChoice_1']").addEventListener("click", function(){
-        document.querySelector("label[for='apply_form_cvChoice_1']").innerText = "télécharger un nouveau CV"
+        document.querySelector("label[for='apply_form_cvChoice_1']").innerText = "télécharger un nouveau CV";
         document.querySelector("label[for='apply_form_cvChoice_0']").classList.add("roleButton")
     });
 
-        function revealUpload() {
-        var x = document.getElementById("reveal_upload");
-        if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-    }
+
+
     </script>
     {% endblock %}
 {% endblock %}
