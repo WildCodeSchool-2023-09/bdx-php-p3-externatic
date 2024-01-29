@@ -46,7 +46,8 @@ text-decoration: none;
 }
 
 .connection_link {
-    margin-top: 1.5rem;
+    display: flex;
+    justify-content: start;
 }
 
 .reset {
@@ -89,6 +90,11 @@ img[src*="loginF"] {
 
     img[src*="unlock"] {
         height: 200px;
+        justify-content: center;
+    }
+
+    .connection_link {
+        display: flex;
         justify-content: center;
     }
 

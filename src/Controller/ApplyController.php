@@ -15,7 +15,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\FileUploader;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_CANDIDAT')]
 class ApplyController extends AbstractController
 {
     #[Route('/apply/{id}', name: 'app_apply_job', methods: ['GET', 'POST'])]
@@ -115,7 +117,7 @@ class ApplyController extends AbstractController
 
         // Vérifie si l'utilisateur est connecté
         if (!$user) {
-            throw $this->createNotFoundException('Utilisateur non connecté.');
+            throw $this->createNotFoundException('Utilisateur non connecté');
         }
 
         // Récupère le candidat associé à l'utilisateur

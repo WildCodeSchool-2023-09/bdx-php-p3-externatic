@@ -1,0 +1,93 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <div class="grid-container-profile">
+    {% if company.user.image is defined and company.user.image is not null %}
+    <div class="grid-child-image">
+        <img class="avatar" src="{{ asset('uploads/images/' ~ company.user.image) }}" alt="company profile image">
+        {% else %}
+        <div class="grid-child-image">
+            <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
+            {%  endif %}
+            <div class="child-bio">
+                <ion-icon name="mail" class="profile-icon" onclick="revealEmail()"></ion-icon>
+                <h3 id="reveal_email">email : {{ company.user.email }}</h3>
+                {% if company.user.linkedin is defined and company.user.linkedin is not null %}
+                    <a href="{{ company.user.linkedin }}" target="_blank" class="profile-icon" onclick="return confirm('Cliquez sur OK pour être redirigé vers Linkedin');">
+                        <ion-icon name="logo-linkedin" class="profile-icon"></ion-icon>
+                    </a>
+                {%  endif %}
+                    {% if company.website is defined and company.website is not null %}
+                        <a href="{{ company.website }}" target="_blank" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers le site web de {{ app.user.username }}');">
+                            <ion-icon name="globe-outline" class="profile-icon"></ion-icon>
+                        </a>
+                    {%  endif %}
+                    {% if company.adress is defined and company.adress is not null %}
+                        <ion-icon name="location-outline" class="profile-icon" onclick="revealAddress()"></ion-icon>
+                        <h3 id="reveal"> Adresse : {{ company.adress }}</h3>
+                    {%  endif %}
+            </div>
+        </div>
+        <div>
+            <h1> {{ company.user.username }}</h1>
+            {% if company.user.bio is defined and company.user.bio is not null %}
+            <h2> Qui sommes nous ? </h2>
+            <p> {{ company.user.bio }}</p>
+        </div>
+        {%  endif %}
+        <div class="edit_btns">
+            {% if company.jobs is defined and company.jobs is  not null %}
+                <h2>Nos offres</h2>
+                {% for job in company.jobs %}
+                    <div class="ourJobs">
+                        <h2  class="favoriteTitle">{{ job.title }}</h2>
+                        <strong>{{ job.city }}</strong>
+                        <p>{{ job.description }}</p>
+                        <i>{{ job.salary }}€</i>
+                        <div class="jobSeeMore">
+                            <a class="connection" href="{{ path('app_job_show', {'id': job.id}) }}">Voir détails de l'offre</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+
+        </div>
+    </div>
+
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+
+    </script>
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
+
+    </script>
+
+    <script>
+
+
+        function revealAddress() {
+            var x = document.getElementById("reveal");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function revealEmail() {
+            var x = document.getElementById("reveal_email");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+    </script>
+{% endblock %}

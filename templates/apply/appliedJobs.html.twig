@@ -12,9 +12,11 @@
     {% if applications is not empty %}
             {% for application in applications %}
         <div class="favoriteJobs">
-                    <p class="favoriteTitle">{{ application.job.title }}</p>
-                    <p>Votre message : {{ application.message }}</p>
-                    <p class="jobAddress">Status : {{ application.status }}</p>
+            <div class="jobInfo">
+            <a class="btn" href="{{ path('app_job_show', {'id': application.job.id}) }}">{{ application.job.title }}</a>
+            </div>
+                   <p>Votre message : {{ application.message }}</p>
+                    <p>Status : {{ application.status }}</p>
         </div>
             {% endfor %}
     {% else %}
