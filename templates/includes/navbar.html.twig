@@ -1,31 +1,27 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barre de navigation</title>
-</head>
-<body>
 <nav class="nav-links">
-        <img class="logo-nav" src="{{ asset('build/images/logo_white_fond_transparent_horizontal.png') }}">
-        <div class="Menu-deroulant">
-            {% if is_granted('ROLE_CANDIDAT') %}
-                    <ul class="links-menu-deroulant">{{ app.user.username }}
-                        <li class="sub-menu">
-                            <a href="{{ path('app_profile') }}" title="Mon profil">Mon Profil</a>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="#" title="Mes favoris">Mes Favoris</a>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="{{ path('app_logout') }}" title="se déconnecter">Se déconnecter</a>
-                        </li>
-                    </ul>
-                </label>
-            {% else %}
-                <a href="{{ path('app_login') }}">Candidat</a>
-                <a href="{{ path('app_login') }}" >Entreprise</a>
-            {% endif %}
+    <figure><a href="{{ path('app_home') }}"><img class="logo-nav"
+                                                  src="{{ asset('build/images/logo_white_fond_transparent_horizontal.png') }}"
+                                                  alt="Logo de l'entreprise externatic"></a></figure>
+    {% if app.user is defined and app.user is not null %}
+        <div class="dropdown m-3">
+            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ app.user.username }}
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ path('app_profile') }}">Mon profil</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_appliedJobs') }}">Mes candidatures</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_favorite_jobs') }}">Mes favoris</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a></li>
+            </ul>
         </div>
-</nav>
 
+    {% else %}
+
+        <div class="sideBySide">
+            <a class="no-connected" href="{{ path('app_login') }}">Candidat</a>
+            <a class="no-connected" href="{{ path('app_login') }}">Entreprise</a>
+        </div>
+
+    {% endif %}
+
+</nav>

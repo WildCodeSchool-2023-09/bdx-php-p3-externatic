@@ -17,4 +17,5 @@ let html = `<img src="${imagePath}" alt="business meeting">`;
 
 // start the Stimulus application
 import './bootstrap';
+require ('bootstrap');
 

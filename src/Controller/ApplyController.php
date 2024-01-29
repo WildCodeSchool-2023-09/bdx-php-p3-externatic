@@ -42,7 +42,7 @@ class ApplyController extends AbstractController
 
         // Vérifie si l'utilisateur est un candidat
         if (!$candidate) {
-            $this->addFlash('profile', "modifiez d'abord votre profil pour améliorer votre candidature !");
+            $this->addFlash('profile', "Modifiez d'abord votre profil pour améliorer votre candidature !");
             return $this->redirectToRoute('app_profile_edit');
 
            // throw $this->createNotFoundException('Vous devez être un candidat pour postuler à un emploi.');//
@@ -109,9 +109,9 @@ class ApplyController extends AbstractController
         return $this->render('apply/apply_job.html.twig', [
             'applyForm' => $applyForm->createView(),
             'job' => $job,
-            'hasApplied' => $hasApplied, // Passer cette information au template
+            'hasApplied' => $hasApplied,// Passer cette information au template
         ]);
-    }
+}
 
     #[Route('/appliedJobs', name: 'app_appliedJobs')]
     public function appliedJobs(ApplicationRepository $applicationRepo): Response
