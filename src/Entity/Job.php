@@ -187,7 +187,7 @@ class Job
     public function isAppliedByCandidate(Candidate $candidate): bool
     {
         foreach ($this->applications as $application) {
-            if ($application->getCandidate() === $candidate) {
+            if ($application->getCurriculum()->getCandidate() === $candidate) {
                 return true;
             }
         }
