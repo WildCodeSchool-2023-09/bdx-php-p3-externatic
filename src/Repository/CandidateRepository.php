@@ -25,14 +25,19 @@ class CandidateRepository extends ServiceEntityRepository
     public function searchByFunctionAndLocation(?string $fonction, ?string $location): array
     {
         $queryBuilder = $this->createQueryBuilder('c')
-            ->innerJoin('c.user', 'u')
-            ->where('c.fonction LIKE :fonction')
-            ->andWhere('u.location LIKE :location')
+            ->innerJoin('c.user', 'u')// Jointure avec l'entité User (u)
+            ->where('c.fonction LIKE :fonction')// Condition : la fonction doit correspondre au critère fourni
+            ->andWhere('u.location LIKE :location')// Condition : la localisation doit correspondre au critère fourni
             ->setParameter('fonction', '%' . $fonction . '%')
             ->setParameter('location', '%' . $location . '%');
 
+        // Paramètre lié à la valeur de la fonction/location fournie dans la barre de recherche.
+        // La condition LIKE '%<fonction/location>%' permet de rechercher toutes les occurrences
+        // où la valeur de la colonne 'fonction/location' contient la sous-chaîne spécifiée (<fonction/location>).
+
         return $queryBuilder->getQuery()->getResult();
     }
+
     public function findByLikedCompany(UserInterface $company): array
     {
         return $this->createQueryBuilder('c')
