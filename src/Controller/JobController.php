@@ -78,51 +78,84 @@ class JobController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_job_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Job $job, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(JobType::class, $job);
+    public function edit(
+        Request $request,
+        Job $job,
+        EntityManagerInterface $entityManager,
+        JobRepository $jobRepository
+    ): Response {
+        // for security check the company is linked to this job to allow permission to edit or delete
+        $user = $this->getUser();
+        $company = $user->getCompany();
+        $companyJob = $jobRepository->findOneBy(['company' => $company, 'id' => $job->getId()]);
 
-        $form->get('company')->createView()->vars['disabled'] = true;
+        if ($companyJob !== null) {
+            $form = $this->createForm(JobType::class, $job);
 
-        $form->handleRequest($request);
+            $form->get('company')->createView()->vars['disabled'] = true;
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $form->handleRequest($request);
 
-            return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager->flush();
+
+                return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
+            }
+
+            return $this->render('job/edit.html.twig', [
+                'job' => $job,
+                'form' => $form,
+            ]);
+        } else {
+            throw new AccessDeniedException("vous n'êtes pas autorisé à modifier cet emploi");
         }
-
-        return $this->render('job/edit.html.twig', [
-            'job' => $job,
-            'form' => $form,
-        ]);
     }
 
     #[IsGranted('ROLE_COMPANY')]
     #[Route('/{id}', name: 'app_job_delete', methods: ['POST'])]
-    public function delete(Request $request, Job $job, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $job->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($job);
-            $entityManager->flush();
+    public function delete(
+        Request $request,
+        Job $job,
+        EntityManagerInterface $entityManager,
+        JobRepository $jobRepository
+    ): Response {
+        $user = $this->getUser();
+        $company = $user->getCompany();
+        $companyJob = $jobRepository->findOneBy(['company' => $company, 'id' => $job->getId()]);
+
+        if ($companyJob !== null) {
+            if ($this->isCsrfTokenValid('delete' . $job->getId(), $request->request->get('_token'))) {
+                $entityManager->remove($job);
+                $entityManager->flush();
+            }
+
+            return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
+        } else {
+            throw new AccessDeniedException("vous n'êtes pas autorisé à modifier cet emploi");
         }
-
-        return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
     }
-
 
     #[Route('/{id}/applications', name: 'app_job_applications')]
     public function applications(
         Job $job,
         ApplicationRepository $applicationRepo,
+        JobRepository $jobRepository
     ): Response {
-        $applications = $applicationRepo->findBy(['job' => $job]);
+        $user = $this->getUser();
+        $company = $user->getCompany();
+        $companyJob = $jobRepository->findOneBy(['company' => $company, 'id' => $job->getId()]);
 
-        return $this->render('job/applications.html.twig', [
+        if ($companyJob !== null) {
+            $applications = $applicationRepo->findBy(['job' => $job]);
+
+            return $this->render('job/applications.html.twig', [
             'applications' => $applications,
             'job' => $job,
 
-        ]);
+            ]);
+        } else {
+            throw new AccessDeniedException("accès refusé");
+        }
     }
 
     #[Route('/job/{id}/applications/{application_id}', name: 'app_job_decision')]
@@ -131,24 +164,32 @@ class JobController extends AbstractController
         #[MapEntity(expr: 'repository.find(application_id)')]
         Application $application,
         Request $request,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        JobRepository $jobRepository
     ): Response {
+        $user = $this->getUser();
+        $company = $user->getCompany();
+        $companyJob = $jobRepository->findOneBy(['company' => $company, 'id' => $job->getId()]);
 
-        $statusForm = $this->createForm(StatusFormType::class, $application);
-        $statusForm->handleRequest($request);
+        if ($companyJob !== null) {
+            $statusForm = $this->createForm(StatusFormType::class, $application);
+            $statusForm->handleRequest($request);
 
-        if ($statusForm->isSubmitted()) {
-            $entityManager->persist($application);
-            $entityManager->flush();
+            if ($statusForm->isSubmitted()) {
+                $entityManager->persist($application);
+                $entityManager->flush();
 
-            $this->addFlash('decision', 'le statut a été mis à jour ');
-            return $this->redirectToRoute('app_job_applications', ['id' => $job->getId()]);
+                $this->addFlash('decision', 'le statut a été mis à jour ');
+                return $this->redirectToRoute('app_job_applications', ['id' => $job->getId()]);
+            }
+
+            return $this->render('job/application_decision.html.twig', [
+                'statusForm' => $statusForm->createView(),
+                'application' => $application,
+                'job' => $job,
+            ]);
+        } else {
+            throw new AccessDeniedException("accès refusé");
         }
-
-        return $this->render('job/application_decision.html.twig', [
-            'statusForm' => $statusForm->createView(),
-            'application' => $application,
-            'job' => $job,
-        ]);
     }
 }

@@ -16,8 +16,9 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
         $faker = Factory::create('fr_FR');
         $companies = $manager->getRepository('App\Entity\Company')->findAll();
 
+        // Crée des emplois pour chaque entreprise
         foreach ($companies as $company) {
-            // Crée 2 emplois pour les entreprise
+            // Crée 2 emplois pour chaque entreprise
             for ($i = 0; $i < 2; $i++) {
                 $job = new Job();
                 $job
@@ -28,7 +29,6 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
                     ->setSalary($faker->numerify("#####"))
                     ->setCity($faker->city) // Add city here
                     ->setCompany($company);
-                    //->addFavoriteCandidate($this->getReference('candidat'));
 
                 $manager->persist($job);
             }
@@ -39,6 +39,8 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
 
     public function getDependencies(): array
     {
+        // Indique que cette fixture dépend de UserFixtures, CompanyFixtures, et CandidateFixtures
+        // Cela garantit que les utilisateurs, entreprises et candidats sont créés avant les emplois
         return [
             UserFixtures::class,
             CompanyFixtures::class,

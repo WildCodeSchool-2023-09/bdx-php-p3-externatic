@@ -14,6 +14,7 @@ class UserFixtures extends Fixture
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
+        // Injecte le service UserPasswordHasherInterface pour hacher les mots de passe
         $this->passwordHasher = $passwordHasher;
     }
     public function load(ObjectManager $manager): void

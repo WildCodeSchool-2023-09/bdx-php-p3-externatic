@@ -22,6 +22,7 @@ class CompanyFixtures extends Fixture implements DependentFixtureInterface
             $userRefs[] = $this->getReference($userRef);
         }
 
+        // Crée des entreprises liées à des utilisateurs ayant le rôle ROLE_COMPANY
         foreach ($userRefs as $companyUser) {
             $company = new Company();
             $company
@@ -37,6 +38,7 @@ class CompanyFixtures extends Fixture implements DependentFixtureInterface
 
     public function getDependencies(): array
     {
+        // Indique que cette fixture dépend de UserFixtures
         return [
             UserFixtures::class,
         ];

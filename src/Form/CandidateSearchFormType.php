@@ -14,6 +14,9 @@ class CandidateSearchFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Champ de saisie pour la fonction du candidat
+        // Champ de saisie pour la localisation du candidat
+        // Bouton de soumission pour lancer la recherche
         $builder
             ->add('fonction', TextType::class, [
                 'label' => 'Fonction',

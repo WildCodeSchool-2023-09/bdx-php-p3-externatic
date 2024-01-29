@@ -18,6 +18,9 @@ class CandidateProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Champ pour le lien GitHub avec une contrainte de validation d'URL
+        // Champ pour la fonction du candidat
+        // Champ pour le téléchargement du CV avec l'ajout de Dropzone pour le téléchargement de fichiers
         $builder
             ->add('github', null, ['label' => false, 'required' => false, 'constraints' => [
                 new Regex([

@@ -28,11 +28,12 @@ class ApplicationRepository extends ServiceEntityRepository
      */
     public function findByCandidate(Candidate $candidate): array
     {
+        // Construction de la requête SQL
         return $this->createQueryBuilder('a')
-            ->leftJoin('a.curriculum', 'cvs')
-            ->andWhere('cvs.candidate = :candidate')
-            ->setParameter('candidate', $candidate)
-            ->getQuery()
-            ->getResult();
+            ->leftJoin('a.curriculum', 'cvs')// Jointure avec l'entité Curriculum (cvs)
+            ->andWhere('cvs.candidate = :candidate')// Condition : le candidat du curriculum doit être celui fourni
+            ->setParameter('candidate', $candidate)// Paramètre lié à la valeur du candidat fourni
+            ->getQuery()// Exécution de la requête
+            ->getResult();// Récupération des résultats
     }
 }

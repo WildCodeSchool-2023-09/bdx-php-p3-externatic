@@ -18,6 +18,9 @@ class ApplyFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Champ pour le message
+        // Choix du CV
+        // Champ pour le nouveau CV avec l'ajout de Dropzone pour le téléchargement de fichiers
         $builder
             ->add('message', null, ['label' => false ])
             ->add('cvChoice', ChoiceType::class, [
