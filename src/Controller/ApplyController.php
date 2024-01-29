@@ -111,7 +111,7 @@ class ApplyController extends AbstractController
             'job' => $job,
             'hasApplied' => $hasApplied,// Passer cette information au template
         ]);
-}
+    }
 
     #[Route('/appliedJobs', name: 'app_appliedJobs')]
     public function appliedJobs(ApplicationRepository $applicationRepo): Response
