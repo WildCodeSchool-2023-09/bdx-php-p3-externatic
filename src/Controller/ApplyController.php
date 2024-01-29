@@ -51,7 +51,7 @@ class ApplyController extends AbstractController
         // Crée une nouvelle instance d'Application
         $application = new Application();
         $application->setJob($job);
-        $application->setStatus('Pending');
+        $application->setStatus('en attente');
 
         // Crée le formulaire d'application
         $applyForm = $this->createForm(ApplyFormType::class, $application);
@@ -95,7 +95,7 @@ class ApplyController extends AbstractController
             $entityManager->flush();
 
             // Ajoute un message flash pour indiquer le succès de la soumission de la candidature
-            $this->addFlash('success', 'Votre candidature a été soumise avec succès.');
+            $this->addFlash('application', 'Votre candidature a été soumise avec succès');
 
 
             // Redirige vers la page de détails de l'offre d'emploi

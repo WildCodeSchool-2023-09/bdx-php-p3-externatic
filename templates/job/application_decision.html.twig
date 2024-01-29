@@ -35,22 +35,15 @@
 
 
         document.querySelector("label[for='status_form_status_0']").addEventListener("click", function(){
-        document.querySelector("label[for='status_form_status_0']").innerText = "Vous avez choisi en attente "
+        document.querySelector("label[for='status_form_status_0']").innerText = "Vous avez choisi acceptée "
         document.querySelector("label[for='status_form_status_1']").classList.add("roleButton")
-        document.querySelector("label[for='status_form_status_2']").classList.add("roleButton")
     });
 
         document.querySelector("label[for='status_form_status_1']").addEventListener("click", function(){
-        document.querySelector("label[for='status_form_status_1']").innerText = "Vous avez choisi acceptée"
+        document.querySelector("label[for='status_form_status_1']").innerText = "Vous avez choisi refusé"
         document.querySelector("label[for='status_form_status_0']").classList.add("roleButton")
-        document.querySelector("label[for='status_form_status_2']").classList.add("roleButton")
     });
-        document.querySelector("label[for='status_form_status_2']").addEventListener("click", function(){
-        document.querySelector("label[for='status_form_status_2']").innerText = "Vous avez choisi refusé"
-        document.querySelector("label[for='status_form_status_1']").classList.add("roleButton")
-        document.querySelector("label[for='status_form_status_0']").classList.add("roleButton")
 
-    });
 
     </script>
     {% endblock %}
