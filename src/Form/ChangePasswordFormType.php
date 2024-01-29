@@ -15,6 +15,7 @@ class ChangePasswordFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Champ de mot de passe répété
         $builder
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -35,7 +36,7 @@ class ChangePasswordFormType extends AbstractType
                         new Length([
                             'min' => 6,
                             'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
-                            // max length allowed by Symfony for security reasons
+                            // Longueur maximale autorisée par Symfony pour des raisons de sécurité
                             'max' => 4096,
                         ]),
                     ],
