@@ -17,16 +17,16 @@
         <h1>{{ job.title }}</h1>
     <h2>{{ job.company.user.username }}</h2>
         {% if job.company.user.image is defined and job.company.user.image is not null %}
-            <img class="avatar" src="{{ asset('uploads/images/' ~ job.company.user.image) }}" alt="company profile image">
+            <img class="company-avatar" src="{{ asset('uploads/images/' ~ job.company.user.image) }}" alt="company profile image">
             {% else %}
         <img src="{{ asset('build/images/office.svg') }}" alt="office workers"/>
 
     {% endif %}
-        <div>
+        <div class="jobButtons">
         <a class="connection" href="{{ path('app_profile_company', {'id': job.company.id}) }}" >Voir l'entreprise</a>
         </div>
     </div>
-    <div class="child-bio">
+    <div class="grid-child-form">
 <div>
                 <h2>Adresse:</h2>
     <p>{{ job.adress }}</p>
@@ -69,12 +69,17 @@
         <a href="{{ path('app_job_index') }}" class="jobBtns">Retour</a>
     </div>
         <div class="jobButtons">
-        {% if is_granted('ROLE_COMPANY') %}
-        <a href="{{ path('app_job_edit', {'id': job.id}) }}" class="jobBtns">Modifiez votre annonce</a>
+            {% if is_granted('ROLE_COMPANY') %}
+            <a href="{{ path('app_job_applications', {'id': job.id}) }}" class="clickLink">Voir le candidatures</a>
+        </div>
+        <a href="{{ path('app_job_edit', {'id': job.id}) }}" class="clickLink">Modifiez votre annonce</a>
+
             <div class="jobButtons">
         {{ include('job/_delete_form.html.twig') }}
             </div>
-        {% endif %}
+         {% endif %}
         </div>
     </div>
+
+
 {% endblock %}

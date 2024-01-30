@@ -21,14 +21,14 @@
     border-top: 1px solid #cccccc;
 }
 
-.company-footer-col a {
+/*.company-footer-col a {
     color: #FFFFFF;
     text-decoration: none;
-}
+}*/
 
 
 .company-footer-col {
-    a, a:visited, a:active {
+    .company_footer_link, .company_footer_link:visited, .company_footer_link:active {
         text-decoration: none;
         color: inherit;
         transition: all 0.2s ease;
@@ -68,7 +68,7 @@
             margin-bottom: 5px;
         }
 
-        a {
+        .company_footer_link {
             font-size: 12px;
             text-align: center;
             margin-bottom: 5px;
@@ -115,7 +115,7 @@
         margin-bottom: 10px;
     }
 
-    .company-footer a {
+    .company_footer_link {
         padding: 5px 0;
         font-size: 14px;
     }
