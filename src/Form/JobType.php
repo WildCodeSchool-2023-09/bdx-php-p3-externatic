@@ -18,46 +18,19 @@ class JobType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class, [
-                'label' => false,
-                'constraints' => [
-                    new NotBlank(),
-                    new Length(['min' => 2, 'max' => 255]),
+            ->add('title')
+            ->add('adress')
+            ->add('description')
+            ->add('startDate')
+            ->add('salary')
+            ->add('city')
+            ->add('company', EntityType::class, [
+                'class' => Company::class,
+                'choice_label' => 'id',
+                'attr' => [
+                    'style' => 'display: none;', // Cela masquera le champ dans le formulaire
                 ],
-            ])
-            ->add('adress', TextType::class, [
-                'label' => false,
-                'constraints' => [
-                    new NotBlank(),
-                ],
-            ])
-            ->add('description', TextType::class, [
-                'label' => false,
-                'constraints' => [
-                    new NotBlank(),
-                    new Length(['min' => 2, 'max' => 255]),
-                ],
-            ])
-            ->add('startDate', null, [
-                'label' => false,
-                ])
-            ->add('salary', TextType::class, [
-                'label' => false,
-                'constraints' => [
-                    new NotBlank(),
-                ],
-            ])
-            ->add('city', TextType::class, [
-                'label' => false,
-                'constraints' => [
-                    new NotBlank(),
-                ],
-            ])
-             ->add('company', EntityType::class, [
-                   'class' => Company::class,
-                    'label' => false,
-                    'choice_label' => 'id',
-                    'disabled' => true, // Désactive le champ pour qu'il ne puisse pas être modifié*/
+                'label' => false, // Cela masquera le label du champ dans le formulaire
             ])
         ;
     }

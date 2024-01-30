@@ -52,7 +52,12 @@ class JobController extends AbstractController
     #[Route('/new', name: 'app_job_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        $company = $user->getCompany();
+
         $job = new Job();
+        $job->setCompany($company);
+
         $form = $this->createForm(JobType::class, $job);
         $form->handleRequest($request);
 
@@ -65,6 +70,8 @@ class JobController extends AbstractController
 
         return $this->render('job/new.html.twig', [
             'job' => $job,
+            'user' => $user,
+            'company' => $company,
             'form' => $form,
         ]);
     }
