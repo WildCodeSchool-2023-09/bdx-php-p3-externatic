@@ -21,11 +21,13 @@ class JobType extends AbstractType
             ->add('startDate')
             ->add('salary')
             ->add('city')
-//           ->add('company', EntityType::class, [
-//                'class' => Company::class,
-//                'choice_label' => 'id',
-              /*  'disabled' => true, // Make the field disabled so it cannot be edited*/
-//            ])
+            ->add('company', EntityType::class, [
+                'class' => Company::class,
+                'choice_label' => 'id',
+                'attr' => [
+                    'style' => 'display: none;', // Cela masquera le champ dans le formulaire
+                ],
+            ])
         ;
     }
 
