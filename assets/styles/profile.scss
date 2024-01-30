@@ -1,0 +1,160 @@
+.grid-container-profile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 4rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    justify-items: center;
+}
+
+.child-bio {
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+img[src*="coffee"] {
+    height: 400px;
+}
+
+img[src*="moving"] {
+    height: 300px;
+}
+
+img[src*="exciting"] {
+    display:none;
+}
+
+img[src*="partying"] {
+    height: 400px;
+}
+
+img[src*="messaging"] {
+    display: none;
+}
+
+img[src*="designer"] {
+    display: none;
+
+}
+
+.avatar {
+    height: auto;
+    width: 200px;
+     border-radius: 50%;
+
+}
+
+
+img[src*="female_avatar"] {
+    height: 200px;
+}
+
+img[src*="male_avatar"] {
+    height: 200px;
+}
+
+.profile-icon {
+    text-decoration: none;
+    color: var(--contrast);
+    &:hover {
+        color: var(--secondary-color);
+    }
+    width: 2rem;
+    font-size: 32px;
+
+}
+
+
+.user_email {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+}
+
+.ourJobsTitle {
+    margin-left: 4rem;
+    margin-right: 4rem;
+
+}
+
+.allJobs {
+    display: flex;
+
+
+
+
+}
+
+.ourJobs {
+
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    width: 100%;
+
+
+}
+
+.jobSeeMore {
+    margin: 1rem;
+}
+
+img[src*="happy"] {
+    height: 400px;
+}
+
+
+@media screen and (max-width: 768px) {
+    img[src*="coffee_with_friends"] {
+        display: none;
+    }
+
+
+    img[src*="designer"] {
+        display: flex;
+        height: 200px;
+
+    }
+    .grid-container-profile {
+        display: grid;
+        grid-template-columns: 1fr;
+
+    }
+
+    .edit_btns {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
+
+    }
+
+    .company_avatar {
+        height: auto;
+        width: 100%;
+    }
+
+    img[src*="moving"] {
+        display: none;
+    }
+
+    img[src*="messaging"] {
+        display: flex;
+        height: 200px;
+    }
+
+    img[src*="partying"] {
+        height: 200px;
+    }
+
+    img[src*="exciting"] {
+        display: flex;
+        height: 200px;
+    }
+
+    img[src*="happy"] {
+        height: 200px;
+
+    }
+
+}

@@ -1,0 +1,38 @@
+{# Section pour afficher : barre de recherche pour trouver des candidats #}
+<div class="searchModule">
+    <div class="searchBar">
+        <form class="searchingForm" name="company_search_form" method="post">
+            <div class="mb-3">
+                {{ form_label(candidateSearchForm.fonction, 'Fonction recherchée', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(candidateSearchForm.fonction, {'attr': {'class': 'form-control', 'placeholder': 'La fonction souhaitée ici...'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(candidateSearchForm.location, 'Lieu', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(candidateSearchForm.location, {'attr': {'class': 'form-control', 'placeholder': 'Le lieu souhaité ici...'}}) }}
+            </div>
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+            {{ form_widget(candidateSearchForm._token) }}
+        </form>
+    </div>
+</div>
+
+{# Section pour les résultats de recherche #}
+<div class="searchResults">
+    {% if candidates is not empty %}
+        {% for candidate in candidates %}
+            <div class="candidateCard">
+                <h2>{{ candidate.user.username }}</h2>
+                <strong>{{ candidate.user.location }}</strong>
+                <p>{{ candidate.fonction }}</p>
+                <i>{{ candidate.github }}</i>
+                <div class="candidateSeeMore">
+                    <a class="btn btn-primary" href="{{ path('app_profile_candidate', {'id': candidate.id}) }}">Voir détails du candidat</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="noResults">
+            <p>Aucun résultat trouvé pour la recherche spécifiée.</p>
+        </div>
+    {% endif %}
+</div>

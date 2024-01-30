@@ -1,0 +1,62 @@
+.company-nav-links {
+    margin-left: 0;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: 100px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #cccccc;
+    //position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-company {
+    display: flex;
+}
+
+.company-logo-nav {
+    width: 20%;
+    padding-left: 20px;
+}
+
+.company-Menu-deroulant > a {
+    display: block;
+    padding: 20px;
+    line-height: 22px;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Jost Variable', sans-serif;
+    font-size:16px;
+}
+
+#company-menu {
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Jost Variable', sans-serif;
+    gap: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 20px;
+    --b: 0.2em;
+    --c: #842342;
+    padding-block: var(--b);
+}
+
+.company-Menu-deroulant > a:hover {
+    --_p: 100%;
+    --_s: .3s;
+}
+
+
+@media screen and (max-width: 660px) {
+    .company-logo-nav {
+        width: 8%;
+        max-width: 150px;
+        padding-left: 20px;
+    }
+}

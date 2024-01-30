@@ -1,0 +1,66 @@
+{# templates/apply/apply_job.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Postuler à l'offre {{ job.title }}{% endblock %}
+
+{% block body %}
+    <div class="grid-container">
+        <div class="grid-child-image">
+            <h1>Postuler à l'offre:  {{ job.title }}</h1>
+            <img src="{{ asset('build/images/moving.svg') }}" alt="woman moving"/>
+        </div>
+        <img src="{{ asset('build/images/messaging.svg') }}" alt="woman sending a message"/>
+        <div class="grid-child-form">
+
+            {% if app.user %}
+                {% if not job.isAppliedByCandidate(app.user.candidate) %}
+                    {{ form_start(applyForm) }}
+                    <div class="apply_label">
+                        {{ form_label(applyForm.message, "Personnaliser mon message au recruteur", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                    </div>
+                    {{ form_row(applyForm.message) }}
+                    <div class="apply_label">
+                        {{ form_label(applyForm.cvChoice, "Choisir un CV", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                    </div>
+                    {{ form_widget(applyForm.cvChoice, {
+                        attr: { placeholder: '', class: 'radio-container input' }
+                    }) }}
+
+                    {{ form_row(applyForm.newCV) }}
+
+                    <div class="applySubmit">
+                        <button type="submit">Postuler</button>
+                    </div>
+                    {{ form_end(applyForm) }}
+                {% else %}
+                    <h2>Vous avez déjà postulé à cette offre</h2>
+                {% endif %}
+            {% else %}
+                <h2>Vous devez être connecté pour postuler à une offre.</h2>
+            {% endif %}
+        </div>
+    </div>
+    {%  block javascript  %}
+    <script>
+
+
+        document.querySelector("label[for='apply_form_cvChoice_0']").addEventListener("click", function(){
+        document.querySelector("label[for='apply_form_cvChoice_0']").innerText = "utiliser mon profil CV"
+        document.querySelector("label[for='apply_form_cvChoice_1']").classList.add("roleButton")
+    });
+
+        document.querySelector("label[for='apply_form_cvChoice_1']").addEventListener("click", function(){
+        document.querySelector("label[for='apply_form_cvChoice_1']").innerText = "télécharger un nouveau CV";
+        document.querySelector("label[for='apply_form_cvChoice_0']").classList.add("roleButton")
+    });
+
+
+
+    </script>
+    {% endblock %}
+{% endblock %}

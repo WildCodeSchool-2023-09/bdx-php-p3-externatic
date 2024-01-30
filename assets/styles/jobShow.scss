@@ -1,0 +1,80 @@
+.job-card{
+    align-items: center;
+    margin: 2rem 8rem;
+}
+
+.manage-job-card{
+    align-items: center;
+}
+
+.job-card-header{
+    background-color: var(--dominant) !important;
+    border-bottom: none !important;
+}
+
+.job-card-footer{
+    background-color: var(--dominant) !important;
+    border-top: none !important;
+}
+
+.job-edit-card{
+    align-items: stretch;
+    margin: 2rem 8rem;
+}
+
+.apply_label {
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+.applySubmit {
+    margin-top: 1.5rem;
+}
+
+label[for='apply_form_cvChoice_0'] {
+    background-color: var(--dominant);
+    color: grey;
+    border-color: var(--contrast);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    &:hover {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+}
+
+
+label[for='apply_form_cvChoice_1'] {
+    background-color: var(--dominant);
+    color: grey;
+    border-color: var(--contrast);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+
+    &:hover {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+}
+
+    .jobInfo {
+        margin-top: 1rem;
+    }
+
+

@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+<div class="grid-container">
+    <div class="grid-child-image">
+        <h1>Créer un compte</h1>
+        <img src="{{ asset('build/images/people.svg') }}" alt="three business people"/>
+    </div>
+        <img src="{{ asset('build/images/programmer.svg') }}" alt="woman working on a computer"/>
+
+    <div class="grid-child-form">
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+        {{ form_label(registrationForm.roles, 'Vous êtes..', {
+            label_attr: { class: 'radio-container' }
+        }) }}
+
+        {{ form_widget(registrationForm.roles, {
+            attr: { placeholder: '', class: 'radio-container input' }
+        }) }}
+        {{ form_label(registrationForm.username, "Nom d'utilisateur", {
+            label_attr: { class: 'label' }
+        }) }}
+        {{ form_row(registrationForm.username, {
+            attr: { placeholder: "Choisissez votre nom", class: 'placeholder' }
+        }) }}
+        <hr class="input_line">
+        {{ form_label(registrationForm.email, 'Adresse e-mail', {
+            label_attr: { class: 'label' }
+        }) }}
+        {{ form_row(registrationForm.email, {
+            attr: { placeholder: 'Entrez votre adresse e-mail', class: 'placeholder' }
+        }) }}
+        <hr class="input_line">
+        {{ form_label(registrationForm.plainPassword.first, 'Mot de passe', {
+            label_attr: { class: 'label' }
+        }) }}
+        {{ form_row(registrationForm.plainPassword.first, {
+            attr: { placeholder: 'Choisissez un mot de passe', class: 'placeholder' }
+        }) }}
+        <hr class="input_line">
+        {{ form_label(registrationForm.plainPassword.second, 'Mot de passe', {
+            label_attr: { class: 'label' }
+        }) }}
+        {{ form_row(registrationForm.plainPassword.second, {
+            attr: { placeholder: 'Confirmez votre mot de passe', class: 'placeholder' }
+        }) }}
+        <hr class="input_line">
+
+
+<div class="connection_link">
+        <button type="submit">Créer un compte</button>
+</div>
+
+    {{ form_end(registrationForm) }}
+
+<div class="connection_link">
+        <a class="connection" href="{{ path('app_login') }}">
+             Vous avez déjà un compte ?
+        </a>
+</div>
+</div>
+
+
+
+
+    {%  block javascript  %}
+    <script>
+
+
+        document.querySelector("label[for='registration_form_roles_0']").addEventListener("click", function(){
+        document.querySelector("label[for='registration_form_roles_0']").innerText = "Vous avez choisi candidat"
+        document.querySelector("label[for='registration_form_roles_1']").classList.add("roleButton")
+    });
+
+        document.querySelector("label[for='registration_form_roles_1']").addEventListener("click", function(){
+        document.querySelector("label[for='registration_form_roles_1']").innerText = "Vous avez choisi entreprise"
+        document.querySelector("label[for='registration_form_roles_0']").classList.add("roleButton")
+    });
+
+
+    </script>
+    {% endblock %}
+
+{% endblock %}
+

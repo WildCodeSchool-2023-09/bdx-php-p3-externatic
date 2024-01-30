@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block title %}Applicants{% endblock %}
+
+{% block body %}
+<div class="grid-container">
+    <div class="grid-child-image">
+        <h2> Traiter la candidature de  {{ application.curriculum.candidate.user.username }} pour le offre  de   {{ job.title }} </h2>
+        <img src="{{ asset('build/images/happy_feeling.svg') }}" alt="person celebrating good news"/>
+    </div>
+    <div class="grid-child-form">
+        <div class="favoriteAvatar">
+            {% if application.curriculum.candidate.user.image is defined and application.curriculum.candidate.user.image is not null %}
+            <img class="avatar" src="{{ asset('uploads/images/' ~ application.curriculum.candidate.user.image) }}" alt="user profile image">
+        </div>
+        {% else %}
+        <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
+    </div>
+    {%  endif %}
+    <div class="statusForm">
+{{ form_start(statusForm) }}
+
+                        {{ form_row(statusForm.status, {
+                            attr: { placeholder: "update", class: 'radio-container input' }
+                        }) }}
+        <div class="submit_decision">
+    <button type="submit">soumettre la décision</button>
+    </div>
+    </div>
+{{ form_end(statusForm) }}
+    </div>
+
+
+    {%  block javascript  %}
+    <script>
+
+
+        document.querySelector("label[for='status_form_status_0']").addEventListener("click", function(){
+        document.querySelector("label[for='status_form_status_0']").innerText = "Vous avez choisi acceptée "
+        document.querySelector("label[for='status_form_status_1']").classList.add("roleButton")
+    });
+
+        document.querySelector("label[for='status_form_status_1']").addEventListener("click", function(){
+        document.querySelector("label[for='status_form_status_1']").innerText = "Vous avez choisi refusé"
+        document.querySelector("label[for='status_form_status_0']").classList.add("roleButton")
+    });
+
+
+    </script>
+    {% endblock %}
+{% endblock %}
+
+

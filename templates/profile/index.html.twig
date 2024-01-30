@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+<div class="grid-container-profile">
+    {% if app.user.image is defined and app.user.image is not null %}
+    <div class="grid-child-image">
+    <img class="avatar" src="{{ asset('uploads/images/' ~ app.user.image) }}" alt="user profile image">
+    {% else %}
+    <div class="grid-child-image">
+        <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
+    {%  endif %}
+        <div class="child-bio">
+            <ion-icon name="mail" class="profile-icon" onclick="revealEmail()"></ion-icon>
+            <h3 id="reveal_email">email : {{ app.user.email }}</h3>
+            {% if app.user.linkedin is defined and app.user.linkedin is not null %}
+            <a href="{{ app.user.linkedin }}" target="_blank" class="profile-icon" onclick="return confirm('Cliquez sur OK pour être redirigé vers Linkedin');">
+                <ion-icon name="logo-linkedin" class="profile-icon"></ion-icon>
+            </a>
+            {%  endif %}
+            {% if app.user.roles.0 is same as('ROLE_CANDIDAT') %}
+            {% if app.user.candidate.github is defined and app.user.candidate.github is not null %}
+            <a href="{{ app.user.candidate.github }}" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers GitHub');" target="_blank">
+                <ion-icon name="logo-github" class="profile-icon"></ion-icon>
+            </a>
+            {%  endif %}
+                {% if app.user.candidate.profileCV is defined and app.user.candidate.profileCV is not null %}
+                    <a href="{{ asset('uploads/images/' ~ app.user.candidate.profileCV) }}" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers le CV de {{ app.user.username }}');" target="_blank">
+                        <ion-icon class="profile-icon" name="document-text-outline" alt="Voir mon CV"></ion-icon>
+                    </a>
+            {% endif %}
+            {% endif %}
+            {% if app.user.roles.0 is  not same as('ROLE_CANDIDAT') %}
+                {% if app.user.company.website is defined and app.user.company.website is not null %}
+                    <a href="{{ app.user.company.website }}" target="_blank" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers le site web de {{ app.user.username }}');">
+                        <ion-icon name="globe-outline" class="profile-icon"></ion-icon>
+                    </a>
+                {%  endif %}
+            {% if app.user.company.adress is defined and app.user.company.adress is not null %}
+                <ion-icon name="location-outline" class="profile-icon" onclick="revealAddress()"></ion-icon>
+            <h3 id="reveal"> Adresse : {{ app.user.company.adress }}</h3>
+            {%  endif %}
+            {%  endif %}
+        </div>
+    </div>
+        <div>
+        <h1> {{ app.user.username }}</h1>
+            {% if app.user.bio is defined and app.user.bio is not null %}
+        {% if app.user.roles.0 is  not same as('ROLE_CANDIDAT') %}
+        <h2> Qui sommes nous ? </h2>
+            <p> {{ app.user.bio }}</p>
+            {%  else %}
+                        {% if app.user.location is defined and app.user.location is not null %}
+                            {% if app.user.candidate.fonction is defined and app.user.candidate.fonction is not null %}
+                                <p> En recherche de {{ app.user.candidate.fonction }} à {{ app.user.location }}</p>
+                            {%  endif %}
+                        {%  endif %}
+                <h2> Me connaître </h2>
+        <p> {{ app.user.bio }}</p>
+                </div>
+            {%  endif %}
+    {% endif %}
+            <div class="edit_btns">
+                {% if app.user.company.jobs is defined and app.user.company.jobs is  not null %}
+                    <h2>Nos offres</h2>
+                        {% for job in app.user.company.jobs %}
+                            <div class="ourJobs">
+                            <h2  class="favoriteTitle">{{ job.title }}</h2>
+                            <strong>{{ job.city }}</strong>
+                            <p>{{ job.description }}</p>
+                            <i>{{ job.salary }}€</i>
+                            <div class="jobSeeMore">
+                                <a class="connection" href="{{ path('app_job_show', {'id': job.id}) }}">Voir détails de l'offre</a>
+                            </div>
+                        </div>
+                {% endfor %}
+
+                {% endif %}
+
+
+    <a class="connection" href="{{ path('app_profile_edit') }}">
+        Éditer
+    </a>
+    <form method="post" action="{{ path('app_profile_delete', {'id': app.user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.id) }}">
+        <button class="connection">Supprimer</button>
+    </form>
+            </div>
+    </div>
+
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+
+    </script>
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
+
+    </script>
+
+<script>
+
+
+    function revealAddress() {
+        var x = document.getElementById("reveal");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function revealEmail() {
+        var x = document.getElementById("reveal_email");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+</script>
+{% endblock %}

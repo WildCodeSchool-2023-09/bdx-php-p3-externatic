@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+{% block title %}Edit profile{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('profile') %}
+        <div class="registered">
+            {{ message }}
+        </div>
+    {% endfor %}
+        <div class="grid-container">
+            <div class="grid-child-image">
+                <h1>Modifier votre profil</h1>
+                <img src="{{ asset('build/images/coffee_with_friends.svg') }}" alt="friends hanging out with coffee"/>
+            </div>
+            <img src="{{ asset('build/images/designer.svg') }}" alt="designer behind a computer"/>
+            <div class="grid-child-form">
+                {{ form_start(profileForm) }}
+                    {{ form_label(profileForm.username, "Nom d'utilisateur", {
+                        label_attr: { class: 'label' }
+                    }) }}
+                    {{ form_row(profileForm.username, {
+                        attr: { placeholder: "Modifier votre nom", class: 'placeholder' }
+                    }) }}
+                    <hr class="input_line">
+                    {{ form_label(profileForm.location, "Localisation", {
+                        label_attr: { class: 'label' }
+                    }) }}
+                    {{ form_row(profileForm.location, {
+                        attr: { placeholder: "Ajoutez votre lieu de résidence", class: 'placeholder' }
+                    }) }}
+                    <hr class="input_line">
+                    {{ form_label(profileForm.bio, "Bio", {
+                        label_attr: { class: 'label' }
+                    }) }}
+                    {{ form_row(profileForm.bio, {
+                        attr: { placeholder: "Parlez-nous de vous", class: 'placeholder' }
+                    }) }}
+                    <hr class="input_line">
+                    {{ form_label(profileForm.linkedin, "Linkedin", {
+                        label_attr: { class: 'label' }
+                    }) }}
+                    {{ form_row(profileForm.linkedin, {
+                        attr: { placeholder: "Ajoutez votre profil linkedin", class: 'placeholder' }
+                    }) }}
+                    <hr class="input_line">
+                    {{ form_label(profileForm.image, "Image profil", {
+                        label_attr: { class: 'label' }
+                    }) }}
+                    {{ form_row(profileForm.image, {
+                        attr: { placeholder: "Ajoutez votre image", class: 'placeholder' }
+                    }) }}
+
+                    {% if app.user.roles.0 is not same as('ROLE_CANDIDAT') %}
+                    {{ form_start(companyForm) }}
+                        {{ form_label(companyForm.siret, "Siret No.", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                        {{ form_row(companyForm.siret, {
+                            attr: { placeholder: "Ajouter votre siret no.", class: 'placeholder' }
+                        }) }}
+                        <hr class="input_line">
+                        {{ form_label(companyForm.adress, "Adresse", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                        {{ form_row(companyForm.adress, {
+                            attr: { placeholder: "Ajouter votre adresse", class: 'placeholder' }
+                        }) }}
+                        <hr class="input_line">
+                        {{ form_label(companyForm.website, "Site web", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                        {{ form_row(companyForm.website, {
+                            attr: { placeholder: "Ajouter votre site web", class: 'placeholder' }
+                        }) }}
+                        <hr class="input_line">
+                        <button type="submit" class="connection">Envoyer</button>
+
+                        {{ form_end(companyForm) }}
+                    {% endif %}
+
+                    {% if app.user.roles.0 is same as('ROLE_CANDIDAT') %}
+                        {{ form_start(candidateForm) }}
+                        {{ form_label(candidateForm.github, "Github", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                        {{ form_row(candidateForm.github, {
+                            attr: { placeholder: "Ajouter votre Github", class: 'placeholder' }
+                        }) }}
+                        <hr class="input_line">
+                        {{ form_label(candidateForm.fonction, "En recherche de..", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                        {{ form_row(candidateForm.fonction, {
+                            attr: { placeholder: "Ajouter le nom du metier recherché", class: 'placeholder' }
+                        }) }}
+                        <hr class="input_line">
+                        {{ form_label(candidateForm.profileCV, "CV", {
+                            label_attr: { class: 'label' }
+                        }) }}
+                        {{ form_row(candidateForm.profileCV, {
+                            attr: { placeholder: "Ajoutez votre cv", class: 'placeholder' }
+                        }) }}
+
+                        <button type="submit" class="connection">Envoyer</button>
+                        {{ form_end(candidateForm) }}
+                    {% endif %}
+
+                {{ form_end(profileForm) }}
+            </div>
+        </div>
+
+
+
+
+{% endblock %}
+

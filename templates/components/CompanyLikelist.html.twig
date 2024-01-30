@@ -1,0 +1,16 @@
+{% if app.user %}
+    <div{{ attributes }}>
+        <button
+            data-controller="CompanyLikelist"
+            data-action="live#action"
+            data-action-name="prevent|toggle"
+            class="connection"
+        >
+            {% if app.user.CompanyLikelist.contains(candidate) %}
+                <i class="bi bi-heart-fill"></i> Retirer des favoris
+            {% else %}
+                <i class="bi bi-heart"></i> Ajouter aux favoris
+            {% endif %}
+        </button>
+    </div>
+{% endif %}

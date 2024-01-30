@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+{% block title %} Candidate Profile{% endblock %}
+
+{% block body %}
+<div class="grid-container-profile">
+    {% if candidate.user.image is defined and candidate.user.image is not null %}
+    <div class="grid-child-image">
+        <img class="avatar" src="{{ asset('uploads/images/' ~ candidate.user.image) }}" alt="user profile image">
+
+        {% else %}
+        <div class="grid-child-image">
+            <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
+
+            {%  endif %}
+            <div class="child-bio">
+                <ion-icon name="mail" class="profile-icon" onclick="revealEmail()"></ion-icon>
+                <h3 id="reveal_email">email : {{ candidate.user.email }}</h3>
+                {% if candidate.user.linkedin is defined and candidate.user.linkedin is not null %}
+                    <a href="{{ candidate.user.linkedin }}" target="_blank" class="profile-icon" onclick="return confirm('Cliquez sur OK pour être redirigé vers Linkedin');">
+                        <ion-icon name="logo-linkedin" class="profile-icon"></ion-icon>
+                    </a>
+                {%  endif %}
+                    {% if candidate.github is defined and candidate.github is not null %}
+                        <a href="{{ candidate.github }}" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers GitHub');" target="_blank">
+                            <ion-icon name="logo-github" class="profile-icon"></ion-icon>
+                        </a>
+                    {%  endif %}
+                    {% if candidate.profileCV is defined and candidate.profileCV is not null %}
+                        <a href="{{ asset('uploads/images/' ~ candidate.profileCV) }}" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers le CV de {{ app.user.username }}');" target="_blank">
+                            <ion-icon class="profile-icon" name="document-text-outline" alt="Voir mon CV"></ion-icon>
+                        </a>
+                    {% endif %}
+        </div>
+        </div>
+        <div>
+            <h1> {{ candidate.user.username }}</h1>
+            {% if candidate.user.bio is defined and candidate.user.bio is not null %}
+            {% if candidate.user.location is defined and candidate.user.location is not null %}
+                {% if candidate.fonction is defined and candidate.fonction is not null %}
+                    <p> En recherche de {{ candidate.fonction }} à {{ candidate.user.location }}</p>
+                {%  endif %}
+            {%  endif %}
+            <h2> Me connaître </h2>
+            <p> {{ candidate.user.bio }}</p>
+        </div>
+        {%  endif %}
+    </div>
+
+    <!-- Intégration du composant CompanyLikelistLiveComponent avec le bouton -->
+    {{ component('CompanyLikelist', {'candidate': candidate}) }}
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+
+    </script>
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
+
+    </script>
+
+    <script>
+
+
+        function revealAddress() {
+            var x = document.getElementById("reveal");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function revealEmail() {
+            var x = document.getElementById("reveal_email");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,205 @@
+h1 {
+    margin-bottom: 1.5rem;
+}
+
+
+.label {
+    border: none;
+    color: var(--contrast);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.placeholder {
+
+    color: grey;
+    border: none;
+    height: 2rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+
+}
+
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+
+}
+
+.input_line {
+    color: lightgrey;
+    margin-bottom: 1.5rem;
+    width: 80%;
+    text-align: left;
+    margin-left: 0;
+}
+
+.last_line {
+    margin-bottom: 1rem;
+    width: 100%;
+    color: lightgrey;
+}
+.roleButton {
+    display: none;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 4rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.grid-child-text {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.grid-child-form {
+    margin-top: 2rem;
+}
+
+.registered {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    display:flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+
+}
+/* src*=  means "begins with" */
+img[src*="people"] {
+    height: 400px;
+}
+
+
+img[src*="programmer"] {
+    display: none;
+
+}
+
+.radio-container {
+        border: none;
+        color: var(--contrast);
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+
+    }
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+label[for='registration_form_roles_0'] {
+    background-color: var(--dominant);
+    color: grey;
+    border-color: var(--contrast);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    &:hover {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+}
+
+
+label[for='registration_form_roles_1'] {
+    background-color: var(--dominant);
+    color: grey;
+    border-color: var(--contrast);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    &:hover {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+    &:active {
+        color: var(--dominant);
+        background-color: var(--secondary-color);
+    }
+
+
+
+}
+
+
+@media screen and (max-width: 768px) {
+    img[src*="people"] {
+        display: none;
+    }
+
+
+    img[src*="programmer"] {
+        display: flex;
+        height: 200px;
+
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .grid-child-form {
+        margin-top: 2rem;
+    }
+
+    .input_line {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .connection {
+        width: 100%;
+    }
+
+    label[for='registration_form_roles_0'] {
+
+        padding: 0.2rem;
+        font-size: 1rem;
+    }
+
+    label[for='registration_form_roles_1'] {
+
+        padding: 0.2rem;
+        font-size: 1rem;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

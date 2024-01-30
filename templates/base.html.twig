@@ -1,22 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" type="image/png" href="{{ asset('build/images/logo-wild-code-school.svg') }}"/>
-        <title>
-            {% block title %}Projet 3 Name{% endblock %}
-        </title>
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    <title>
+        {% block title %}Externatic{% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    </title>
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+<header>
+    {# Navbar pour les users non co ou avec rôle CANDIDAT#}
+    {% if app.user is null or is_granted('ROLE_CANDIDAT') %}
+        {{ include('includes/navbar.html.twig') }}
+    {% endif %}
+    {# Navbar pour les users avec rôle COMPANY#}
+    {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') %}
+        {{ include('includes/company_nav.html.twig') }}
+    {% endif %}
+</header>
+<main>
+
+    {% block body %}
+        {% for message in app.flashes('success') %}
+        {% endfor %}
+    {% endblock %}
+</main>
+<footer>
+    {# Footer pour les users non co ou avec rôle CANDIDAT#}
+    {% if app.user is null or is_granted('ROLE_CANDIDAT') %}
+        {{ include('includes/footer.html.twig') }}
+    {% endif %}
+    {# Footer pour les users avec rôle COMPANY#}
+    {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') %}
+        {{ include('includes/company_footer.html.twig') }}
+    {% endif %}
+</footer>
+</body>
 </html>
