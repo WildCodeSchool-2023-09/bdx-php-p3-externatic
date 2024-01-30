@@ -30,8 +30,19 @@
 .applySubmit {
     margin-top: 1.5rem;
 }
+.jobOffer {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem;
+}
 
 img[src*="office"] {
+    height: 400px;
+    justify-content: center;
+}
+
+img[src*="jobW"] {
     height: 400px;
     justify-content: center;
 }
@@ -99,6 +110,10 @@ label[for='apply_form_cvChoice_1'] {
     img[src*="office"] {
         height: 200px;
         justify-content: center;
+    }
+
+    img[src*="jobW"] {
+        height: 200px;
     }
 }
 

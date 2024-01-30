@@ -1,57 +1,55 @@
-<div class="grid-container">
-    <div class="card-text">
+
         {{ form_start(form) }}
         {{ form_label(form.title, "Titre de l'emploi", { label_attr: { class: 'label' } }) }}
         {{ form_row(form.title, {
             attr: {
-                placeholder: "Ajouter le titre de l'emploi"
+                placeholder: "Ajouter le titre de l'emploi", class: 'placeholder'
             } }) }}
         <hr class="input_line">
 
         {{ form_label(form.adress, "Adresse", { label_attr: { class: 'label' } }) }}
         {{ form_row(form.adress, {
-            attr: { placeholder: "Ajouter l'adresse",
+            attr: { placeholder: "Ajouter l'adresse",  class: 'placeholder'
 }
         }) }}
-        <hr class="card-text">
+        <hr class="input_line">
 
         {{ form_label(form.description, "Description", { label_attr: { class: 'label' } }) }}
         {{ form_row(form.description, {
             attr: {
-                placeholder: "Ajouter la description",
+                placeholder: "Ajouter la description",  class: 'placeholder'
             }
         }) }}
-        <hr class="card-text">
+        <hr class="input_line">
 
         {{ form_label(form.startDate, "Date de début", { label_attr: { class: 'label' } }) }}
         {{ form_row(form.startDate, {
             attr: {
-                placeholder: "Ajouter la date de début",
+                placeholder: "Ajouter la date de début",  class: 'placeholder'
             } }) }}
-        <hr class="card-text">
+        <hr class="input_line">
 
         {{ form_label(form.salary, "Salaire", { label_attr: { class: 'label' } }) }}
         {{ form_row(form.salary, {
             attr: {
-                placeholder: "Ajouter le salaire",
+                placeholder: "Ajouter le salaire",  class: 'placeholder'
             } }) }}
-        <hr class="card-text">
+        <hr class="input_line">
 
         {{ form_label(form.city, "Ville", { label_attr: { class: 'label' } }) }}
         {{ form_row(form.city, {
             attr: {
-                placeholder: "Ajouter la ville",
+                placeholder: "Ajouter la ville",  class: 'placeholder'
             } }) }}
-        <hr class="card-text">
+        <hr class="input_line">
 
-        {{ form_label(form.company, "Entreprise", { label_attr: { class: 'label' } }) }}
+    {#   {{ form_label(form.company, "Entreprise", { label_attr: { class: 'label' } }) }}
         {{ form_row(form.company, {
             attr: {
                 'style': 'display: none;'} }) }}
-        <hr class="card-text">
+        <hr class="card-text">#}
 
         {{ form_widget(form) }}
         <button class="btn btn-outline-secondary" type="submit">Publier l'offre d'emploi</button>
         {{ form_end(form) }}
-    </div>
-</div>
+
