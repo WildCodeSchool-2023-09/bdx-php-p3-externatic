@@ -12,7 +12,7 @@
         {{ message }}
     </div>
     {%  endfor %}
-<div class="grid-container-profile">
+<div class="grid-container">
     <div class="grid-child-image">
         <h1>{{ job.title }}</h1>
     <h2>{{ job.company.user.username }}</h2>
@@ -27,29 +27,20 @@
         </div>
     </div>
     <div class="grid-child-form">
-<div>
+        <div class="jobOffer">
+
                 <h2>Adresse:</h2>
     <p>{{ job.adress }}</p>
-    </div>
-            <div>
                 <h2>Description:</h2>
                 <p>{{ job.description }}</p>
-            </div>
-            <div>
                 <h2>Début du contrat:</h2>
                 <p>{{ job.startDate ? job.startDate|date('Y-m-d') : '' }}</p>
-            </div>
-            <div>
                 <h2>Salaire:</h2>
                 <p>{{ job.salary }}</p>
-            </div>
-            <div>
                 <h2>Ville:</h2>
                 <p>{{ job.city }}</p>
-            </div>
-        <div>
-            <!-- Intégration du composant LikelistLiveComponent avec le bouton -->
-            {{ component('Likelist', {'job': job}) }}
+        <!-- Intégration du composant CompanyLikelistLiveComponent avec le bouton -->
+        {{ component('Likelist', {'job': job }) }}
         <script
             type="module"
             src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
@@ -60,7 +51,7 @@
             src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
 
         </script>
-    </div>
+        </div>
         <div class="jobButtons">
             <!-- Bouton postuler-->
             <a href="{{ path('app_apply_job', {'id': job.id}) }}" class="jobBtns">Postuler</a>
@@ -79,7 +70,7 @@
             </div>
          {% endif %}
         </div>
-    </div>
+
 
 
 {% endblock %}

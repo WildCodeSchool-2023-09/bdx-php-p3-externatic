@@ -18,12 +18,12 @@ class JobType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('adress')
-            ->add('description')
-            ->add('startDate')
-            ->add('salary')
-            ->add('city')
+            ->add('title', null, ['label' => false])
+            ->add('adress', null, ['label' => false])
+            ->add('description', null, ['label' => false])
+            ->add('startDate', null, ['label' => false])
+            ->add('salary', null, ['label' => false])
+            ->add('city', null, ['label' => false])
             ->add('company', EntityType::class, [
                 'class' => Company::class,
                 'choice_label' => 'id',
