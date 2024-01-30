@@ -1,66 +1,9 @@
-{#
-{% extends 'base.html.twig' %}
 
-{% block title %}Job{% endblock %}
-{% block stylesheets %}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-{% endblock %}
-{% block body %}
-    <h1>Job</h1>
-
-    <table class="table">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ job.id }}</td>
-        </tr>
-        <tr>
-            <th>Title</th>
-            <td>{{ job.title }}</td>
-        </tr>
-        <tr>
-            <th>Adress</th>
-            <td>{{ job.adress }}</td>
-        </tr>
-        <tr>
-            <th>Description</th>
-            <td>{{ job.description }}</td>
-        </tr>
-        <tr>
-            <th>StartDate</th>
-            <td>{{ job.startDate ? job.startDate|date('Y-m-d') : '' }}</td>
-        </tr>
-        <tr>
-            <th>Salary</th>
-            <td>{{ job.salary }}</td>
-        </tr>
-        <tr>
-            <th>City</th>
-            <td>{{ job.city }}</td>
-        </tr>
-        </tbody>
-    </table>
-    <!-- Intégration du composant LikelistLiveComponent avec le bouton -->
-    {{ component('Likelist',  {'job': job}) }}
-
-    <a href="{{ path('app_job_index') }}">back to list</a>
-
-    <a href="{{ path('app_job_edit', {'id': job.id}) }}">edit</a>
-
-    {{ include('job/_delete_form.html.twig') }}
-
-    <!-- Bouton postuler-->
-    <a href="{{ path('app_apply_job', {'id': job.id}) }}" class="btn btn-primary">Postuler</a>
-
-{% endblock %}
-#}
 {% extends 'base.html.twig' %}
 
 {% block title %}Détails de l'emploi{% endblock %}
 
 {% block stylesheets %}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 {% endblock %}
 
 {% block body %}
@@ -69,47 +12,69 @@
         {{ message }}
     </div>
     {%  endfor %}
-    <div class="card job-card">
-        <div class="card-header job-card-header">
-            <h5 class="card-title">{{ job.title }}</h5>
-        </div>
-        <div class="card-body job-card-body">
-            <div class="mb-3 job-title">
-                <strong>Titre:</strong> {{ job.title }}
-            </div>
-            <div class="mb-3 job-address">
-                <strong>Adresse:</strong> {{ job.adress }}
-            </div>
-            <div class="mb-3 job-description">
-                <strong>Description:</strong> {{ job.description }}
-            </div>
-            <div class="mb-3 job-date">
-                <strong>Début du contrat:</strong> {{ job.startDate ? job.startDate|date('Y-m-d') : '' }}
-            </div>
-            <div class="mb-3 job-salary">
-                <strong>Salaire:</strong> {{ job.salary }}
-            </div>
-            <div class="mb-3 job-city">
-                <strong>Ville:</strong> {{ job.city }}
-            </div>
-            <!-- Intégration du composant LikelistLiveComponent avec le bouton -->
-            {{ component('Likelist', {'job': job}) }}
-        </div>
-        <div class="card-footer job-card-footer">
-            <!-- Bouton postuler-->
-            <a href="{{ path('app_apply_job', {'id': job.id}) }}" class="btn btn-primary">Postuler</a>
-        </div>
+<div class="grid-container-profile">
+    <div class="grid-child-image">
+        <h1>{{ job.title }}</h1>
+    <h2>{{ job.company.user.username }}</h2>
+        {% if job.company.user.image is defined and job.company.user.image is not null %}
+            <img class="avatar" src="{{ asset('uploads/images/' ~ job.company.user.image) }}" alt="company profile image">
+            {% else %}
+        <img src="{{ asset('build/images/office.svg') }}" alt="office workers"/>
+
+    {% endif %}
         <div>
-            <a class="connection" href="{{ path('app_profile_company', {'id': job.company.id}) }}" >Voir l'entreprise</a>
+        <a class="connection" href="{{ path('app_profile_company', {'id': job.company.id}) }}" >Voir l'entreprise</a>
         </div>
     </div>
-    <div class="card manage-job-card">
-        <a href="{{ path('app_job_index') }}" class="btn btn-secondary mt-3">Retour</a>
+    <div class="child-bio">
+<div>
+                <h2>Adresse:</h2>
+    <p>{{ job.adress }}</p>
+    </div>
+            <div>
+                <h2>Description:</h2>
+                <p>{{ job.description }}</p>
+            </div>
+            <div>
+                <h2>Début du contrat:</h2>
+                <p>{{ job.startDate ? job.startDate|date('Y-m-d') : '' }}</p>
+            </div>
+            <div>
+                <h2>Salaire:</h2>
+                <p>{{ job.salary }}</p>
+            </div>
+            <div>
+                <h2>Ville:</h2>
+                <p>{{ job.city }}</p>
+            </div>
+        <div>
+            <!-- Intégration du composant LikelistLiveComponent avec le bouton -->
+            {{ component('Likelist', {'job': job}) }}
+        <script
+            type="module"
+            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
 
+        </script>
+        <script
+            nomodule
+            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
+
+        </script>
+    </div>
+        <div class="jobButtons">
+            <!-- Bouton postuler-->
+            <a href="{{ path('app_apply_job', {'id': job.id}) }}" class="jobBtns">Postuler</a>
+        </div>
+    <div class="jobButtons">
+        <a href="{{ path('app_job_index') }}" class="jobBtns">Retour</a>
+    </div>
+        <div class="jobButtons">
         {% if app.user.roles.0 is same as('ROLE_COMPANY') %}
-        <a href="{{ path('app_job_edit', {'id': job.id}) }}" class="btn btn-warning mt-3">Modifiez votre annonce</a>
+        <a href="{{ path('app_job_edit', {'id': job.id}) }}" class="jobBtns">Modifiez votre annonce</a>
+            <div class="jobButtons">
         {{ include('job/_delete_form.html.twig') }}
+            </div>
         {% endif %}
-
+        </div>
     </div>
 {% endblock %}
