@@ -63,7 +63,7 @@ class RegistrationFormType extends AbstractType
 
                     ]),
                    new Assert\PasswordStrength([ 'minScore' => PasswordStrength::STRENGTH_WEAK,
-                        'message' => 'Veuillez choisir un mot de passe plus forte',
+                        'message' => 'Veuillez choisir un mot de passe plus fort',
                             ])  //I chose strength weak as the default value of medium was too strong! //
                 ],
             ])

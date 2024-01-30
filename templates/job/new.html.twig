@@ -3,9 +3,17 @@
 {% block title %}Creation d'une nouvelle offre d'emploi{% endblock %}
 
 {% block body %}
-    <h3 class="add_title">Ajouter une nouvelle offre d'emploi</h3>
+<div class="card job-edit-card">
+    <div class="card-header job-card-header">
+    <h5 class="card_title">Ajouter une nouvelle offre d'emploi</h5>
+    </div>
 
+    <div class="card-body job-card-body">
     {{ include('job/_form.html.twig') }}
+    </div>
 
-    <a href="{{ path('app_job_index') }}">Retour à mes offres d'emploi</a>
+</div>
+
+    <a class="btn btn-primary" href="{{ path('app_job_index') }}">Retour à mes offres d'emploi</a>
+
 {% endblock %}
