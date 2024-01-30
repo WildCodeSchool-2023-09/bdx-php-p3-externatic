@@ -27,6 +27,7 @@ class JobType extends AbstractType
                 'attr' => [
                     'style' => 'display: none;', // Cela masquera le champ dans le formulaire
                 ],
+                'label' => false, // Cela masquera le label du champ dans le formulaire
             ])
         ;
     }
