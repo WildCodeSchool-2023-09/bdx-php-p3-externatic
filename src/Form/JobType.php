@@ -40,8 +40,7 @@ class JobType extends AbstractType
             ])
             ->add('startDate', null, [
                 'label' => false,
-                             ]
-            )
+                ])
             ->add('salary', TextType::class, [
                 'label' => false,
                 'constraints' => [

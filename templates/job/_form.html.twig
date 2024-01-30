@@ -2,14 +2,16 @@
     <div class="card-text">
         {{ form_start(form) }}
         {{ form_label(form.title, "Titre de l'emploi", { label_attr: { class: 'label' } }) }}
-        {{ form_row(form.title, { attr: { placeholder: "Ajouter le titre de l'emploi", class: 'placeholder' } }) }}
+        {{ form_row(form.title, {
+            attr: {
+                placeholder: "Ajouter le titre de l'emploi"
+            } }) }}
         <hr class="input_line">
 
         {{ form_label(form.adress, "Adresse", { label_attr: { class: 'label' } }) }}
         {{ form_row(form.adress, {
             attr: { placeholder: "Ajouter l'adresse",
-                class: 'placeholder'
-            }
+}
         }) }}
         <hr class="card-text">
 
@@ -17,25 +19,35 @@
         {{ form_row(form.description, {
             attr: {
                 placeholder: "Ajouter la description",
-                class: 'placeholder',
             }
         }) }}
         <hr class="card-text">
 
         {{ form_label(form.startDate, "Date de début", { label_attr: { class: 'label' } }) }}
-        {{ form_row(form.startDate, { attr: { placeholder: "Ajouter la date de début", class: 'placeholder' } }) }}
+        {{ form_row(form.startDate, {
+            attr: {
+                placeholder: "Ajouter la date de début",
+            } }) }}
         <hr class="card-text">
 
         {{ form_label(form.salary, "Salaire", { label_attr: { class: 'label' } }) }}
-        {{ form_row(form.salary, { attr: { placeholder: "Ajouter le salaire", class: 'placeholder' } }) }}
+        {{ form_row(form.salary, {
+            attr: {
+                placeholder: "Ajouter le salaire",
+            } }) }}
         <hr class="card-text">
 
         {{ form_label(form.city, "Ville", { label_attr: { class: 'label' } }) }}
-        {{ form_row(form.city, { attr: { placeholder: "Ajouter la ville", class: 'placeholder' } }) }}
+        {{ form_row(form.city, {
+            attr: {
+                placeholder: "Ajouter la ville",
+            } }) }}
         <hr class="card-text">
 
         {{ form_label(form.company, "Entreprise", { label_attr: { class: 'label' } }) }}
-        {{ form_row(form.company, { 'attr': {'style': 'display: none;'} }) }}
+        {{ form_row(form.company, {
+            attr: {
+                'style': 'display: none;'} }) }}
         <hr class="card-text">
 
         {{ form_widget(form) }}
