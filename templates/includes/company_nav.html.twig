@@ -3,16 +3,16 @@
                                                   src="{{ asset('build/images/logo_black_fond_transparent_horizontal.png') }}"
                                                   alt="Logo de l'entreprise externatic"></a></figure>
 
-    <div class="dropdown m-3">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {{ app.user.username }}
+    <div class="dropdown-company">
+        <button class="dropdown-btn-company">
+            {{ app.user.username }} ▼
         </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ path('app_profile') }}">Mon profil</a></li>
-{#            <li><a class="dropdown-item" href="{{ path('app_job_new') }}">Créer une offre d'emploi</a></li>#}
-            <li><a class="dropdown-item" href="{{ path('app_job_index') }}">Mes offres d'emploi</a></li>
-            <li><a class="dropdown-item" href="{{ path('app_favorite_candidates') }}">Mes favoris</a></li>
-            <li><a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a></li>
-        </ul>
+        <div class="dropdown-content-company">
+            <p><a class="dropdown-content-item-company" href="{{ path('app_profile') }}">Mon profil</a></p>
+{#            <p><a class="dropdown-content-item-company" href="{{ path('app_job_new') }}">Créer une offre d'emploi</a></li>#}
+            <p><a class="dropdown-content-item-company" href="{{ path('app_job_index') }}">Mes offres d'emploi</a></p>
+            <p><a class="ddropdown-content-item-company" href="{{ path('app_favorite_candidates') }}">Mes favoris</a></p>
+            <p><a class="dropdown-content-item-company" href="{{ path('app_logout') }}">Se déconnecter</a></p>
+        </div>
     </div>
 </nav>
