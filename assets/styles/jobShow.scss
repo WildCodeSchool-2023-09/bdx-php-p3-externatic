@@ -31,6 +31,11 @@
     margin-top: 1.5rem;
 }
 
+img[src*="office"] {
+    height: 400px;
+    justify-content: center;
+}
+
 label[for='apply_form_cvChoice_0'] {
     background-color: var(--dominant);
     color: grey;
@@ -73,8 +78,28 @@ label[for='apply_form_cvChoice_1'] {
     }
 }
 
+.jobButtons {
+    margin-top: 2rem;
+}
+
+.jobBtns {
+    background-color: var(--primary-color);
+    color: var(--dominant);
+    border: none;
+    border-radius: 25px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
     .jobInfo {
         margin-top: 1rem;
     }
+@media screen and (max-width: 768px) {
+
+    img[src*="office"] {
+        height: 200px;
+        justify-content: center;
+    }
+}
 
 
