@@ -1,10 +1,17 @@
+.MainAboutCompany {
+    display: flex;
+    justify-content: center;
+}
+
 .aboutUsCompagnyTitle {
     text-align: center;
 }
 
 
 .about-compagny {
+    width: 70%;
     padding: 0.25rem 3rem;
     text-align: center;
     color: var(--contrast);
+    border: 1px solid var(--border-color);
 }
