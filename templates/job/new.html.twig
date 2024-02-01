@@ -3,17 +3,21 @@
 {% block title %}Creation d'une nouvelle offre d'emploi{% endblock %}
 
 {% block body %}
-<div class="card job-edit-card">
-    <div class="card-header job-card-header">
-    <h5 class="card_title">Ajouter une nouvelle offre d'emploi</h5>
-    </div>
+    <div class="grid-container">
+        <div class="grid-child-image">
+            <h1>Ajouter une nouvelle offre d'emploi</h1>
+            <img src="{{ asset('build/images/jobWoman.svg') }}" alt="business woman"/>
+        </div>
 
-    <div class="card-body job-card-body">
+        <div class="grid-child-form">
+
     {{ include('job/_form.html.twig') }}
+    <div class="jobButtons">
+        <a class="connection" href="{{ path('app_job_index') }}">Retour à mes offres d'emploi</a>
+        </div>
     </div>
-
 </div>
 
-    <a class="btn btn-primary" href="{{ path('app_job_index') }}">Retour à mes offres d'emploi</a>
+
 
 {% endblock %}
