@@ -23,11 +23,8 @@
                     <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
                     </div>
                     {% endif %}
-            <p class="favoriteTitle"> {{ candidate.user.username }}
-
-            </p>
-                <li class="jobAddress">En recherche de {{ candidate.fonction }} à {{ candidate.location }}</li>
-                <li>{{ candidate.user.bio }}</li>
+        <a class="clickLink" href="{{ path('app_profile_candidate', {'id': candidate.id}) }}">{{ candidate.user.username }}</a>
+        <p class="jobAddress">En recherche de {{ candidate.fonction }} à {{ candidate.location }}</p>
             <div>
                 <a href="{{ candidate.user.linkedin }}" target="_blank" class="profile-icon" onclick="return confirm('Cliquez sur OK pour être redirigé vers Linkedin');">
                     <ion-icon name="logo-linkedin" class="profile-icon"></ion-icon>
@@ -37,9 +34,6 @@
                 </a>
                 <ion-icon name="mail" class="profile-icon" onclick="revealEmail()"></ion-icon>
                 <h3 id="reveal_email">{{ candidate.user.email }}</h3>
-            </div>
-                <div class="seeOffer">
-                <a class="btn btn-primary" href="{{ path('app_profile_candidate', {'id': candidate.id}) }}">Voir le profil</a>
             </div>
     </div>
             {% endfor %}

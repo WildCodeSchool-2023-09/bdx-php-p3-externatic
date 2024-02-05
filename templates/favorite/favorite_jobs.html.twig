@@ -14,17 +14,12 @@
             {% else %}
                     {% for job in favoriteJobs %}
                         <div class="favoriteJobs">
-                            <ul>
-                            <li class="favoriteTitle">{{ job.title}}</li>
-                            <li class="jobAddress">{{ job.adress}}</li>
-                            <li class="jobAddress">{{ job.city}}</li>
-                            <li>{{ job.description}}</li>
-                            <li class="jobSalary">Salaire: € {{ job.salary}}</li>
-                            <li class="jobAddress">Date de début du contrat: {{ job.startDate|date('Y-m-d') }}</li>
-                            <div class="seeOffer">
-                                <a class="btn" href="{{ path('app_job_show', {'id': job.id}) }}">Accéder à l'offre</a>
-                            </div>
-                            </ul>
+                                <a class="clickLink" href="{{ path('app_job_show', {'id': job.id}) }}">{{ job.title }}</a>
+                            <p class="jobAddress">{{ job.adress}}</p>
+                            <p class="jobAddress">{{ job.city}}</p>
+                            <p>{{ job.description}}</p>
+                            <p class="jobSalary">Salaire: € {{ job.salary}}</p>
+                            <p class="jobAddress">Date de début du contrat: {{ job.startDate|date('Y-m-d') }}</p>
                         </div>
                     {% endfor %}
             {% endif %}
