@@ -42,6 +42,11 @@ img[src*="office"] {
     justify-content: center;
 }
 
+img[src*="career"] {
+    height: 400px;
+    justify-content: center;
+}
+
 img[src*="jobW"] {
     height: 400px;
     justify-content: center;
@@ -114,6 +119,11 @@ label[for='apply_form_cvChoice_1'] {
 
     img[src*="jobW"] {
         height: 200px;
+    }
+
+    img[src*="career"] {
+        height: 200px;
+        justify-content: center;
     }
 }
 
