@@ -5,7 +5,11 @@
 <div class="grid-container-profile">
     {% if app.user.image is defined and app.user.image is not null %}
     <div class="grid-child-image">
+        {% if is_granted('ROLE_COMPANY') %}
+    <img class="company-avatar" src="{{ asset('uploads/images/' ~ app.user.image) }}" alt="user profile image">
+    {% else %}
     <img class="avatar" src="{{ asset('uploads/images/' ~ app.user.image) }}" alt="user profile image">
+        {%  endif %}
     {% else %}
     <div class="grid-child-image">
         <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>

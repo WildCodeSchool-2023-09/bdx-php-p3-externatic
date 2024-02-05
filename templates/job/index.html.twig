@@ -3,6 +3,11 @@
 {% block title %}Job index{% endblock %}
 
 {% block body %}
+ {% for message in app.flashes('job') %}
+     <div class="registered">
+         {{ message }}
+     </div>
+ {% endfor %}
 <div class="grid-container">
     <div class="grid-child-image">
         <h1>Mes offres d'emplois</h1>
