@@ -23,10 +23,12 @@
         <hr class="input_line">
 
         {{ form_label(form.startDate, "Date de début", { label_attr: { class: 'label' } }) }}
-        {{ form_row(form.startDate, {
+        <div>
+        {{ form_widget(form.startDate, {
             attr: {
                 placeholder: "Ajouter la date de début",  class: 'placeholder'
             } }) }}
+        </div>
         <hr class="input_line">
 
         {{ form_label(form.salary, "Salaire", { label_attr: { class: 'label' } }) }}
