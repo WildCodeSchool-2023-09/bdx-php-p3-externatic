@@ -30,7 +30,7 @@
             <a href="{{ asset('uploads/images/' ~ application.curriculum.name) }}" class="social" onclick="return confirm('Cliquez sur OK pour être redirigé vers le CV de {{ app.user.username }}');" target="_blank">
                 <ion-icon class="profile-icon" name="document-text-outline" alt="Voir mon CV"></ion-icon>
             </a>
-            <p class="jobAddress">Status : {{ application.status }}</p>
+            <p class="jobAddress">Statut : {{ application.status }}</p>
             <a class="decision_btn" href="{{ path('app_job_decision', {'id': job.id, 'application_id': application.id}) }}">Traiter la candidature</a>
 
 
