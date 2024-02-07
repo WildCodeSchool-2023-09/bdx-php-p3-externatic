@@ -5,22 +5,6 @@
 {% block stylesheets %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        #carouselExampleCaptions {
-            width: 50%;
-            margin: auto;
-            overflow: hidden;
-        }
-
-        .carousel-indicators [data-bs-target] {
-            background-color: black;
-        }
-
-        .carousel-caption h5,
-        .carousel-caption p {
-            color: black;
-        }
-    </style>
 {% endblock %}
 
 {% block javascripts %}
@@ -34,12 +18,18 @@
     {#    Section en tête de la page d'accueil #}
     <div class="containerHomePage">
         <div class="containerHomePageTitle">
-            <h1 class="homePageTitle">Externatic</h1>
+{#            <h1 class="homePageTitle">Externatic</h1>#}
             <h2 class="hiddenMobileTitle">Plus qu'un cabinet de recrutement informatique</h2>
             {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('admin') }}" class="btn btn-primary">Dashboard</a>
+            {% endif %}
+
+            {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CANDIDATE') %}
+            <img class="img-logo" src="{{ asset('build/images/logo.png') }}">
             {% else %}
-                <a href="{{ path('app_about') }}" class="btn btn-primary">A Propos de nous</a>
+                <h5 class="card-title">Pas encore inscrit ?</h5>
+                <p class="card-text">Rejoignez Externatic en quelques secondes !</p>
+                <a href="{{ path('app_register') }}" class="btn btn-primary">Inscription</a>
             {% endif %}
         </div>
         <div class="containerHomePageImg">
@@ -117,16 +107,12 @@
         </button>
     </div>
 
-    {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CANDIDATE') %}
-    {% else %}
+
         <div class="cardRegister">
             <img src="{{ asset('build/images/registration.svg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Pas encore inscrit ?</h5>
-                <p class="card-text">Rejoignez Externatic en quelques secondes !</p>
-                <a href="{{ path('app_register') }}" class="btn btn-primary">Inscription</a>
+                <a href="{{ path('app_about') }}" class="btn btn-primary aboutUs-btn">A propos de nous</a>
             </div>
         </div>
-    {% endif %}
 
 {% endblock %}
