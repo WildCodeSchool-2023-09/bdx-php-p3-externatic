@@ -54,6 +54,10 @@ class JobController extends AbstractController
     {
         $user = $this->getUser();
         $company = $user->getCompany();
+        if (!$company) {
+            $this->addFlash('profile', "Modifiez d'abord votre profil pour améliorer votre offre !");
+            return $this->redirectToRoute('app_profile_edit');
+        }
 
         $job = new Job();
         $job->setCompany($company);
@@ -64,6 +68,7 @@ class JobController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($job);
             $entityManager->flush();
+            $this->addFlash('job', "Votre offre d'emploi a été créée avec succès !");
 
             return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
         }

@@ -77,6 +77,14 @@ label[for='status_form_status_2'] {
     margin-top: 2rem;
 }
 
+.status {
+    border-color: var(--secondary-color);
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+
+}
+
 
     .decision_btn {
         background-color: var(--primary-color);

@@ -12,6 +12,18 @@ img[src*="unlock"] {
     height: 400px;
 }
 
+img[src*="signup"] {
+    height: 400px;
+}
+
+img[src*="balloons"] {
+    height: 400px;
+}
+
+img[src*="reading"] {
+    height: 400px;
+}
+
 .connection {
 text-decoration: none;
     background-color: var(--contrast);
@@ -50,16 +62,12 @@ text-decoration: none;
     justify-content: start;
 }
 
+.signUp {
+    margin-top: 1.5rem;
+}
+
 .reset {
-    color: var(--contrast);
-    text-decoration: none;
-    margin-top: 0.5rem;
-    &:hover {
-        color: var(--primary-color);
-    }
-    &:active {
-        color: var(--primary-color);
-    }
+   margin-bottom: 1.5rem;
 }
 
 img[src*="loginF"] {
@@ -68,6 +76,18 @@ img[src*="loginF"] {
 
 .reset_div {
     margin-top: 2rem;
+}
+
+.clickLink {
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    &:hover {
+        color: var(--contrast);
+    }
+    &:active {
+        color: var(--contrast);
+    }
 }
 
 
@@ -96,6 +116,22 @@ img[src*="loginF"] {
     .connection_link {
         display: flex;
         justify-content: center;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+
+    img[src*="signup"] {
+        height: 200px;
+    }
+
+    img[src*="balloons"] {
+        height: 200px;
+    }
+
+    img[src*="reading"] {
+        height: 200px;
     }
 
 

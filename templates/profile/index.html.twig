@@ -5,7 +5,11 @@
 <div class="grid-container-profile">
     {% if app.user.image is defined and app.user.image is not null %}
     <div class="grid-child-image">
+        {% if is_granted('ROLE_COMPANY') %}
+    <img class="company-avatar" src="{{ asset('uploads/images/' ~ app.user.image) }}" alt="user profile image">
+    {% else %}
     <img class="avatar" src="{{ asset('uploads/images/' ~ app.user.image) }}" alt="user profile image">
+        {%  endif %}
     {% else %}
     <div class="grid-child-image">
         <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
@@ -65,19 +69,25 @@
                     <h2>Nos offres</h2>
                         {% for job in app.user.company.jobs %}
                             <div class="ourJobs">
-                            <h2  class="favoriteTitle">{{ job.title }}</h2>
+                                <div>
+                                <a class="clickLink" href="{{ path('app_job_show', {'id': job.id}) }}">{{ job.title }}</a>
+                                </div>
+                                <div>
                             <strong>{{ job.city }}</strong>
+                                </div>
+                                <div>
                             <p>{{ job.description }}</p>
+                                </div>
+                                <div>
                             <i>{{ job.salary }}€</i>
-                            <div class="jobSeeMore">
-                                <a class="connection" href="{{ path('app_job_show', {'id': job.id}) }}">Voir détails de l'offre</a>
-                            </div>
+                                </div>
+
                         </div>
                 {% endfor %}
 
                 {% endif %}
 
-
+<div class="jobButtons">
     <a class="connection" href="{{ path('app_profile_edit') }}">
         Éditer
     </a>
@@ -85,6 +95,7 @@
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.id) }}">
         <button class="connection">Supprimer</button>
     </form>
+</div>
             </div>
     </div>
 
