@@ -3,6 +3,7 @@
 {% block title %}Job index{% endblock %}
 
 {% block body %}
+
  {% for message in app.flashes('job') %}
      <div class="registered">
          {{ message }}

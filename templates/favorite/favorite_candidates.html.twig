@@ -10,7 +10,7 @@
     </div>
     <div class="grid-child-form">
     {% if favoriteCandidates is empty %}
-        <h2>Aucun candidat en favori </h2>
+        <h2>Aucun candidat en favoris </h2>
     {% else %}
 
             {% for candidate in favoriteCandidates %}
@@ -23,8 +23,10 @@
                     <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
                     </div>
                     {% endif %}
+                    
         <a class="clickLink" href="{{ path('app_profile_candidate', {'id': candidate.id}) }}">{{ candidate.user.username }}</a>
         <p class="jobAddress">En recherche de {{ candidate.fonction }} à {{ candidate.location }}</p>
+
             <div>
                 <a href="{{ candidate.user.linkedin }}" target="_blank" class="profile-icon" onclick="return confirm('Cliquez sur OK pour être redirigé vers Linkedin');">
                     <ion-icon name="logo-linkedin" class="profile-icon"></ion-icon>

@@ -7,6 +7,10 @@
     justify-items: center;
 }
 
+.profile-bio {
+
+}
+
 .child-bio {
     margin-top: 1.5rem;
     margin-left: 1.5rem;
@@ -41,7 +45,6 @@ img[src*="designer"] {
     height: 200px;
     width: 200px;
      border-radius: 50%;
-
 }
 
 .company-avatar {
@@ -67,39 +70,29 @@ img[src*="male_avatar"] {
     }
     width: 2rem;
     font-size: 32px;
-
 }
 
 
 .user_email {
     display: grid;
     grid-template-columns: 1fr 2fr;
-
 }
 
 .ourJobsTitle {
     margin-left: 4rem;
     margin-right: 4rem;
-
 }
 
 .allJobs {
     display: flex;
-
-
-
-
 }
 
 .ourJobs {
-
     border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     padding: 0.5rem;
     margin: 1rem;
     width: 100%;
-
-
 }
 
 .jobSeeMore {

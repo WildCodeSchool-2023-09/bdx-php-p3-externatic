@@ -43,7 +43,15 @@ class ProfileType extends AbstractType
      // 'maxHeight' => 400,])
                     ]
         ])
-            ->add('bio', null, ['label' => false, 'required' => false,])
+            ->add('bio', TextareaType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'class' => 'profile-bio',
+                    'cols' => 10,
+                    'rows' => 50,
+                ]
+            ])
             ->add('linkedin', null, ['label' => false, 'required' => false, 'constraints' => [
                 new Regex([
                     'pattern' =>
