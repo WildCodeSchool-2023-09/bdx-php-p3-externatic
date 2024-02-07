@@ -5,9 +5,8 @@
 {% block body %}
     <h1>Mes offres d'emplois</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
+    <table id="table">
+        <tr>
 {#                <th>Id</th>#}
                 <th>Titre du poste</th>
                 <th>Localisation</th>
@@ -16,18 +15,16 @@
                 <th>Salaire</th>
 {#                <th>City</th>#}
                 <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+        </tr>
         {% for job in jobs %}
             <tr>
-                <td>{{ job.id }}</td>
+{#                <td>{{ job.id }}</td>#}
                 <td>{{ job.title }}</td>
                 <td>{{ job.adress }}</td>
                 <td>{{ job.description }}</td>
                 <td>{{ job.startDate ? job.startDate|date('Y-m-d') : '' }}</td>
                 <td>{{ job.salary }}</td>
-                <td>{{ job.city }}</td>
+{#                <td>{{ job.city }}</td>#}
                 <td>
                     <a href="{{ path('app_job_show', {'id': job.id}) }}">Voir l'offre</a>
                     <a href="{{ path('app_job_edit', {'id': job.id}) }}">Modifier l'offre</a>
@@ -35,10 +32,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">Aucune offre d'emploi publiée pour le moment...</td>
+                <td>Aucune offre d'emploi publiée pour le moment...</td>
             </tr>
         {% endfor %}
-        </tbody>
+
     </table>
 
     <a class="btn btn-primary center custom-center" href="{{ path('app_job_new') }}">Créer une offre d'emploi</a>

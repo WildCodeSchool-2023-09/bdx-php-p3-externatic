@@ -10,7 +10,7 @@
     </div>
     <div class="grid-child-form">
     {% if favoriteCandidates is empty %}
-        <h2>Aucun candidat en favori </h2>
+        <h2>Aucun candidat en favoris </h2>
     {% else %}
 
             {% for candidate in favoriteCandidates %}
@@ -26,8 +26,8 @@
             <p class="favoriteTitle"> {{ candidate.user.username }}
 
             </p>
-                <li class="jobAddress">En recherche de {{ candidate.fonction }} à {{ candidate.location }}</li>
-                <li>{{ candidate.user.bio }}</li>
+        <p class="jobAddress">En recherche de {{ candidate.fonction }} à {{ candidate.location }}</p>
+                <p>{{ candidate.user.bio }}</p>
             <div>
                 <a href="{{ candidate.user.linkedin }}" target="_blank" class="profile-icon" onclick="return confirm('Cliquez sur OK pour être redirigé vers Linkedin');">
                     <ion-icon name="logo-linkedin" class="profile-icon"></ion-icon>

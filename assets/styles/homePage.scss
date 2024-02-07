@@ -5,11 +5,11 @@ a {
 }
 
 .containerHomePage {
-    margin: 3rem 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 1rem; /* Marge à l'intérieur de la bordure */
+    margin-bottom: 2rem;
+    margin-right: 1rem;
 }
 
 .containerHomePageTitle {
@@ -23,10 +23,18 @@ a {
 
 .containerHomePageImg {
     order: 1; /* Ordre pour afficher l'image en premier */
+    display: flex;
+    justify-content: center;
 }
 
 .homePageImg {
-    width: 90%;
+    width: 50%;
+}
+
+.img-logo {
+    margin-top: 2rem;
+    width: 5rem;
+    height: 5rem;
 }
 
 .d-block {
@@ -46,10 +54,11 @@ a {
 .card-title {
     font-size: var(--h3-font-size);
     font-weight: bold;
+    margin-top: 3rem;
 }
 
 .cardRegister > img {
-    width: 70%;
+    width: 80%;
 }
 
 .carouselTitle {
@@ -86,13 +95,15 @@ a {
 
 #job_search_form_title,
 #job_search_form_city {
-    width: 200px;
+    height: 3rem;
     margin: 5px;
     padding: 8px;
 }
 
 .form-label {
-    font-size: var(--h3-font-size);
+    font-size: var(--h2-font-size);
+    font-weight: bolder;
+
 }
 
 /* Styles pour les résultats de recherche */
@@ -180,16 +191,44 @@ a {
     flex-wrap: nowrap;
 }
 
+/*carroussel*/
+
+.carouselTitle {
+    font-size: 16px;
+}
+
+#carouselExampleCaptions {
+    width: 50%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: black;
+}
+
+.carousel-caption h5,
+.carousel-caption p {
+    font-size: 16px;
+    color: black;
+}
+
+.aboutUs-btn {
+    width: 8rem;
+    height: 4rem;
+}
+
+
 /* Pour les écrans de 661px et plus */
 @media only screen and (min-width: 661px) {
     .containerHomePage {
-        margin: 2rem 1rem;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: flex-end;
         align-items: center;
-        padding: 20px; /* Marge à l'intérieur de la bordure */
+        padding: 20px;
+        margin-right: 7rem;
     }
 
     .containerHomePageTitle {
@@ -198,40 +237,50 @@ a {
 
     .homePageTitle {
         font-size: var(--h1-font-size);
-        margin: 0;
+        margin-bottom: 1rem;
     }
 
     .hiddenMobileTitle {
-        display: block; /* Affiche le titre h2 sur les écrans plus larges */
+        display: block;
         font-size: var(--h2-font-size);
     }
     .d-block {
         margin-bottom: 8rem;
     }
     .jobCard {
-        width: calc(50% - 20px); /* 2 cartes par ligne avec espace entre */
+        width: calc(50% - 20px);
         align-items: baseline;
     }
     .searchingForm {
         display: grid;
         grid-template-columns: repeat(3, 1fr); /* Trois colonnes égales */
-        gap: 10px; /* Espace entre les éléments */
+        gap: 10px;
         align-items: center;
         justify-items: center;
     }
 
     #job_search_form_title,
     #job_search_form_city {
-        width: auto; /* Retour à la largeur automatique par défaut */
+        width: 20rem;
     }
 
-    #job_search_form_title,
-    #job_search_form_city {
-        width: auto;
+    .search-btn {
+        margin-top: 1.5rem;
+        width: 15rem;
     }
 
     .candidateCard {
         width: calc(50% - 20px);
         align-items: baseline;
     }
+
+    #carouselExampleCaptions {
+        width: 30%;
+    }
+
+    .carouselTitle {
+        margin-top: 2rem;
+        font-size: 20px;
+    }
+
 }
