@@ -8,7 +8,7 @@ label[for='status_form_status_0'] {
     padding: 0.6rem;
     margin-top: 1.5rem;
     margin-right: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     &:hover {
         color: var(--dominant);
         background-color: var(--secondary-color);
@@ -28,7 +28,7 @@ label[for='status_form_status_1'] {
     padding: 0.6rem;
     margin-top: 1.5rem;
     margin-right: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     &:hover {
         color: var(--dominant);
         background-color: var(--secondary-color);
@@ -48,7 +48,7 @@ label[for='status_form_status_2'] {
     padding: 0.6rem;
     margin-top: 1.5rem;
     margin-right: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     &:hover {
         color: var(--dominant);
         background-color: var(--secondary-color);
@@ -61,7 +61,7 @@ label[for='status_form_status_2'] {
 
 .submit_decision {
 
-    margin-top: 3rem;
+   /* margin-top: 3rem; */
     display: flex;
     justify-content: center;
 }
@@ -73,15 +73,37 @@ label[for='status_form_status_2'] {
 .statusForm {
     display:flex;
     justify-content: center;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+   margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.make_decision {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 .status {
     border-color: var(--secondary-color);
     border-style: solid;
     border-radius: 0.5rem;
-    padding: 0.5rem;
+  padding: 0.5rem;
+
+}
+
+img[src*="team"] {
+    height: 400px;
+}
+
+.jobApp {
+    margin-left: 1.5rem;
+
+}
+
+.decide {
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 1.2rem;
 
 }
 
@@ -120,6 +142,10 @@ label[for='status_form_status_2'] {
 
     label[for='status_form_status_2'] {
         padding: 0.3rem;
+    }
+
+    img[src*="team"] {
+        height: 200px;
     }
 }
 
