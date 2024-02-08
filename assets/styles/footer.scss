@@ -102,11 +102,14 @@
         justify-content: center;
     }
 
-
 }
 
 /* Ecrans d'une largeur minimale de 661 pixels */
 @media screen and (min-width: 661px) {
+
+    .Team {
+        text-decoration: none;
+    }
 
     .base_footer .footer-top {
         display: flex;
