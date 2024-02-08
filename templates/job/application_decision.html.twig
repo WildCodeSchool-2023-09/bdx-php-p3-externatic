@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block title %}Applicants{% endblock %}
 
+
 {% block body %}
 <div class="grid-container">
     <div class="grid-child-image">
-        <h2> Traiter la candidature de  {{ application.curriculum.candidate.user.username }} pour le offre  de   {{ job.title }} </h2>
+        <h1> {{ job.title }} </h1>
         <img src="{{ asset('build/images/happy_feeling.svg') }}" alt="person celebrating good news"/>
     </div>
-    <div class="grid-child-form">
+    <div class="favoriteJobs">
         <div class="favoriteAvatar">
             {% if application.curriculum.candidate.user.image is defined and application.curriculum.candidate.user.image is not null %}
             <img class="avatar" src="{{ asset('uploads/images/' ~ application.curriculum.candidate.user.image) }}" alt="user profile image">
@@ -16,6 +17,9 @@
         <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
     </div>
     {%  endif %}
+<div class="make_decision">
+        <a class="clickLink" href="{{ path('app_profile_candidate', {'id': application.curriculum.candidate.id}) }}">{{ application.curriculum.candidate.user.username }}</a>
+    </div>
     <div class="statusForm">
 {{ form_start(statusForm) }}
 
@@ -23,7 +27,7 @@
                             attr: { placeholder: "update", class: 'radio-container input' }
                         }) }}
         <div class="submit_decision">
-    <button type="submit">soumettre la décision</button>
+    <button class="connection">Soumettre la décision</button>
     </div>
     </div>
 {{ form_end(statusForm) }}

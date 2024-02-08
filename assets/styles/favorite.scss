@@ -26,6 +26,7 @@ img[src*="favorite"] {
 .favoriteAvatar {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .jobSalary {
@@ -35,6 +36,8 @@ img[src*="favorite"] {
 
 img[src*="pull"] {
     height: 400px;
+    display: flex;
+    justify-content: center;
 }
 
 

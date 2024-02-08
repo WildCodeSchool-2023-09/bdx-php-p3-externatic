@@ -6,7 +6,7 @@
     <div class="grid-container-profile">
     {% if company.user.image is defined and company.user.image is not null %}
     <div class="grid-child-image">
-        <img class="avatar" src="{{ asset('uploads/images/' ~ company.user.image) }}" alt="company profile image">
+        <img class="company-avatar" src="{{ asset('uploads/images/' ~ company.user.image) }}" alt="company profile image">
         {% else %}
         <div class="grid-child-image">
             <img src="{{ asset('build/images/female_avatar.svg') }}" alt="female avatar"/>
