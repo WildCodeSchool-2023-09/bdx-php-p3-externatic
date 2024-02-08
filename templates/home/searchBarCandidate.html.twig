@@ -4,11 +4,11 @@
         <form class="searchingForm" name="job_search_form" method="post">
             <div class="mb-3">
                 {{ form_label(searchForm.title, 'Job recherché', {'label_attr': {'class': 'form-label'}}) }}
-                {{ form_widget(searchForm.title, {'attr': {'class': 'form-control', 'placeholder': 'Votre Job idéal ici...'}}) }}
+                {{ form_widget(searchForm.title, {'attr': {'class': 'form-control', 'placeholder': 'Votre Job idéal...'}}) }}
             </div>
             <div class="mb-3">
                 {{ form_label(searchForm.city, 'Lieu', {'label_attr': {'class': 'form-label'}}) }}
-                {{ form_widget(searchForm.city, {'attr': {'class': 'form-control', 'placeholder': 'Le lieu souhaité ici...'}}) }}
+                {{ form_widget(searchForm.city, {'attr': {'class': 'form-control', 'placeholder': 'Le lieu souhaité...'}}) }}
             </div>
             <button type="submit" class="btn btn-primary search-btn">Rechercher</button>
             {{ form_widget(searchForm._token) }}

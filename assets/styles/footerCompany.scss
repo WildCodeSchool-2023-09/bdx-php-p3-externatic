@@ -4,28 +4,26 @@
 .company-footer {
     text-align: center;
     font-family: 'Jost Variable', sans-serif;
-    //position: fixed;
-    margin-top: 5rem;
+    margin-top: auto;
     bottom: 0;
     left: 0;
     width: 100%;
+    position: relative;
     background-color: #ffffff;
-    color: rgba(9, 9, 9, 0.94);
+    color: #000000;
     padding: 15px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     gap: 10px;
     box-sizing: border-box;
     align-items: center;
-    border-top: 1px solid #cccccc;
 }
 
-/*.company-footer-col a {
-    color: #FFFFFF;
+.company-footer-col a {
+    color: #000000;
     text-decoration: none;
 }*/
-
 
 .company-footer-col {
     .company_footer_link, .company_footer_link:visited, .company_footer_link:active {
@@ -39,7 +37,7 @@
     }
 
     .company-footer-bottom .company-social {
-        color: #FFFFFF;
+        color: #000000;
         transition: all 0.2s ease;
 
         &:hover {
@@ -50,9 +48,9 @@
 
 /* Version mobile : largeur d'écran de 660px maximum */
 @media screen and (max-width: 660px) {
-    .company-footer .company-footer-top {
+    .copany-footer .company-footer-top {
         display: flex;
-        flex-direction: column;
+        //flex-direction: column;
         align-items: center;
     }
 
@@ -81,28 +79,45 @@
 
     .company-footer .company-footer-bottom {
         display: flex;
-        flex-direction: column;
+        //flex-direction: column;
         align-items: center;
     }
 
     .company-footer .company-social {
+        display: flex;
+        align-items: center;
+        color: #000000;
+        transition: all 0.2s ease;
         text-decoration: none;
+        width: 2rem;
+        margin-left: 8px;
+
+        &:hover {
+            color: #842342;
+        }
     }
+
+    company-footer-bottom > a {
+        display:flex;
+        justify-content: center;
+    }
+
+
 }
 
 /* Ecrans d'une largeur minimale de 661 pixels */
 @media screen and (min-width: 661px) {
+
     .company-footer .company-footer-top {
         display: flex;
         gap: 100px;
         align-items: center;
-        margin-left: 100px;
     }
 
-    .company-logo-footer  {
+    .company-footer .company-logo-footer {
         display: block;
-        margin-right: 20px;
-        width: 20vh;
+        width: 10rem;
+        height: 10rem;
     }
 
     .company-footer .company-footer-col {
@@ -124,13 +139,13 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        margin-left: auto;
+        margin-left: 5rem;
     }
 
     .company-footer .company-social {
         display: flex;
-        justify-content: center;
-        color:  #FFFFFF;
+        align-items: center;
+        color: #000000;
         transition: all 0.2s ease;
         text-decoration: none;
         width: 2rem;
@@ -139,5 +154,10 @@
         &:hover {
             color: #842342;
         }
+    }
+
+    .company-footer-bottom > a {
+        display:flex;
+        justify-content: center;
     }
 }

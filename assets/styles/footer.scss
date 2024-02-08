@@ -13,6 +13,7 @@
     color: #ffffff;
     padding: 15px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 10px;
     box-sizing: border-box;
@@ -49,7 +50,7 @@
 @media screen and (max-width: 660px) {
     .base_footer .footer-top {
         display: flex;
-        flex-direction: column;
+        //flex-direction: column;
         align-items: center;
     }
 
@@ -78,28 +79,46 @@
 
     .base_footer .footer-bottom {
         display: flex;
-        flex-direction: column;
+        //flex-direction: column;
         align-items: center;
     }
 
     .base_footer .social {
+        display: flex;
+        align-items: center;
+        color: #FFFFFF;
+        transition: all 0.2s ease;
         text-decoration: none;
+        width: 2rem;
+        margin-left: 8px;
+
+        &:hover {
+            color: #842342;
+        }
     }
+
+    .footer-bottom > a {
+        display:flex;
+        justify-content: center;
+    }
+
 }
 
 /* Ecrans d'une largeur minimale de 661 pixels */
 @media screen and (min-width: 661px) {
 
+    .Team {
+        text-decoration: none;
+    }
+
     .base_footer .footer-top {
         display: flex;
         gap: 100px;
         align-items: center;
-        margin-left: 100px;
     }
 
     .base_footer .logo-footer {
         display: block;
-        margin-right: 20px;
     }
 
     .base_footer .footer-col {
@@ -121,7 +140,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        margin-left: auto;
+        margin-left: 5rem;
     }
 
     .base_footer .social {
@@ -136,5 +155,10 @@
         &:hover {
             color: #842342;
         }
+    }
+
+    .footer-bottom > a {
+        display:flex;
+        justify-content: center;
     }
 }

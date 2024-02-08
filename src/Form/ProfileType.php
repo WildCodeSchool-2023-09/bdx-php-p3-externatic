@@ -44,12 +44,12 @@ class ProfileType extends AbstractType
                     ]
         ])
             ->add('bio', TextareaType::class, [
-                'label' => false,
+                'label' => 'Biographie',
                 'required' => false,
                 'attr' => [
                     'class' => 'profile-bio',
-                    'cols' => 10,
-                    'rows' => 50,
+                    'cols' => 50,
+                    'rows' => 10,
                 ]
             ])
             ->add('linkedin', null, ['label' => false, 'required' => false, 'constraints' => [
