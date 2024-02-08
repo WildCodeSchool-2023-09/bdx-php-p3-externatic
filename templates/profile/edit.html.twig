@@ -13,7 +13,7 @@
                 <img src="{{ asset('build/images/coffee_with_friends.svg') }}" alt="friends hanging out with coffee"/>
             </div>
             <img src="{{ asset('build/images/designer.svg') }}" alt="designer behind a computer"/>
-            <div class="grid-child-form">
+            <div class="grid-child-form profile-edit-form">
                 {{ form_start(profileForm) }}
                     {{ form_label(profileForm.username, "Nom d'utilisateur", {
                         label_attr: { class: 'label' }
@@ -29,12 +29,8 @@
                         attr: { placeholder: "Ajoutez votre lieu de résidence", class: 'placeholder' }
                     }) }}
                     <hr class="input_line">
-                    {{ form_label(profileForm.bio, "Bio", {
-                        label_attr: { class: 'label' }
-                    }) }}<br>
-                <label for="{{ profileForm.bio.vars.id }}"></label><textarea id="{{ profileForm.bio.vars.id }}" name="{{ profileForm.bio.vars.full_name }}"
-                                                                             class="profile-bio" cols="70" rows="15">{{ profileForm.bio.vars.value }}
-                </textarea><br><br>
+                {{ form_row(profileForm.bio) }}
+
                     {{ form_label(profileForm.linkedin, "Linkedin", {
                         label_attr: { class: 'label' }
                     }) }}
@@ -107,9 +103,6 @@
                 {{ form_end(profileForm) }}
             </div>
         </div>
-
-
-
 
 {% endblock %}
 

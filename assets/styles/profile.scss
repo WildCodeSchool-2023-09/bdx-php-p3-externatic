@@ -7,10 +7,6 @@
     justify-items: center;
 }
 
-.profile-bio {
-
-}
-
 .child-bio {
     margin-top: 1.5rem;
     margin-left: 1.5rem;
@@ -95,6 +91,22 @@ img[src*="male_avatar"] {
 
 img[src*="happy"] {
     height: 400px;
+}
+
+.profile-edit-form > form > div{
+    display: flex;
+    flex-direction: column;
+
+    & textarea {
+        resize: none;
+        margin-top : 1rem;
+        margin-bottom : 1rem;
+    }
+
+    & label {
+        margin-top: 1rem;
+        font-size: 18px;
+    }
 }
 
 

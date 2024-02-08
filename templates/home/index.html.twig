@@ -24,7 +24,7 @@
                 <a href="{{ path('admin') }}" class="btn btn-primary">Dashboard</a>
             {% endif %}
 
-            {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CANDIDATE') %}
+            {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CANDIDAT') %}
             <img class="img-logo" src="{{ asset('build/images/logo.png') }}">
             {% else %}
                 <h5 class="card-title">Pas encore inscrit ?</h5>
