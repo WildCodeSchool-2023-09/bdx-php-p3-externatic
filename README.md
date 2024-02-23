@@ -58,6 +58,6 @@ Pousser la branche (git push origin feature/nouvelle-fonctionnalite)
 Ouvrir une Pull Request
 
 
-Pour découvrir notre projet en ligne :
+## Pour découvrir notre projet en ligne :
 
 https://2023-09-p3-externatic.bordeaux-jlg.wilders.dev/
