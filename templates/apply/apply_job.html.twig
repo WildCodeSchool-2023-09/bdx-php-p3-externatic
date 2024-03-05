@@ -7,7 +7,7 @@
 {% block body %}
     <div class="grid-container">
         <div class="grid-child-image">
-            <h1>Postuler à l'offre:  {{ job.title }}</h1>
+            <h1>Postuler à l'offre: {{ job.title }}</h1>
             <img src="{{ asset('build/images/moving.svg') }}" alt="woman moving"/>
         </div>
         <img src="{{ asset('build/images/messaging.svg') }}" alt="woman sending a message"/>
@@ -30,8 +30,8 @@
                     {{ form_widget(applyForm.cvChoice, {
                         attr: { placeholder: '', class: 'radio-container input' }
                     }) }}
-                  <div class="upload">
-                    {{ form_row(applyForm.newCV) }}
+                    <div class="upload">
+                        {{ form_row(applyForm.newCV) }}
                     </div>
                     <div class="applySubmit">
                         <button type="submit">Postuler</button>
@@ -47,8 +47,6 @@
     </div>
     {%  block javascript  %}
     <script>
-
-
         document.querySelector("label[for='apply_form_cvChoice_0']").addEventListener("click", function(){
         document.querySelector("label[for='apply_form_cvChoice_0']").innerText = "Utiliser mon profil CV"
         document.querySelector("label[for='apply_form_cvChoice_1']").classList.add("roleButton")
@@ -59,9 +57,6 @@
         document.querySelector("label[for='apply_form_cvChoice_1']").innerText = "Télécharger un nouveau CV";
         document.querySelector("label[for='apply_form_cvChoice_0']").classList.add("roleButton")
     });
-
-
-
     </script>
     {% endblock %}
 {% endblock %}

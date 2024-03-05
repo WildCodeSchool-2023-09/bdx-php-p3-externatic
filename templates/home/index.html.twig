@@ -18,14 +18,14 @@
     {#    Section en tête de la page d'accueil #}
     <div class="containerHomePage">
         <div class="containerHomePageTitle">
-{#            <h1 class="homePageTitle">Externatic</h1>#}
+            {#            <h1 class="homePageTitle">Externatic</h1>#}
             <h2 class="hiddenMobileTitle">Plus qu'un cabinet de recrutement informatique</h2>
             {% if app.user is defined and is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('admin') }}" class="btn btn-primary">Dashboard</a>
             {% endif %}
 
             {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CANDIDAT') %}
-            <img class="img-logo" src="{{ asset('build/images/logo.png') }}">
+                <img class="img-logo" src="{{ asset('build/images/logo.png') }}">
             {% else %}
                 <h5 class="card-title">Pas encore inscrit ?</h5>
                 <p class="card-text">Rejoignez Externatic en quelques secondes !</p>
@@ -108,11 +108,11 @@
     </div>
 
 
-        <div class="cardRegister">
-            <img src="{{ asset('build/images/registration.svg') }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <a href="{{ path('app_about') }}" class="btn btn-primary aboutUs-btn">A propos de nous</a>
-            </div>
+    <div class="cardRegister">
+        <img src="{{ asset('build/images/registration.svg') }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <a href="{{ path('app_about') }}" class="btn btn-primary aboutUs-btn">A propos de nous</a>
         </div>
+    </div>
 
 {% endblock %}
